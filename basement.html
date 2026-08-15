@@ -3,37 +3,27 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The Basement Simulator — New England Residential Water Thesis</title>
-<meta name="description" content="An interactive basement: run seven real service calls step by step — installs, diagnostics, testing — and see exactly what a licensed water technician does on site, with what tools, for how many minutes. Companion to the AEP Equity residential water thesis." />
-<meta property="og:title" content="The Basement Simulator — Run a Water Service Call" />
-<meta property="og:description" content="Seven real service scenarios, 68 timed steps, one basement. See exactly what the technician does, with what tools, for how long." />
+<title>Inside the Basement — New England Residential Water Thesis</title>
+<meta name="description" content="An interactive guide to a private-well home's water system: what each component does, what goes wrong, and what every service call involves — time on site, crew size, tools, and cost. Companion to the AEP Equity residential water thesis." />
+<meta property="og:title" content="Inside the Basement — How a Private-Well Water System Works" />
+<meta property="og:description" content="Click through the equipment in a well-water home, then walk real service calls step by step: time, crew, tools, cost." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://aep1992.github.io/water-thesis/basement.html" />
 <meta name="twitter:card" content="summary" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="basement.css" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231B2532'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-weight='900' font-size='17' fill='%23EBE5D9'%3EA%3C/text%3E%3Crect x='24.5' y='19' width='3' height='3' fill='%23C77D3B'/%3E%3C/svg%3E" />
 <style>
-/* ---- design tokens the basement module expects ---- */
 :root{
-  --bedrock:#1B2532; --copper:#C77D3B; --cream:#EBE5D9; --cream-alt:#F5F0E4;
-  --display:"Fraunces",Georgia,serif; --mono:"JetBrains Mono",ui-monospace,monospace;
-  --sans:"Inter",system-ui,sans-serif;
-  --text-xs:clamp(.75rem,.72rem + .12vw,.8125rem);
-  --text-sm:clamp(.8125rem,.78rem + .2vw,.9375rem);
-  --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem; --s5:1.25rem; --s6:1.5rem;
-  --s8:2rem; --s10:2.5rem; --s12:3rem; --s16:4rem; --s20:5rem; --s24:6rem;
-  /* thesis page tokens */
-  --navy:#1B2532; --ink:#232A33; --sub:#5A6472; --line:#DCD4C2; --blue:#2563EB;
-  --serif:"Fraunces",Georgia,serif;
+  --navy:#1B2532; --navy2:#2C3947; --cream:#F4EFE4; --cream2:#EBE5D9; --ink:#232A33;
+  --sub:#5A6472; --line:#DCD4C2; --copper:#C77D3B; --blue:#2563EB; --teal:#0E9384;
+  --serif:"Fraunces",Georgia,serif; --sans:"Inter",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:clip}
 body{background:var(--cream);color:var(--ink);font:16px/1.65 var(--sans)}
-.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
-.wrap-narrow{max-width:920px;margin:0 auto;padding:0 24px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
 a{color:var(--blue);text-decoration:none}
 a:hover{text-decoration:underline}
 
@@ -44,47 +34,97 @@ a:hover{text-decoration:underline}
 .backlink:hover{color:#fff;text-decoration:none}
 .mast-kicker{font:600 11px/1.4 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#9FB0C2;margin:20px 0 8px}
 h1{font:600 clamp(28px,4.4vw,42px)/1.1 var(--serif);letter-spacing:-.01em;color:#F6F1E4}
-.mast-sub{margin-top:12px;max-width:70ch;color:#C4CDD8;font-size:16px}
+.mast-sub{margin-top:12px;max-width:72ch;color:#C4CDD8;font-size:16px}
 
-.howto{padding:26px 0 4px}
-.howto-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:14px 0 6px}
-.howto-card{background:#FBF8EF;border:1px solid var(--line);border-radius:8px;padding:13px 16px;font-size:13.5px;color:var(--sub)}
-.howto-card b{display:block;color:var(--ink);font-size:13.5px;margin-bottom:3px}
-.howto-card .n{font:600 11px/1 var(--mono);color:var(--copper);margin-right:6px}
-
-/* section-basement spacing on this standalone page */
-#basement{padding:8px 24px 40px;max-width:1500px;margin:0 auto}
-.bmt-bar{top:0}
-.bmt-head{max-width:1100px;margin:0 auto}
-#basement .fine{max-width:1100px;margin:14px auto 0;font-size:12.5px;color:var(--sub)}
-
-/* academic layer */
-.academic{border-top:1px solid var(--line);padding:48px 0 56px;background:var(--cream-alt)}
+section{padding:44px 0;border-bottom:1px solid var(--line)}
 .sec-n{font:600 11px/1 var(--mono);letter-spacing:.18em;color:var(--copper);text-transform:uppercase}
 h2{font:600 clamp(22px,3vw,30px)/1.15 var(--serif);margin:10px 0 6px;letter-spacing:-.01em}
 .sec-sub{color:var(--sub);max-width:72ch;margin-bottom:22px}
+h3{font:600 17px/1.3 var(--sans);margin:28px 0 10px}
+p{max-width:72ch;margin-bottom:14px}
+.src{display:block;font:400 11px/1.6 var(--mono);color:#8B8474;margin:8px 0 0}
+
+/* ---- diagram + panel layout ---- */
+.lab{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr);gap:18px;align-items:start}
+.stage{background:var(--navy);border-radius:10px;padding:14px;position:sticky;top:12px}
+.stage svg{width:100%;height:auto;display:block}
+.stage-cap{color:#9FB0C2;font-size:12px;margin-top:8px;text-align:center}
+.panel{background:#FBF8EF;border:1px solid var(--line);border-radius:10px;padding:18px 20px;min-height:340px}
+.panel .k{font:600 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--copper)}
+.panel h4{font:600 19px/1.25 var(--serif);margin:6px 0 10px}
+.panel .row{margin-bottom:11px}
+.panel .row b{display:block;font:600 11px/1.6 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--sub)}
+.panel .row span{font-size:14px;line-height:1.55;display:block}
+.panel .fee{font-family:var(--mono);font-size:12.5px;color:var(--copper)}
+
+/* mode tabs */
+.tabs{display:flex;gap:8px;margin:0 0 14px}
+.tab{font:600 13px/1 var(--sans);padding:10px 16px;border:1.5px solid var(--navy);border-radius:6px;background:transparent;color:var(--navy);cursor:pointer}
+.tab.on{background:var(--navy);color:#F6F1E4}
+.tab:focus-visible{outline:2px solid var(--copper);outline-offset:2px}
+
+/* walkthrough controls */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chip{font:600 12px/1.2 var(--sans);padding:8px 12px;border:1.5px solid var(--navy);border-radius:5px;background:#FBF8EF;color:var(--navy);cursor:pointer}
+.chip .d{font:400 10.5px/1 var(--mono);color:var(--sub);margin-left:6px}
+.chip.on{background:var(--navy);color:#F6F1E4}
+.chip.on .d{color:#C9BFA9}
+.wt-meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.wt-meta b{color:var(--ink)}
+.step-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px}
+.step-head .n{font:600 12px/1 var(--mono);color:var(--copper)}
+.step-head .t{font:600 12px/1 var(--mono);color:var(--sub)}
+.step-desc{font-size:15px;line-height:1.6;min-height:72px}
+.tool-chip{display:inline-block;font:600 11.5px/1 var(--mono);background:var(--cream2);border:1px solid var(--line);border-radius:4px;padding:6px 9px;margin-top:10px;color:var(--navy)}
+.wt-btns{display:flex;gap:8px;margin-top:14px}
+.btn{font:600 13px/1 var(--sans);padding:10px 14px;border:1.5px solid var(--navy);border-radius:6px;background:#FBF8EF;color:var(--navy);cursor:pointer}
+.btn.primary{background:var(--navy);color:#F6F1E4}
+.btn.on{background:var(--copper);border-color:var(--copper);color:#fff}
+.btn:disabled{opacity:.4;cursor:default}
+.mins-bar{height:8px;background:var(--cream2);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:14px}
+.mins-bar i{display:block;height:100%;background:var(--copper);width:0;transition:width .3s}
+.mins-lab{font:400 11px/1.6 var(--mono);color:var(--sub);margin-top:4px}
+
+/* tables */
+.tbl-scroll{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:#FBF8EF;min-width:720px}
+th{font:600 11px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;text-align:left;color:var(--sub);background:var(--cream2);padding:10px 12px;border-bottom:1px solid var(--line)}
+td{padding:10px 12px;border-bottom:1px solid #EDE7D6;vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-family:var(--mono);font-size:12.5px;white-space:nowrap}
+td b{font-weight:600}
+.callout{border-left:4px solid var(--copper);background:#F6F0E1;border-radius:0 8px 8px 0;padding:16px 20px;margin:18px 0;max-width:78ch}
+.callout p{margin:0;max-width:100%}
+
+/* written procedures */
 details.sc{background:#FBF8EF;border:1px solid var(--line);border-radius:8px;margin-bottom:10px;overflow:hidden}
 details.sc summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:15px 18px;font:600 15px/1.35 var(--sans)}
 details.sc summary::-webkit-details-marker{display:none}
-details.sc summary .ic{font-size:17px}
 details.sc summary .meta{font:400 12.5px/1.4 var(--mono);color:var(--sub);margin-left:auto;white-space:nowrap}
 details.sc[open] summary{border-bottom:1px solid var(--line)}
-details.sc .blurb{padding:12px 18px 0;color:var(--sub);font-size:14px;max-width:78ch}
-details.sc ol{margin:12px 18px 16px 18px;padding-left:0;list-style:none;counter-reset:st}
+details.sc .blurb{padding:12px 18px 0;color:var(--sub);font-size:14px;max-width:80ch}
+details.sc ol{margin:12px 18px 16px;padding-left:0;list-style:none;counter-reset:st}
 details.sc ol li{counter-increment:st;position:relative;padding:0 0 10px 46px;font-size:14px;max-width:80ch}
 details.sc ol li:before{content:counter(st,decimal-leading-zero);position:absolute;left:0;top:1px;font:600 11.5px/1 var(--mono);color:var(--navy);background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:5px 6px}
 details.sc ol li .mins{font:600 11.5px/1 var(--mono);color:var(--copper);margin-left:8px;white-space:nowrap}
 details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
-.tools-note{margin-top:22px;font-size:13px;color:var(--sub);max-width:78ch}
+
+/* svg interactivity */
+.hot{cursor:pointer}
+.hot .halo{fill:none;stroke:#C77D3B;stroke-width:3;opacity:0;transition:opacity .25s}
+.hot:hover .halo{opacity:.55}
+.hot.sel .halo{opacity:1}
+.dot{cursor:pointer}
+.dot circle{fill:#C77D3B;stroke:#1B2532;stroke-width:2}
+.dot text{font:700 13px var(--sans);fill:#fff;text-anchor:middle}
+.hot.dimmed{opacity:.38;transition:opacity .3s}
 
 .foot{background:var(--navy);color:#8C9AAB;padding:26px 0;font-size:12.5px}
 .foot a{color:#B7C4D2}
-html{overflow-x:clip}
-@media (max-width:640px){ #basement{padding:8px 14px 32px} }
-/* mobile: chip rail scrolls inside itself, never widens the page */
-@media (max-width:767px){
-  .bmt-bar{align-items:stretch}
-  .bmt-chips{flex:0 0 auto;max-width:100%;min-width:0}
+@media (max-width:900px){
+  .lab{grid-template-columns:1fr}
+  .stage{position:static}
+  .panel{min-height:0}
 }
 </style>
 </head>
@@ -101,81 +141,451 @@ html{overflow-x:clip}
       </svg>
       <a class="backlink" href="index.html">&larr; Back to the thesis</a>
     </div>
-    <p class="mast-kicker">Interactive · Companion to the New England Residential Water Thesis</p>
-    <h1>The Basement Simulator</h1>
-    <p class="mast-sub">One representative New Hampshire basement — the wet wall, the equipment train, the floor drain, and a
-      licensed technician. Seven real service calls, sixty-eight timed steps. Run them and you will know what actually happens
-      on site: what gets installed, how long it takes, which tool comes out of the van, and what else gets sold while the
-      technician is standing there. Prefer to read? The full written procedures are below the simulator.</p>
+    <p class="mast-kicker">Companion to the New England Residential Water Thesis</p>
+    <h1>Inside the Basement</h1>
+    <p class="mast-sub">A typical private-well home runs its own water utility from one wall of the basement. This page does
+      two things: shows a homeowner exactly what each piece of equipment is and what it needs, and shows an operator or
+      investor the full range of services — how long each takes, when it takes two technicians, which tools come out of
+      the van, and what it costs.</p>
   </div>
 </header>
 
-<div class="howto wrap">
-  <div class="howto-cards">
-    <div class="howto-card"><b><span class="n">1</span>Pick a service call</b>From a free water test to a 2.8-hour softener install — each chip is a real job with real on-site minutes.</div>
-    <div class="howto-card"><b><span class="n">2</span>Step through it</b>Next / Previous moves the technician around the basement; the highlight ring shows which equipment he's working, and the tool in his hand changes with the task.</div>
-    <div class="howto-card"><b><span class="n">3</span>Or press Auto-play</b>The call runs itself, step by step, with each step's minutes on the clock and the elapsed-time strip filling at the bottom.</div>
-    <div class="howto-card"><b><span class="n">4</span>Watch the money</b>Every scenario shows crew size and revenue — including the $0 free test that decides whether this house becomes a $2,000 or $7,500 customer.</div>
-  </div>
-</div>
+<!-- ============ THE DIAGRAM ============ -->
+<section id="diagram">
+  <div class="wrap">
+    <p class="sec-n">01 — The System</p>
+    <h2>One wall, eleven parts</h2>
+    <p class="sec-sub">This is the standard equipment line in a treated well-water home, in flow order — water enters from
+      the well at left and leaves house-ready at right. <strong>Click any numbered part</strong>, or switch to
+      <strong>Walk a service call</strong> to watch a real visit move through the same equipment.</p>
 
-<section id="basement" data-nonum>
-  <div class="bmt-mount"></div>
-  <p class="fine">Step sequences are reconstructed from a representative operator&rsquo;s service catalog, the eighteen-step
-    service call documented in the thesis (§07), and the field-test panel; durations are the modeled on-site minutes behind
-    the capacity model. Equipment layout is a representative Seacoast NH wet wall, not a specific customer&rsquo;s home.</p>
+    <div class="tabs" role="tablist">
+      <button class="tab on" id="tabParts" role="tab">Parts of the system</button>
+      <button class="tab" id="tabWalk" role="tab">Walk a service call</button>
+    </div>
+
+    <div id="walkChips" class="chips" style="display:none"></div>
+
+    <div class="lab">
+      <figure class="stage">
+        <svg id="scene" viewBox="0 0 1500 640" role="img" aria-label="Cutaway of a basement wall with the water equipment line: well line entry, pressure switch and tank, sediment filter, water softener and brine tank, UV sterilizer, optional treatment bay, water heater, and laundry sink.">
+          <defs>
+            <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#263242"/><stop offset="1" stop-color="#1B2532"/>
+            </linearGradient>
+            <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#3A465A"/><stop offset="1" stop-color="#2C3947"/>
+            </linearGradient>
+            <linearGradient id="tankBlue" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#1E4C8A"/><stop offset=".4" stop-color="#3A76C4"/><stop offset="1" stop-color="#173C6E"/>
+            </linearGradient>
+            <linearGradient id="steel" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#5A6472"/><stop offset=".4" stop-color="#9AA6B4"/><stop offset="1" stop-color="#4A5462"/>
+            </linearGradient>
+            <linearGradient id="softG" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#2C3947"/><stop offset=".4" stop-color="#54637A"/><stop offset="1" stop-color="#242F3E"/>
+            </linearGradient>
+          </defs>
+
+          <!-- shell -->
+          <rect width="1500" height="640" fill="url(#wall)"/>
+          <rect y="520" width="1500" height="120" fill="url(#floor)"/>
+          <path d="M0 516h1500v8H0z" fill="#141C26"/>
+          <g opacity=".5"><rect x="0" y="0" width="1500" height="34" fill="#141C26"/>
+            <rect x="120" y="0" width="18" height="34" fill="#2C3947"/><rect x="420" y="0" width="18" height="34" fill="#2C3947"/>
+            <rect x="720" y="0" width="18" height="34" fill="#2C3947"/><rect x="1020" y="0" width="18" height="34" fill="#2C3947"/>
+            <rect x="1320" y="0" width="18" height="34" fill="#2C3947"/></g>
+
+          <!-- foundation + buried service line from the well -->
+          <rect x="0" y="34" width="56" height="486" fill="#141C26"/>
+          <g class="hot" data-c="entry" tabindex="0" role="button" aria-label="Well line and main shutoff">
+            <rect class="halo" x="8" y="366" width="216" height="86" rx="10"/>
+            <path d="M0 408 H190" stroke="#38BDF8" stroke-width="9" fill="none"/>
+            <rect x="56" y="398" width="12" height="20" fill="#F59E0B"/>
+            <circle cx="130" cy="408" r="13" fill="none" stroke="#9AA6B4" stroke-width="5"/>
+            <rect x="126" y="384" width="8" height="14" fill="#9AA6B4"/>
+            <text x="16" y="446" font-family="Inter,sans-serif" font-size="12.5" letter-spacing=".1em" fill="#7DA5C4">FROM THE WELL</text>
+          </g>
+
+          <!-- pressure switch + gauge -->
+          <g class="hot" data-c="pswitch" tabindex="0" role="button" aria-label="Pressure switch and gauge">
+            <rect class="halo" x="196" y="330" width="96" height="122" rx="10"/>
+            <path d="M190 408 H300" stroke="#38BDF8" stroke-width="9" fill="none"/>
+            <rect x="216" y="358" width="34" height="26" rx="3" fill="#4A5462"/>
+            <circle cx="266" cy="352" r="16" fill="#EBE5D9" stroke="#4A5462" stroke-width="4"/>
+            <path d="M266 352l9-7" stroke="#B91C1C" stroke-width="2.4"/>
+            <path d="M233 384v14M266 368v30" stroke="#9AA6B4" stroke-width="4"/>
+          </g>
+
+          <!-- pressure tank -->
+          <g class="hot" data-c="tank" tabindex="0" role="button" aria-label="Pressure tank">
+            <rect class="halo" x="288" y="236" width="128" height="290" rx="12"/>
+            <ellipse cx="352" cy="514" rx="60" ry="9" fill="#101820" opacity=".55"/>
+            <path d="M300 300c0-30 24-50 52-50s52 20 52 50v186c0 8-5 12-12 12h-80c-7 0-12-4-12-12z" fill="url(#tankBlue)"/>
+            <path d="M310 300c0-24 18-42 38-42-19 7-27 21-27 42v182h-11z" fill="#8FB6E6" opacity=".3"/>
+            <rect x="306" y="352" width="92" height="20" fill="#153360" opacity=".5"/>
+            <rect x="318" y="390" width="68" height="34" rx="3" fill="#EBE5D9" opacity=".92"/>
+            <text x="352" y="412" font-family="JetBrains Mono,monospace" font-size="11" fill="#1B2532" text-anchor="middle">WELL-X-TROL</text>
+            <path d="M340 250v-16h24v16" stroke="#9AA6B4" stroke-width="5" fill="none"/>
+            <path d="M300 408 h-0" stroke="#38BDF8" stroke-width="9"/>
+          </g>
+
+          <!-- main line along wall -->
+          <path d="M404 408 H520 M600 408 H660 M760 408 H840 M950 408 H1010 M1120 408 H1190" stroke="#38BDF8" stroke-width="8" fill="none" opacity=".9"/>
+
+          <!-- sediment filter -->
+          <g class="hot" data-c="sediment" tabindex="0" role="button" aria-label="Sediment filter">
+            <rect class="halo" x="512" y="330" width="100" height="164" rx="10"/>
+            <rect x="530" y="352" width="64" height="26" rx="4" fill="#4A5462"/>
+            <path d="M540 378h44v78a22 22 0 0 1-44 0z" fill="#DCE7F0" opacity=".85"/>
+            <path d="M552 386v64M572 386v64" stroke="#9AA6B4" stroke-width="5"/>
+          </g>
+
+          <!-- softener + valve -->
+          <g class="hot" data-c="softener" tabindex="0" role="button" aria-label="Water softener">
+            <rect class="halo" x="648" y="212" width="126" height="314" rx="12"/>
+            <ellipse cx="710" cy="514" rx="52" ry="9" fill="#101820" opacity=".55"/>
+            <path d="M666 296c0-26 20-44 44-44s44 18 44 44v206c0 8-5 12-12 12h-64c-7 0-12-4-12-12z" fill="url(#softG)"/>
+            <path d="M676 296c0-20 15-36 32-36-16 6-23 18-23 36v202h-9z" fill="#B9C6D4" opacity=".2"/>
+            <rect x="676" y="380" width="68" height="30" rx="3" fill="#EBE5D9" opacity=".9"/>
+            <text x="710" y="400" font-family="JetBrains Mono,monospace" font-size="10.5" fill="#1B2532" text-anchor="middle">SOFTENER</text>
+            <rect x="684" y="228" width="52" height="30" rx="5" fill="#2C3947" stroke="#54637A" stroke-width="2"/>
+            <rect x="692" y="236" width="24" height="12" rx="2" fill="#7DD3FC" opacity=".7"/>
+            <circle cx="726" cy="242" r="5" fill="#C77D3B"/>
+          </g>
+
+          <!-- brine tank -->
+          <g class="hot" data-c="brine" tabindex="0" role="button" aria-label="Brine tank">
+            <rect class="halo" x="786" y="332" width="118" height="194" rx="12"/>
+            <ellipse cx="845" cy="514" rx="48" ry="8" fill="#101820" opacity=".5"/>
+            <path d="M800 366h90v138c0 8-5 12-12 12h-66c-7 0-12-4-12-12z" fill="#4A5462"/>
+            <path d="M796 352h98v18h-98z" rx="4" fill="#5A6472"/>
+            <path d="M808 388h74" stroke="#EBE5D9" stroke-width="7" stroke-dasharray="10 7" opacity=".5"/>
+            <path d="M756 250 c40 24 62 62 66 102" stroke="#9AA6B4" stroke-width="4" fill="none" stroke-dasharray="6 5" opacity=".7"/>
+          </g>
+
+          <!-- UV -->
+          <g class="hot" data-c="uv" tabindex="0" role="button" aria-label="UV sterilizer">
+            <rect class="halo" x="942" y="300" width="196" height="92" rx="10"/>
+            <rect x="960" y="330" width="160" height="30" rx="15" fill="url(#steel)"/>
+            <rect x="1104" y="326" width="22" height="38" rx="4" fill="#4A5462"/>
+            <circle cx="976" cy="345" r="6" fill="#FCD34D"/>
+            <path d="M986 345h108" stroke="#FCD34D" stroke-width="3" stroke-dasharray="5 5" opacity=".8"/>
+            <path d="M1000 360 v48 M1080 360 v48" stroke="#38BDF8" stroke-width="7"/>
+          </g>
+
+          <!-- optional treatment bay -->
+          <g class="hot" data-c="addon" tabindex="0" role="button" aria-label="Optional treatments: arsenic, PFAS, radon, RO">
+            <rect class="halo" x="1010" y="404" width="180" height="122" rx="10"/>
+            <rect x="1024" y="418" width="66" height="96" rx="8" fill="none" stroke="#C9BFA9" stroke-width="2.5" stroke-dasharray="8 6" opacity=".75"/>
+            <rect x="1104" y="418" width="66" height="96" rx="8" fill="none" stroke="#C9BFA9" stroke-width="2.5" stroke-dasharray="8 6" opacity=".75"/>
+            <text x="1097" y="472" font-family="Inter,sans-serif" font-size="11.5" letter-spacing=".12em" fill="#C9BFA9" text-anchor="middle">IF NEEDED</text>
+          </g>
+
+          <!-- water heater -->
+          <g class="hot" data-c="heater" tabindex="0" role="button" aria-label="Water heater">
+            <rect class="halo" x="1196" y="222" width="130" height="304" rx="12"/>
+            <ellipse cx="1261" cy="514" rx="56" ry="9" fill="#101820" opacity=".55"/>
+            <path d="M1210 288c0-28 23-48 51-48s51 20 51 48v216c0 8-5 12-12 12h-78c-7 0-12-4-12-12z" fill="url(#steel)"/>
+            <path d="M1220 288c0-22 17-40 36-40-18 7-25 20-25 40v212h-11z" fill="#DCE7F0" opacity=".22"/>
+            <rect x="1226" y="356" width="70" height="40" rx="4" fill="#EBE5D9" opacity=".9"/>
+            <text x="1261" y="374" font-family="JetBrains Mono,monospace" font-size="9.5" fill="#1B2532" text-anchor="middle">50 GAL</text>
+            <text x="1261" y="388" font-family="JetBrains Mono,monospace" font-size="9.5" fill="#1B2532" text-anchor="middle">ELECTRIC</text>
+            <path d="M1236 240v-22M1286 240v-22" stroke="#9AA6B4" stroke-width="6"/>
+            <path d="M1236 218h50" stroke="#B91C1C" stroke-width="6"/>
+          </g>
+
+          <!-- laundry sink -->
+          <g class="hot" data-c="sink" tabindex="0" role="button" aria-label="Laundry sink">
+            <rect class="halo" x="1336" y="318" width="156" height="208" rx="10"/>
+            <path d="M1354 380h120v54c0 8-6 14-14 14h-92c-8 0-14-6-14-14z" fill="#7A8694"/>
+            <path d="M1360 386h108v40h-108z" fill="#5A6472"/>
+            <path d="M1368 448v66M1462 448v66" stroke="#5A6472" stroke-width="8"/>
+            <path d="M1398 380v-26c0-10 8-16 18-16s16 6 16 14" stroke="#9AA6B4" stroke-width="6" fill="none"/>
+            <path d="M1432 356v18" stroke="#38BDF8" stroke-width="4"/>
+          </g>
+
+          <!-- floor drain -->
+          <g class="hot" data-c="drain" tabindex="0" role="button" aria-label="Floor drain">
+            <rect class="halo" x="560" y="548" width="130" height="56" rx="10"/>
+            <ellipse cx="625" cy="576" rx="42" ry="12" fill="#141C26"/>
+            <ellipse cx="625" cy="574" rx="34" ry="9" fill="#2C3947"/>
+            <path d="M600 572h50M604 578h42" stroke="#141C26" stroke-width="2.4"/>
+          </g>
+
+          <!-- numbered dots -->
+          <g id="dots"></g>
+        </svg>
+        <figcaption class="stage-cap" id="stageCap">Flow order, left to right: well line → pressure control → filtration →
+          softening → disinfection → optional treatment → hot water → fixtures.</figcaption>
+      </figure>
+
+      <aside class="panel" id="panel" aria-live="polite"></aside>
+    </div>
+  </div>
 </section>
 
-<section class="academic">
-  <div class="wrap-narrow">
-    <p class="sec-n">The Written Version</p>
-    <h2>Every scenario, documented step by step</h2>
-    <p class="sec-sub">The same seven service calls as complete written procedures — each step with its on-site minutes and
-      the tool in hand. This is the operational layer under the thesis: read it and you know what a technician's day is
-      actually made of.</p>
+<!-- ============ SERVICES TABLE ============ -->
+<section id="services">
+  <div class="wrap">
+    <p class="sec-n">02 — The Range of Services</p>
+    <h2>Every service, with time, crew, tools and cost</h2>
+    <p class="sec-sub">The full residential service range of a licensed well-water operator. Crew size is driven by
+      weight, safety and licensing — not preference.</p>
+
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Service</th><th class="num">Time on site</th><th class="num">Techs</th><th>Why that crew</th><th>Primary tools</th><th class="num">Typical cost</th></tr></thead>
+        <tbody>
+          <tr><td><b>In-home water test</b></td><td class="num">30–45 min</td><td class="num">1</td><td>Test kit work at the utility sink</td><td>Strip panel, reagent kit, pressure gauge</td><td class="num">$0–$150</td></tr>
+          <tr><td><b>Lab sampling (arsenic, radon, PFAS, bacteria)</b></td><td class="num">~30 min + lab</td><td class="num">1</td><td>Sample pull only; analysis is at an accredited lab</td><td>Chain-of-custody bottles, cooler</td><td class="num">$150–$475</td></tr>
+          <tr><td><b>Softener repair</b></td><td class="num">~1 hr</td><td class="num">1</td><td>Bench-level valve work</td><td>Multimeter, screwdrivers, seal kits, hardness strips</td><td class="num">$300–$800</td></tr>
+          <tr><td><b>Softener install</b></td><td class="num">3–4 hrs</td><td class="num">1</td><td>One tech with a hand truck handles a 120-lb unit</td><td>Pipe cutter, PEX crimper, torch, hand truck</td><td class="num">$2,000–$3,200</td></tr>
+          <tr><td><b>Sediment filter service</b></td><td class="num">~20 min</td><td class="num">1</td><td>Cartridge swap</td><td>Filter wrench, bucket</td><td class="num">$65–$125</td></tr>
+          <tr><td><b>UV install / annual lamp swap</b></td><td class="num">1–2 hrs / 20 min</td><td class="num">1</td><td>Wall-mount plumbing + plug-in ballast</td><td>Pipe cutter, gloves (lamp oils), gauge</td><td class="num">$800–$1,400 / $195–$325</td></tr>
+          <tr><td><b>Pressure tank replacement</b></td><td class="num">2–3 hrs</td><td class="num">1</td><td>Tank is bulky but under 100 lbs empty</td><td>Pipe wrenches, air gauge, dolly</td><td class="num">$700–$1,600</td></tr>
+          <tr><td><b>Well pump replacement</b></td><td class="num">3–6 hrs</td><td class="num"><b>2</b></td><td><b>200–600 ft of drop pipe must be pulled and controlled — two sets of hands or a hoist truck, plus a licensed pump installer by law</b></td><td>Pump hoist / pulling rig, pipe wrenches, multimeter, splice kit, torque arrestor</td><td class="num">$2,000–$6,500</td></tr>
+          <tr><td><b>Whole-house arsenic system</b></td><td class="num">~8 hrs</td><td class="num"><b>2</b></td><td><b>Two media vessels at 150–300 lbs each, placed and plumbed in series</b></td><td>Crimper, cutter, dolly, media funnel</td><td class="num">$3,400–$6,800</td></tr>
+          <tr><td><b>PFAS carbon (GAC) system</b></td><td class="num">~3 hrs</td><td class="num"><b>2</b></td><td><b>Dual tanks; lifting and rebate paperwork on the same visit</b></td><td>Crimper, cutter, dolly</td><td class="num">$3,200–$5,200</td></tr>
+          <tr><td><b>Radon aeration system</b></td><td class="num">~5 hrs</td><td class="num"><b>2</b></td><td><b>Two trades in one visit: plumbing plus a vent run and dedicated electrical</b></td><td>Hole saw, vent stack, blower kit</td><td class="num">~$7,500</td></tr>
+          <tr><td><b>Whole-house RO (complex)</b></td><td class="num">~12 hrs / 2 days</td><td class="num"><b>2</b></td><td><b>Multi-vessel plumbing, storage tank, repressurization</b></td><td>Full install kit</td><td class="num">~$12,500</td></tr>
+          <tr><td><b>Annual maintenance visit</b></td><td class="num">~40 min</td><td class="num">1</td><td>Route work — salt, filters, lamp, re-test</td><td>Salt, cartridges, lamp, strip panel</td><td class="num">$175–$495/yr</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="src">Time and crew: operator service catalogs and install references (AEP field research). Costs: modeled
+      against HomeGuide, Forbes Home, Angi, FixYourWater and vendor pricing — sources linked from the thesis. Licensed
+      pump-installer requirement: NH RSA 482-B.</p>
+
+    <div class="callout">
+      <p><strong>When one tech is not enough:</strong> a second technician is required by weight (media vessels run
+        150–300 lbs; a submersible pump hangs on hundreds of feet of water-filled pipe), by safety (a pull going wrong at
+        the wellhead needs a second set of hands), by licensing (pump work legally requires a licensed installer on the
+        job), or by trade span (radon aeration is plumbing + venting + electrical in one visit). That is why crew
+        capacity — not demand — sets an operator's revenue ceiling.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WRITTEN PROCEDURES ============ -->
+<section id="written">
+  <div class="wrap">
+    <p class="sec-n">03 — The Written Procedures</p>
+    <h2>Every service call, step by step</h2>
+    <p class="sec-sub">The same walkthroughs as complete written procedures — each step with its minutes and the tool in
+      hand. Reconstructed from operator service catalogs and standard trade diagnostic order (AEP field research, modeled).</p>
     <div id="scDocs"></div>
-    <p class="tools-note" id="toolsNote"></p>
   </div>
 </section>
 
 <footer class="foot">
   <div class="wrap">Part of <a href="index.html">The New England Residential Water Thesis</a> · Prepared by
-    <a href="https://aepequity.com">Atomus Equity Partners</a> · Q3 2026. Representative scenarios and modeled durations —
-    not any single company's procedures.</div>
+    <a href="https://aepequity.com">Atomus Equity Partners</a> · Q3 2026. Equipment layout is a representative treated
+    well-water home; scenarios and durations are modeled field research, not any single company's procedures.</div>
 </footer>
 
 <script src="basement-scenarios.js"></script>
-<script src="basement.js"></script>
 <script>
-/* Academic layer — rendered from the same scenario data the simulator runs on */
 (() => {
-  if (typeof BASEMENT_SCENARIOS === "undefined") return;
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const deRyan = s => esc(s).replace(/Ryan arrives/g, "The technician arrives").replace(/Ryan('s)?/g, "the technician$1");
+
+  /* ---------------- component data (homeowner layer) ---------------- */
+  const COMPONENTS = {
+    entry:   { n: 1, name: "Well line & main shutoff", is: "The buried line from your wellhead, entering through the foundation, with the house's main shutoff valve.",
+      does: "Everything your home drinks arrives through this pipe, pushed by the submersible pump hanging 200–500 ft down the well outside.",
+      trouble: "Rarely fails itself — but every homeowner should know where this valve is. Closing it stops all water to the house in an emergency.",
+      service: "Inspected on any service call; the wellhead outside gets a cap, seal and grade check.", fee: "Included in diagnostics" },
+    pswitch: { n: 2, name: "Pressure switch & gauge", is: "The small gray box and dial where the well line meets the tank.",
+      does: "Turns the well pump on at ~40 psi and off at ~60 psi. The gauge shows system pressure at a glance.",
+      trouble: "Rapid clicking (short-cycling), burnt contacts, or a stuck switch — the most common cause of sudden “no water” after the pump itself.",
+      service: "Checked on every visit; replacement is a same-day fix.", fee: "$185–$325 diagnostic" },
+    tank:    { n: 3, name: "Pressure tank", is: "The tall blue tank — an air bladder over a water chamber (20–80 gallons).",
+      does: "Stores pressurized water so the pump doesn't start every time a faucet opens. Protects the pump from wearing out early.",
+      trouble: "A waterlogged bladder makes the pump short-cycle — you'll hear it clicking on and off constantly. Typical life 8–15 years.",
+      service: "Air pre-charge checked at maintenance visits; replacement takes one tech 2–3 hours.", fee: "$700–$1,600 replacement" },
+    sediment:{ n: 4, name: "Sediment filter", is: "The clear or blue cartridge housing first in the treatment line.",
+      does: "Catches sand, grit and rust flakes before they reach the finer equipment downstream.",
+      trouble: "A clogged cartridge shows up as falling water pressure through the whole house.",
+      service: "Cartridge swap every 3–6 months — the simplest recurring service in the book.", fee: "$65–$125 per swap" },
+    softener:{ n: 5, name: "Water softener", is: "The tall tank with the control valve on top.",
+      does: "Removes hardness (and low levels of iron) by ion exchange, then cleans itself overnight with brine from the salt tank. New England bedrock water commonly runs 10–15+ grains hard.",
+      trouble: "Salty or hard water returning, error codes on the valve, or a unit that runs but doesn't soften — pistons, boards and resin all age. Resin lasts roughly 5–10 years.",
+      service: "Annual service visit; repairs are bench work; a full replacement is a 3–4 hour, one-tech install.", fee: "$175–$275/yr service · $2,000–$3,200 new" },
+    brine:   { n: 6, name: "Brine (salt) tank", is: "The short square or round bin beside the softener.",
+      does: "Holds the salt that regenerates the softener's resin. The softener draws brine from it automatically.",
+      trouble: "Empty tank = hard water returns. A “salt bridge” (crusted dome over a void) quietly does the same thing while the tank looks full.",
+      service: "Keep it at least a third full; salt delivery is a routine route service.", fee: "$85–$220 per delivery" },
+    uv:      { n: 7, name: "UV sterilizer", is: "The horizontal steel tube on the wall with a lamp inside.",
+      does: "Kills bacteria and viruses with ultraviolet light — the last line of defense, mounted after all filtration because UV needs clear water to work.",
+      trouble: "The lamp dims below effectiveness at about 12 months even if it still glows. A failed coliform test often traces back to an overdue lamp.",
+      service: "Annual lamp swap and sleeve cleaning — 20 minutes.", fee: "$195–$325/yr" },
+    addon:   { n: 8, name: "Treatment bay (if your water needs it)", is: "Space on the line where problem-specific systems go, sized by your lab results.",
+      does: "Arsenic media vessels, PFAS carbon (GAC) tanks, radon aeration, or point-of-use reverse osmosis — each targets one contaminant your test found. Most treated homes run one or two; nobody needs all of them.",
+      trouble: "These exist because New England bedrock water does: ~1 in 5 NH wells exceeds the federal arsenic limit, and roughly half carry radon at levels of concern (USGS, NHDES).",
+      service: "Arsenic: $3,400–$6,800 · PFAS GAC: $3,200–$5,200 (NHDES rebates up to $5,000) · Radon aeration: ~$7,500 · Media replaced every 2–5 years on test results.", fee: "Sized by lab results" },
+    heater:  { n: 9, name: "Water heater", is: "The big tank at the end of the line — not water treatment, but its biggest beneficiary.",
+      does: "Heats house-ready water. It's last in line on purpose: everything upstream protects it.",
+      trouble: "Hard, untreated water scales the elements and can cut its life in half — the most expensive symptom of skipping a softener.",
+      service: "Served by plumbers; the water operator's job is to send it clean, soft water.", fee: "—" },
+    sink:    { n: 10, name: "Laundry sink", is: "The utility sink — the technician's workbench.",
+      does: "Where the in-home test panel runs (15 minutes: hardness, iron, pH, manganese, chlorine) and where softener and filter backwash lines discharge.",
+      trouble: "—", service: "Every service call starts or ends here.", fee: "Test: $0–$150" },
+    drain:   { n: 11, name: "Floor drain", is: "The low point of the basement floor.",
+      does: "Takes regeneration and backwash discharge from the treatment equipment, and any pressure-relief discharge.",
+      trouble: "Equipment placement is planned around it — treatment walls live near the drain.", service: "—", fee: "—" },
+  };
+
+  /* dot positions for numbering */
+  const DOTS = {
+    entry: [100, 380], pswitch: [244, 320], tank: [352, 226], sediment: [562, 320],
+    softener: [710, 202], brine: [845, 322], uv: [1040, 290], addon: [1097, 540],
+    heater: [1261, 212], sink: [1414, 308], drain: [625, 616],
+  };
+
+  const dots = $("#dots");
+  Object.entries(DOTS).forEach(([id, [x, y]]) => {
+    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    g.setAttribute("class", "dot");
+    g.setAttribute("data-c", id);
+    g.innerHTML = `<circle cx="${x}" cy="${y}" r="14"/><text x="${x}" y="${y + 4.5}">${COMPONENTS[id].n}</text>`;
+    dots.appendChild(g);
+  });
+
+  const hots = $$(".hot");
+  let mode = "parts";
+  let selected = "softener";
+
+  function highlight(id, dimOthers) {
+    hots.forEach(h => {
+      h.classList.toggle("sel", h.dataset.c === id);
+      h.classList.toggle("dimmed", !!dimOthers && id && h.dataset.c !== id);
+    });
+  }
+
+  function showComponent(id) {
+    selected = id;
+    const c = COMPONENTS[id];
+    highlight(id, false);
+    $("#panel").innerHTML = `
+      <span class="k">Part ${c.n} of ${Object.keys(COMPONENTS).length}</span>
+      <h4>${c.name}</h4>
+      <div class="row"><b>What it is</b><span>${c.is}</span></div>
+      <div class="row"><b>What it does</b><span>${c.does}</span></div>
+      ${c.trouble !== "—" ? `<div class="row"><b>What goes wrong</b><span>${c.trouble}</span></div>` : ""}
+      ${c.service !== "—" ? `<div class="row"><b>Service it needs</b><span>${c.service}</span></div>` : ""}
+      ${c.fee !== "—" ? `<div class="row"><b>Typical cost</b><span class="fee">${c.fee}</span></div>` : ""}`;
+  }
+
+  /* ---------------- walkthrough layer ---------------- */
+  const FOCUS_MAP = {
+    doorway: null, kitchen_faucet_offscene: "sink", sample_vials: "sink", laundry_sink: "sink",
+    pressure_tank: "tank", pump_control: "pswitch", wet_wall_pipes: "entry", tablet: null,
+    softener: "softener", softener_fail: "softener", control_valve: "softener", softener_brine: "softener",
+    brine_tank: "brine", uv: "uv", filter: "sediment", install_area: "addon", new_softener: "softener",
+    new_system: "addon", water_heater: "heater", floor_drain: "drain", yard: "entry",
+  };
   const mins = n => n >= 120 ? (n / 60).toFixed(1).replace(".0", "") + " hr" : n + " min";
-  const toolLabel = t => (typeof BASEMENT_TOOLS !== "undefined" && BASEMENT_TOOLS[t]) ? BASEMENT_TOOLS[t].label : null;
+  const toolLabel = t => (typeof BASEMENT_TOOLS !== "undefined" && BASEMENT_TOOLS[t] && BASEMENT_TOOLS[t].label) || null;
 
   const order = (typeof BASEMENT_ORDER !== "undefined") ? BASEMENT_ORDER : Object.keys(BASEMENT_SCENARIOS);
-  document.getElementById("scDocs").innerHTML = order.map((id, i) => {
+  let scId = order[0], idx = 0, playing = false, timer = null;
+
+  $("#walkChips").innerHTML = order.map(id => {
+    const sc = BASEMENT_SCENARIOS[id];
+    return `<button class="chip" data-sc="${id}">${sc.icon} ${esc(sc.short)}<span class="d">${mins(sc.duration)}</span></button>`;
+  }).join("");
+
+  function stopPlay() { playing = false; clearInterval(timer); const b = $("#wtPlay"); if (b) { b.classList.remove("on"); b.textContent = "▶ Auto-play"; } }
+
+  function showStep() {
+    const sc = BASEMENT_SCENARIOS[scId];
+    const st = sc.steps[idx];
+    const target = FOCUS_MAP[st.focus] !== undefined ? FOCUS_MAP[st.focus] : null;
+    highlight(target, true);
+    const elapsed = sc.steps.slice(0, idx + 1).reduce((a, s) => a + s.duration, 0);
+    const total = sc.steps.reduce((a, s) => a + s.duration, 0);
+    const tl = toolLabel(st.tool);
+    $("#panel").innerHTML = `
+      <span class="k">${sc.icon} ${esc(sc.label)}</span>
+      <div class="wt-meta" style="margin-top:8px">
+        <span><b>${mins(sc.duration)}</b> on site</span>
+        <span><b>${esc(sc.crew)}</b></span>
+        <span><b>${esc(sc.revenue)}</b></span>
+      </div>
+      <div class="step-head"><span class="n">STEP ${idx + 1} / ${sc.steps.length}</span><span class="t">${st.duration} min</span></div>
+      <p class="step-desc">${deRyan(st.description)}</p>
+      ${tl && !/hands free/i.test(tl) ? `<span class="tool-chip">🧰 ${esc(tl)}</span>` : ""}
+      <div class="wt-btns">
+        <button class="btn" id="wtPrev" ${idx === 0 ? "disabled" : ""}>◀ Back</button>
+        <button class="btn primary" id="wtNext" ${idx === sc.steps.length - 1 ? "disabled" : ""}>Next ▶</button>
+        <button class="btn" id="wtPlay">${playing ? "❚❚ Pause" : "▶ Auto-play"}</button>
+      </div>
+      <div class="mins-bar"><i style="width:${(elapsed / total) * 100}%"></i></div>
+      <p class="mins-lab">${elapsed} of ${total} minutes on site</p>`;
+    if (playing) $("#wtPlay").classList.add("on");
+    $("#wtPrev").onclick = () => { stopPlay(); idx = Math.max(0, idx - 1); showStep(); };
+    $("#wtNext").onclick = () => { stopPlay(); idx = Math.min(sc.steps.length - 1, idx + 1); showStep(); };
+    $("#wtPlay").onclick = () => {
+      if (playing) { stopPlay(); showStep(); return; }
+      playing = true;
+      timer = setInterval(() => {
+        if (idx >= BASEMENT_SCENARIOS[scId].steps.length - 1) { stopPlay(); showStep(); return; }
+        idx += 1; showStep();
+      }, 2400);
+      showStep();
+    };
+  }
+
+  function selectScenario(id) {
+    stopPlay(); scId = id; idx = 0;
+    $$("#walkChips .chip").forEach(c => c.classList.toggle("on", c.dataset.sc === id));
+    showStep();
+  }
+
+  /* ---------------- mode switching + events ---------------- */
+  function setMode(m) {
+    mode = m; stopPlay();
+    $("#tabParts").classList.toggle("on", m === "parts");
+    $("#tabWalk").classList.toggle("on", m === "walk");
+    $("#walkChips").style.display = m === "walk" ? "flex" : "none";
+    $("#stageCap").textContent = m === "walk"
+      ? "The highlighted part is where the technician is working at this step."
+      : "Flow order, left to right: well line → pressure control → filtration → softening → disinfection → optional treatment → hot water → fixtures.";
+    if (m === "parts") showComponent(selected);
+    else selectScenario(scId);
+  }
+  $("#tabParts").onclick = () => setMode("parts");
+  $("#tabWalk").onclick = () => setMode("walk");
+
+  $$(".hot, .dot").forEach(el => {
+    const go = () => { if (mode !== "parts") setMode("parts"); showComponent(el.dataset.c); };
+    el.addEventListener("click", go);
+    el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+  });
+  $("#walkChips").addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (b) selectScenario(b.dataset.sc);
+  });
+
+  showComponent("softener");
+
+  /* ---------------- written procedures ---------------- */
+  $("#scDocs").innerHTML = order.map((id, i) => {
     const sc = BASEMENT_SCENARIOS[id];
     if (!sc) return "";
     return `<details class="sc"${i === 0 ? " open" : ""}>
-      <summary><span class="ic">${sc.icon}</span> ${esc(sc.label)}
+      <summary>${sc.icon} ${esc(sc.label)}
         <span class="meta">${mins(sc.duration)} · ${esc(sc.crew)} · ${esc(sc.revenue)}</span></summary>
       <p class="blurb">${esc(sc.blurb)}</p>
       <ol>${sc.steps.map(st => {
         const tl = toolLabel(st.tool);
-        return `<li>${esc(st.description)}<span class="mins">${st.duration} min</span>
-          ${tl ? `<span class="tool">Tool: ${esc(tl)}</span>` : ""}</li>`;
+        return `<li>${deRyan(st.description)}<span class="mins">${st.duration} min</span>
+          ${tl && !/hands free/i.test(tl) ? `<span class="tool">Tool: ${esc(tl)}</span>` : ""}</li>`;
       }).join("")}</ol>
     </details>`;
   }).join("");
-
-  if (typeof BASEMENT_TOOLS !== "undefined") {
-    const names = Object.values(BASEMENT_TOOLS).map(t => t.label)
-      .filter(l => l && !/hands free/i.test(l));
-    document.getElementById("toolsNote").innerHTML =
-      "<strong>The van inventory referenced above:</strong> " + esc(names.join(" · ")) + ".";
-  }
 })();
 </script>
 </body>
