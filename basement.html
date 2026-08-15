@@ -150,6 +150,46 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
   </div>
 </header>
 
+<!-- ============ WHICH SYSTEM ============ -->
+<section id="which">
+  <div class="wrap">
+    <p class="sec-n">00 — Start Here</p>
+    <h2>Which system does your home have?</h2>
+    <p class="sec-sub">Walk to where the water pipe enters your basement. What you see next to it answers the question
+      in ten seconds.</p>
+    <div class="lab" style="grid-template-columns:1fr 1fr;align-items:stretch">
+      <div class="panel" style="min-height:0;border-top:4px solid var(--blue)">
+        <span class="k">You're on a private well if you see…</span>
+        <div class="row" style="margin-top:10px"><span>
+          ✔ &nbsp;A <strong>pressure tank</strong> — a waist-height or taller steel tank, usually navy blue or gray,
+          with a small gray switch box and a pressure gauge at its base. <strong>This is the single fastest tell: if you
+          have a pressure tank, you have a well.</strong><br><br>
+          ✔ &nbsp;<strong>No water meter</strong> and no water bill.<br><br>
+          ✔ &nbsp;A <strong>well cap</strong> in the yard — a metal disc about 6" across, sticking a foot out of the
+          ground.<br><br>
+          ✔ &nbsp;A circuit breaker labeled <strong>"well pump."</strong></span></div>
+        <div class="row"><b>What it means</b><span>Your home is its own water utility. Nobody tests or treats this water
+          unless you arrange it — everything on this page is your infrastructure.</span></div>
+      </div>
+      <div class="panel" style="min-height:0;border-top:4px solid var(--teal)">
+        <span class="k">You're on public water if you see…</span>
+        <div class="row" style="margin-top:10px"><span>
+          ✔ &nbsp;A <strong>water meter</strong> where the pipe enters — a round brass body with a dial or digital
+          register, sometimes with a wired remote reader.<br><br>
+          ✔ &nbsp;A <strong>water bill</strong> from a town or utility.<br><br>
+          ✔ &nbsp;A <strong>curb-stop cover</strong> — a small metal lid in the lawn or street edge.<br><br>
+          ✔ &nbsp;<strong>No pressure tank</strong> — street pressure does that job.</span></div>
+        <div class="row"><b>What it means</b><span>Your utility handles testing and federal compliance to the tap.
+          Hardness, taste, and anything your home's own plumbing adds are still yours — which is why softeners and
+          filters appear in public-water basements too.</span></div>
+      </div>
+    </div>
+    <p class="src">~46% of NH homes and ~50% of ME homes are on private wells (NHDES · Maine CDC). Some homes also have a
+      dug or shallow well feeding outdoor spigots alongside town water — if you have both a meter and a pressure tank,
+      you may have both systems.</p>
+  </div>
+</section>
+
 <!-- ============ THE DIAGRAM ============ -->
 <section id="diagram">
   <div class="wrap">
@@ -394,46 +434,46 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
 
   /* ---------------- component data (homeowner layer) ---------------- */
   const COMPONENTS = {
-    entry:   { n: 1, name: "Well line & main shutoff", is: "The buried line from your wellhead, entering through the foundation, with the house's main shutoff valve.",
+    entry:   { n: 1, name: "Well line & main shutoff", spot: "A single pipe coming through the foundation wall down low, with a brass or lever valve on it. On public water, a meter sits here instead.", is: "The buried line from your wellhead, entering through the foundation, with the house's main shutoff valve.",
       does: "Everything your home drinks arrives through this pipe, pushed by the submersible pump hanging 200–500 ft down the well outside.",
       trouble: "Rarely fails itself — but every homeowner should know where this valve is. Closing it stops all water to the house in an emergency.",
       service: "Inspected on any service call; the wellhead outside gets a cap, seal and grade check.", fee: "Included in diagnostics" },
-    pswitch: { n: 2, name: "Pressure switch & gauge", is: "The small gray box and dial where the well line meets the tank.",
+    pswitch: { n: 2, name: "Pressure switch & gauge", spot: "A gray box the size of a deck of cards with a thin-needled dial gauge beside it, at the base of the blue tank.", is: "The small gray box and dial where the well line meets the tank.",
       does: "Turns the well pump on at ~40 psi and off at ~60 psi. The gauge shows system pressure at a glance.",
       trouble: "Rapid clicking (short-cycling), burnt contacts, or a stuck switch — the most common cause of sudden “no water” after the pump itself.",
       service: "Checked on every visit; replacement is a same-day fix.", fee: "$185–$325 diagnostic" },
-    tank:    { n: 3, name: "Pressure tank", is: "The tall blue tank — an air bladder over a water chamber (20–80 gallons).",
+    tank:    { n: 3, name: "Pressure tank", spot: "Waist-height or taller steel tank, usually navy blue (Amtrol Well-X-Trol) or gray, with a tire-stem air valve on top.", is: "The tall blue tank — an air bladder over a water chamber (20–80 gallons).",
       does: "Stores pressurized water so the pump doesn't start every time a faucet opens. Protects the pump from wearing out early.",
       trouble: "A waterlogged bladder makes the pump short-cycle — you'll hear it clicking on and off constantly. Typical life 8–15 years.",
       service: "Air pre-charge checked at maintenance visits; replacement takes one tech 2–3 hours.", fee: "$700–$1,600 replacement" },
-    sediment:{ n: 4, name: "Sediment filter", is: "The clear or blue cartridge housing first in the treatment line.",
+    sediment:{ n: 4, name: "Sediment filter", spot: "A clear or blue canister the size of a large coffee can, usually first in line; spare cartridges often sit on a shelf nearby.", is: "The clear or blue cartridge housing first in the treatment line.",
       does: "Catches sand, grit and rust flakes before they reach the finer equipment downstream.",
       trouble: "A clogged cartridge shows up as falling water pressure through the whole house.",
       service: "Cartridge swap every 3–6 months — the simplest recurring service in the book.", fee: "$65–$125 per swap" },
-    softener:{ n: 5, name: "Water softener", is: "The tall tank with the control valve on top.",
+    softener:{ n: 5, name: "Water softener", spot: "Tall, narrow tank — beige, black or gray — with an electronic control head and small display on top.", is: "The tall tank with the control valve on top.",
       does: "Removes hardness (and low levels of iron) by ion exchange, then cleans itself overnight with brine from the salt tank. New England bedrock water commonly runs 10–15+ grains hard.",
       trouble: "Salty or hard water returning, error codes on the valve, or a unit that runs but doesn't soften — pistons, boards and resin all age. Resin lasts roughly 5–10 years.",
       service: "Annual service visit; repairs are bench work; a full replacement is a 3–4 hour, one-tech install.", fee: "$175–$275/yr service · $2,000–$3,200 new" },
-    brine:   { n: 6, name: "Brine (salt) tank", is: "The short square or round bin beside the softener.",
+    brine:   { n: 6, name: "Brine (salt) tank", spot: "A square or round plastic bin with a loose lid, part-full of white salt pellets, standing beside the softener.", is: "The short square or round bin beside the softener.",
       does: "Holds the salt that regenerates the softener's resin. The softener draws brine from it automatically.",
       trouble: "Empty tank = hard water returns. A “salt bridge” (crusted dome over a void) quietly does the same thing while the tank looks full.",
       service: "Keep it at least a third full; salt delivery is a routine route service.", fee: "$85–$220 per delivery" },
-    uv:      { n: 7, name: "UV sterilizer", is: "The horizontal steel tube on the wall with a lamp inside.",
+    uv:      { n: 7, name: "UV sterilizer", spot: "A polished steel tube about two feet long mounted horizontally on the wall, with a power cord and often a glowing indicator light.", is: "The horizontal steel tube on the wall with a lamp inside.",
       does: "Kills bacteria and viruses with ultraviolet light — the last line of defense, mounted after all filtration because UV needs clear water to work.",
       trouble: "The lamp dims below effectiveness at about 12 months even if it still glows. A failed coliform test often traces back to an overdue lamp.",
       service: "Annual lamp swap and sleeve cleaning — 20 minutes.", fee: "$195–$325/yr" },
-    addon:   { n: 8, name: "Treatment bay (if your water needs it)", is: "Space on the line where problem-specific systems go, sized by your lab results.",
+    addon:   { n: 8, name: "Treatment bay (if your water needs it)", spot: "Extra tall tanks beyond the softener. Twin tanks plumbed in series usually mean arsenic or carbon (PFAS) treatment; a unit with a vent pipe running outside is radon aeration.", is: "Space on the line where problem-specific systems go, sized by your lab results.",
       does: "Arsenic media vessels, PFAS carbon (GAC) tanks, radon aeration, or point-of-use reverse osmosis — each targets one contaminant your test found. Most treated homes run one or two; nobody needs all of them.",
       trouble: "These exist because New England bedrock water does: ~1 in 5 NH wells exceeds the federal arsenic limit, and roughly half carry radon at levels of concern (USGS, NHDES).",
       service: "Arsenic: $3,400–$6,800 · PFAS GAC: $3,200–$5,200 (NHDES rebates up to $5,000) · Radon aeration: ~$7,500 · Media replaced every 2–5 years on test results.", fee: "Sized by lab results" },
-    heater:  { n: 9, name: "Water heater", is: "The big tank at the end of the line — not water treatment, but its biggest beneficiary.",
+    heater:  { n: 9, name: "Water heater", spot: "The familiar big cylinder. A flue pipe on top means gas; side access panels mean electric.", is: "The big tank at the end of the line — not water treatment, but its biggest beneficiary.",
       does: "Heats house-ready water. It's last in line on purpose: everything upstream protects it.",
       trouble: "Hard, untreated water scales the elements and can cut its life in half — the most expensive symptom of skipping a softener.",
       service: "Served by plumbers; the water operator's job is to send it clean, soft water.", fee: "—" },
-    sink:    { n: 10, name: "Laundry sink", is: "The utility sink — the technician's workbench.",
+    sink:    { n: 10, name: "Laundry sink", spot: "The plastic or concrete utility sink — treatment drain hoses usually loop into it.", is: "The utility sink — the technician's workbench.",
       does: "Where the in-home test panel runs (15 minutes: hardness, iron, pH, manganese, chlorine) and where softener and filter backwash lines discharge.",
       trouble: "—", service: "Every service call starts or ends here.", fee: "Test: $0–$150" },
-    drain:   { n: 11, name: "Floor drain", is: "The low point of the basement floor.",
+    drain:   { n: 11, name: "Floor drain", spot: "A round metal grate at the lowest point of the floor.", is: "The low point of the basement floor.",
       does: "Takes regeneration and backwash discharge from the treatment equipment, and any pressure-relief discharge.",
       trouble: "Equipment placement is planned around it — treatment walls live near the drain.", service: "—", fee: "—" },
   };
@@ -472,6 +512,7 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
     $("#panel").innerHTML = `
       <span class="k">Part ${c.n} of ${Object.keys(COMPONENTS).length}</span>
       <h4>${c.name}</h4>
+      ${c.spot ? `<div class="row"><b>How to spot it</b><span>${c.spot}</span></div>` : ""}
       <div class="row"><b>What it is</b><span>${c.is}</span></div>
       <div class="row"><b>What it does</b><span>${c.does}</span></div>
       ${c.trouble !== "—" ? `<div class="row"><b>What goes wrong</b><span>${c.trouble}</span></div>` : ""}
