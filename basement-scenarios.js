@@ -1,10 +1,10 @@
 /* ============================================================
-   ACT III · CHAPTER 8 — "IN THE BASEMENT"
-   Seven service scenarios, first-person, step by step.
-   Step sequences reconstructed from a representative operator service catalog,
-   the 18-step service call (story-data.js SERVICE_CALL) and
-   the field-test panel (FIELD_TESTS). Durations are the
-   modeled on-site minutes for each task.
+   BASEMENT — SERVICE SCENARIOS
+   Seven residential service calls, step by step.
+   Step sequences are a representative composite, reconstructed from operator
+   service catalogs, the 18-step service call in §07 of the thesis, and the
+   field-test panel. Durations are modeled on-site minutes per task.
+   No single company's SOP.
    ============================================================ */
 
 const BASEMENT_SCENARIOS = {
@@ -16,9 +16,9 @@ const BASEMENT_SCENARIOS = {
     duration: 30,
     crew: "1 tech",
     revenue: "$0 \u00b7 lead qualifier",
-    blurb: "No charge, no invoice. The thirty minutes that decide whether this house becomes a $2,000 job or a $7,500 one.",
+    blurb: "Thirty unbilled minutes on site. The panel run here identifies which contaminants are present and sizes the quote that follows.",
     steps: [
-      { pose: "at_doorway", focus: "doorway", tool: "clipboard", duration: 2, description: "Ryan arrives and greets the homeowner at the basement door." },
+      { pose: "at_doorway", focus: "doorway", tool: "clipboard", duration: 2, description: "The technician arrives and greets the homeowner at the basement door." },
       { pose: "at_sink", focus: "kitchen_faucet_offscene", tool: "none", duration: 1, description: "Purges the cold line for sixty seconds at the kitchen faucet." },
       { pose: "at_sink", focus: "sample_vials", tool: "test_kit", duration: 2, description: "Fills the sample bottles straight from the running cold tap." },
       { pose: "at_pressure_tank", focus: "pressure_tank", tool: "gauge", duration: 2, description: "Back in the basement, he reads the pressure-tank gauge through a full cycle." },
@@ -37,7 +37,7 @@ const BASEMENT_SCENARIOS = {
     duration: 60,
     crew: "1 tech",
     revenue: "~$450 \u00b7 same-day service call",
-    blurb: "\u201cThe water tastes salty.\u201d \u201cWe have no soft water.\u201d Four failure modes, one hour to tell them apart.",
+    blurb: "Salty water, or no soft water at all. Four distinct failure modes present the same way; about an hour of diagnosis separates them.",
     steps: [
       { pose: "at_softener", focus: "softener", tool: "none", duration: 2, description: "Homeowner walks him to the softener and describes the salty taste." },
       { pose: "at_softener", focus: "control_valve", tool: "multimeter", duration: 5, description: "Reads the control-valve display for error codes and checks the board for voltage." },
@@ -59,7 +59,7 @@ const BASEMENT_SCENARIOS = {
     duration: 90,
     crew: "1 tech",
     revenue: "$3.5K\u2013$8K quote \u00b7 $5K NHDES rebate",
-    blurb: "A letter from the state arrived. Ninety minutes later there is a two-tank lead-lag design and rebate paperwork in motion.",
+    blurb: "Triggered by a state notification or a positive lab result. About ninety minutes to design a two-tank lead-lag GAC system and open the NHDES rebate paperwork.",
     steps: [
       { pose: "at_doorway", focus: "doorway", tool: "clipboard", duration: 2, description: "Homeowner meets him at the door holding a PFAS result letter." },
       { pose: "writing_on_tablet", focus: "tablet", tool: "tablet", duration: 5, description: "Reads the report aloud and explains the NHDES rebate of up to $5,000 for private-well treatment." },
@@ -69,7 +69,7 @@ const BASEMENT_SCENARIOS = {
       { pose: "at_sink", focus: "sample_vials", tool: "bottles", duration: 5, description: "Draws a confirmation sample into certified bottles with chain-of-custody labels." },
       { pose: "at_sink", focus: "laundry_sink", tool: "test_kit", duration: 15, description: "Runs the field panel alongside it \u2014 chlorine, hardness, iron, TDS \u2014 because they size the pretreatment." },
       { pose: "at_filter", focus: "new_system", tool: "tape", duration: 5, description: "Sizes the recommendation: two-tank lead-lag GAC, sixty thousand gallons between changeouts." },
-      { pose: "writing_on_tablet", focus: "tablet", tool: "tablet", duration: 5, description: "Explains that Ryan files the rebate paperwork himself \u2014 the homeowner signs one page." },
+      { pose: "writing_on_tablet", focus: "tablet", tool: "tablet", duration: 5, description: "Explains that the shop files the NHDES rebate paperwork \u2014 the homeowner signs one page." },
       { pose: "at_doorway", focus: "doorway", tool: "clipboard", duration: 3, description: "Books the install for the following week and leaves a written quote behind." },
     ],
   },
@@ -82,7 +82,7 @@ const BASEMENT_SCENARIOS = {
     duration: 168,
     crew: "1 tech",
     revenue: "~$3,500 install",
-    blurb: "Four to six hours of plumbing on a concrete floor. The step that pays for the next three years is the last one.",
+    blurb: "Four to six hours of plumbing. The final step — setting the salt and service cadence — is what makes the install recurring rather than one-time.",
     steps: [
       { pose: "at_softener", focus: "install_area", tool: "none", duration: 5, description: "Confirms the location with the homeowner and lays a drop cloth over the slab." },
       { pose: "at_pressure_tank", focus: "pressure_tank", tool: "wrench", duration: 3, description: "Shuts the main off at the pressure-tank ball valve." },
@@ -107,7 +107,7 @@ const BASEMENT_SCENARIOS = {
     duration: 120,
     crew: "1 tech",
     revenue: "$600\u2013$3,500 \u00b7 non-deferrable",
-    blurb: "No water in the house. This is the call that cannot wait until Monday, and the one that separates a tank problem from a four-hundred-foot problem.",
+    blurb: "No water in the house — a same-day emergency call. The diagnosis separates a pressure-tank or switch fault from pulling a pump at 400 feet.",
     steps: [
       { pose: "at_pressure_tank", focus: "pressure_tank", tool: "gauge", duration: 2, description: "The tank gauge reads zero \u2014 no pressure anywhere in the house." },
       { pose: "at_pump_control", focus: "pump_control", tool: "multimeter", duration: 8, description: "Opens the pump control box looking for a tripped breaker or a failed capacitor." },
@@ -132,7 +132,7 @@ const BASEMENT_SCENARIOS = {
     duration: 60,
     crew: "1 tech",
     revenue: "Included in $400/yr membership",
-    blurb: "The visit that does not exist yet at scale. One hour, every year, every house \u2014 the cleanest recurring-revenue lever on the page.",
+    blurb: "One hour, once a year, per installed system. The highest-margin visit in the catalog, and the one least often sold under contract today.",
     steps: [
       { pose: "at_doorway", focus: "doorway", tool: "clipboard", duration: 2, description: "Arrives on a scheduled window, no emergency, no diagnosis pressure." },
       { pose: "at_brine_tank", focus: "softener_brine", tool: "strips", duration: 10, description: "Softener service: salt level, venturi cleaned, hardness verified at the tap." },
@@ -153,7 +153,7 @@ const BASEMENT_SCENARIOS = {
     duration: 90,
     crew: "1 tech",
     revenue: "$350 test \u00b7 $5K\u2013$40K remediation",
-    blurb: "There is a closing in eleven days. The report Ryan writes tonight is the one the lawyers read.",
+    blurb: "Driven by a real-estate closing inside the contingency window. The written report goes to the lender and the closing attorneys, so the lab chain and chain-of-custody have to hold.",
     steps: [
       { pose: "at_doorway", focus: "doorway", tool: "clipboard", duration: 3, description: "Meets the buyer's agent in the driveway with a closing date already on the calendar." },
       { pose: "outside_at_well", focus: "yard", tool: "tape", duration: 8, description: "Locates the well, checks the cap seal and casing height above finished grade." },
@@ -170,7 +170,7 @@ const BASEMENT_SCENARIOS = {
 
 const BASEMENT_ORDER = ["free_test", "softener_fail", "pfas", "new_softener", "pump_down", "msa", "re_test"];
 
-/* Tool tray — what is physically in Ryan's hand, and the shape drawn into it */
+/* Tool tray — what is physically in the technician's hand, and the shape drawn into it */
 const BASEMENT_TOOLS = {
   none: { label: "Hands free", note: "Nothing in hand \u2014 buttons, valves and eyes only" },
   clipboard: { label: "Clipboard + work order", note: "Paper still beats a tablet at a front door" },

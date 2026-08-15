@@ -49,9 +49,6 @@ ul.flat{max-width:72ch;margin:0 0 14px 18px}
 ul.flat li{margin-bottom:7px}
 strong{font-weight:600}
 .note{font-size:13px;color:var(--sub);max-width:72ch}
-.badge{display:inline-block;font:600 10px/1 var(--mono);padding:3px 6px;border-radius:3px;vertical-align:1px}
-.b-v{background:#DBEEE9;color:#0B6E5F}
-.b-m{background:#F0E5D3;color:#8A5A22}
 .src{display:block;font:400 11px/1.6 var(--mono);color:#8B8474;margin:8px 0 0}
 .src a{color:#8B8474;text-decoration:underline}
 .src-i{font:400 10.5px/1.5 var(--mono);color:#8B8474;font-style:normal}
@@ -216,25 +213,27 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
       <div class="stat"><b>~1.2M</b><span>Private-well households across the region (~3M residents)<em class="src-i">NHDES · Maine CDC · CT DPH · VT DOH · USGS</em></span></div>
       <div class="stat"><b>~500–575K</b><span>Of them in NH + ME — the two highest private-well-reliance states in the nation<em class="src-i">USGS · NHDES · Census household counts</em></span></div>
       <div class="stat"><b>0</b><span>Federal rules protecting private-well water — the Safe Drinking Water Act covers public systems only<em class="src-i">EPA, SDWA scope</em></span></div>
-      <div class="stat"><b>1.45M+</b><span>Private septic households across the region — the same rural customer, an adjacent trade<em class="src-i">1990 Census (last national count) · MassDEP Title 5</em></span></div>
+      <div class="stat"><b>~1.4M+</b><span>Private septic households across the region — the same rural customer, an adjacent trade<em class="src-i">Sum of state estimates (MassDEP Title 5: ~650K in MA alone) — AEP analysis (modeled); no current national septic census exists</em></span></div>
     </div>
 
     <h3>State by state</h3>
     <div class="tbl-scroll">
       <table>
-        <thead><tr><th>State</th><th class="num">Homes on private wells</th><th>What defines it</th></tr></thead>
+        <thead><tr><th>State</th><th class="num">Residents on private wells</th><th>What defines it</th></tr></thead>
         <tbody>
           <tr><td><b>Maine</b></td><td class="num">~50%</td><td>Highest well share in the region; long rural routes; licensed pump-installer regime under Title 32</td></tr>
           <tr><td><b>New Hampshire</b></td><td class="num">~46%</td><td>First state to set enforceable PFAS limits (2020); arsenic MCL twice as strict as federal; state rebate program pays homeowners to treat</td></tr>
-          <tr><td><b>Vermont</b></td><td class="num">~40%</td><td>~135–150K well households; highest private-septic share in the nation (~55%, 1990 Census — the last national count) — dense but small in absolute terms</td></tr>
+          <tr><td><b>Vermont</b></td><td class="num">~40%</td><td>~40% of residents on private wells or springs per VT DOH — roughly 110K year-round households, more counting seasonal units; highest private-septic share in the nation (~55%, 1990 Census — the last national count)</td></tr>
           <tr><td><b>Rhode Island</b></td><td class="num">~11%</td><td>Smaller pool; Amtrol (the region's default pressure-tank maker) is headquartered here</td></tr>
           <tr><td><b>Connecticut</b></td><td class="num">~23%</td><td>~23% of residents (~840K people) on private wells per CT DPH</td></tr>
-          <tr><td><b>Massachusetts</b></td><td class="num">~8%</td><td>Lowest well share but 650K+ septic systems and the region's biggest housing stock; H2O Care's home base</td></tr>
+          <tr><td><b>Massachusetts</b></td><td class="num">~8%</td><td>Lowest well share but ~650K septic systems under Title 5 (about a third of MA homes) and the region's biggest housing stock; H2O Care's home base</td></tr>
         </tbody>
       </table>
     </div>
     <p class="src">Sources: NHDES private-well statistics (DWGB-21-9) · Maine Tracking Network / Maine CDC · VT DOH ·
-      CT DPH · USGS domestic well use (SIR 2024-5109) · MassDEP Title 5. Shares are of residents served.</p>
+      CT DPH · USGS domestic well use (SIR 2024-5109) · MassDEP Title 5. Percentages are shares of residents served, as
+      published by each state. Household counts are derived from those shares at state average household size — AEP
+      analysis (modeled), not a published household census.</p>
 
     <h3>Contaminant load</h3>
     <p>New England sits on fractured granite bedrock. Groundwater moving through it carries:</p>
@@ -272,7 +271,7 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
       <div class="tl-item done"><b>2020</b><span>New Hampshire enacts enforceable PFAS drinking-water limits under RSA 485 — four years before any federal standard existed. NHDES has since sampled ~190 waste sites for PFAS; ~140 exceed groundwater standards. <em class="src-i">NHDES occurrence report, Dec 2024</em></span></div>
       <div class="tl-item done"><b>Apr 10, 2024</b><span>EPA signs the first-ever national PFAS drinking-water rule; effective June 25, 2024. <em class="src-i">Federal Register 2024-07773</em></span></div>
       <div class="tl-item"><b>Apr 26, 2027</b><span>Initial monitoring deadline for all community public water systems — eight months from this writing. Results are public and reported in consumer confidence reports.</span></div>
-      <div class="tl-item"><b>Apr 26, 2029</b><span>Full MCL compliance for public systems as enacted; violations trigger public notification within 30 days. EPA estimates 6–10% of ~66,000 US public systems will need treatment. Pending: EPA's May 2026 proposals would move the PFOA/PFOS deadline to April 2031 and rescind the PFHxS/PFNA/GenX limits and Hazard Index — final rules not yet issued. NH's state MCLs are unaffected either way. <em class="src-i">EPA proposed rules, May 2026 · Docket EPA-HQ-OW-2025-1742</em></span></div>
+      <div class="tl-item"><b>Apr 26, 2029</b><span>Full MCL compliance for public systems as enacted; violations trigger public notification within 30 days. EPA estimates 6–10% of ~66,000 US public systems will need treatment. Pending: EPA's May 18, 2026 proposals would let systems apply to move the PFOA/PFOS deadline to April 2031 and would rescind the PFHxS/PFNA/GenX limits and the Hazard Index. Comment closed July 20, 2026; EPA has said it intends to take final action in 2026. Neither is final, and NH's state MCLs are unaffected either way. <em class="src-i">EPA proposed rules, May 2026 · Dockets EPA-HQ-OW-2025-1742 (extension) and EPA-HQ-OW-2025-0654 (rescission)</em></span></div>
     </div>
 
     <div class="tbl-scroll">
@@ -298,9 +297,13 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
       <p><strong>NHDES rebate program.</strong> Private wells are not covered by the federal rule; residential PFAS
         treatment is voluntary. NHDES's PFAS Removal Rebate Program pays homeowners <strong>up to $5,000 toward qualifying private-well
         treatment</strong> or $10,000 toward a public-water connection; it is funding-dependent (suspended June 2024,
-        re-funded that September). A whole-house GAC install runs ~$5,200 — the rebate covers ~96% of it.
+        re-funded that September under HB 1649, with homeowners now applying directly to NHDES rather than through a
+        contractor). A whole-house GAC install runs ~$5,200 — the rebate covers ~96% of it.
+        Eligibility is gated on a test result: the well must exceed one of NHDES's four PFAS ambient groundwater quality
+        standards, and the owner must not already have been offered bottled water, treatment or a service connection by a
+        third party. That makes the certified lab test the entry condition for the rebate, not an optional first step.
         The channel today is held by two sub-$3M marketers (NH Tap, Mainline Plumbing); the larger licensed incumbents do
-        not market it. <em class="src-i">NHDES PFAS Removal Rebate Program · nhtap.com · callmainline.com</em></p>
+        not market it. <em class="src-i">NHDES PFAS Removal Rebate Program · NH HB 1649 · nhtap.com · callmainline.com</em></p>
     </div>
 
     <h3>Residential PFAS sale triggers</h3>
@@ -330,9 +333,10 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
       with Inframark into a $5.5B-value platform. Every active platform is HVAC-led, commercial-led or
       municipal-led. Detail in §04. <em class="src-i">McLean Group 2025 · BusinessWire Apr 2026</em></p>
     <h3>4 · Input costs</h3>
-    <p class="tight">Water-supply construction spending is up ~60% since January 2023 (Census C30). Producer prices for
+    <p class="tight">Water-supply construction spending is up ~56% since January 2023 — $22.9B to $35.7B at a seasonally
+      adjusted annual rate (Census C30, June 2026 release). Producer prices for
       water-treating chemicals are up ~12–17% (BLS PPI); construction materials ~6–14%. Operators without indexed
-      contract pricing absorb the difference. <em class="src-i">Census C30 · BLS PPI series WPU06790961</em></p>
+      contract pricing absorb the difference. <em class="src-i">Census C30, Jan 2023 and Jun 2026 releases · BLS PPI series WPU06790961</em></p>
   </div>
 </section>
 
@@ -376,8 +380,11 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
     <p class="src">Company facts from company websites and press releases (linked in Sources). Revenue figures are AEP
       estimates from headcount, fleet and footprint — private companies do not publish revenue.</p>
     <div class="callout">
-      <p><strong>Positioning.</strong> None of the tier-2 licensed independents publishes a PFAS marketing program or a
-        recurring service plan. Every tier-1 and tier-3 company does at least one of the two.</p>
+      <p><strong>Positioning.</strong> Across this set, the published PFAS programs and recurring service plans sit in
+        tiers 1 and 3 — Secondwind and Culligan of NH on the service-plan side; NH Tap, Mainline, Fontus and Pure Experts
+        on the PFAS or membership side. The tier-2 well-and-treatment independents — the operators holding the pump
+        licenses and the largest installed bases — publish neither on their own sites, except where a Culligan or
+        Kinetico territory inherits a corporate program. <em class="src-i">Observed from company websites, August 2026</em></p>
       <p><strong>Consolidator activity.</strong> H2O Care Partners (formed June 2022 by Shore Capital, ~$3B of
         cumulative commitments at formation) operates 29 partner brands across 16 states, including New Hampshire
         WaterCare; it acquired SafeWell and Aquatek in 2025 for well-pump capability and was recapitalized by Shore in
@@ -437,7 +444,7 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
   <div class="wrap">
     <p class="sec-n">05 — What Goes Wrong in Homes</p>
     <h2>Demand triggers</h2>
-    <p class="sec-sub">Ten events account for essentially all inbound residential demand. Ticket ranges are
+    <p class="sec-sub">The ten events below are the recurring entry points into a residential job. Ticket ranges are
       Seacoast-market benchmarks.</p>
 
     <div class="tbl-scroll">
@@ -459,9 +466,9 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
     </div>
     <p class="src">Trigger set and urgency: AEP analysis across the §04 operator set (modeled). Ticket ranges:
       benchmarked to HomeGuide / Forbes Home / Angi cost guides + AEP analysis (modeled).</p>
-    <p>Operator selection is referral-driven. Established shops hold 4.7–5.0★ review profiles at near-zero advertising
-      spend. <em class="src-i">Observed Google/BBB profiles of the
-      §04 operator set, e.g. Mainline 5.0★ / ~300 reviews</em></p>
+    <p>Established shops in the §04 set hold 4.7–5.0★ review profiles built over decades, and most run no visible paid
+      search or display advertising against their own category terms. <em class="src-i">Observed Google/BBB profiles of the
+      §04 operator set, August 2026, e.g. Mainline 5.0★ / ~300 reviews</em></p>
   </div>
 </section>
 
@@ -821,7 +828,7 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
           <tr><td><b>Pump Installer — journeyman/master (ME)</b></td><td>Maine Water Well Commission (Title 32, Ch. 69-C)</td><td>Journeyman: 1 yr / 350+ hrs as apprentice + exam; master tier above</td><td>The same gate in Maine; companies need a licensed master on staff</td></tr>
           <tr><td><b>WQA CI / CWS certifications</b></td><td>Water Quality Association</td><td>Coursework + proctored exams (up to 3 hrs) + experience tiers</td><td>Treatment credibility; required by many OEM dealer programs</td></tr>
           <tr><td><b>Plumbing license (NH / ME)</b></td><td>State plumbing boards</td><td>Apprenticeship + exam</td><td>Potable-water connections — treatment installs tie into plumbing licensure, esp. in Maine</td></tr>
-          <tr><td><b>Class B CDL + DOT card</b></td><td>State DMV / FMCSA</td><td>Testing + medical card</td><td>Pump-hoist trucks over 26,001 lbs GVWR (lighter hoists need no CDL)</td></tr>
+          <tr><td><b>Class B CDL + DOT card</b></td><td>State DMV / FMCSA</td><td>Testing + medical card</td><td>Pump-hoist trucks rated 26,001 lbs GVWR or more (lighter hoists need no CDL)</td></tr>
         </tbody>
       </table>
     </div>
