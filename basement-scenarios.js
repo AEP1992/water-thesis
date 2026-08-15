@@ -10,6 +10,7 @@
 const BASEMENT_SCENARIOS = {
   free_test: {
     id: "free_test",
+    sys: "both",
     label: "Free water test",
     short: "Free test",
     icon: "\u{1F4A7}",
@@ -21,16 +22,17 @@ const BASEMENT_SCENARIOS = {
       { pose: "at_doorway", focus: "doorway", tool: "clipboard", duration: 2, description: "The technician arrives and greets the homeowner at the basement door." },
       { pose: "at_sink", focus: "kitchen_faucet_offscene", tool: "none", duration: 1, description: "Purges the cold line for sixty seconds at the kitchen faucet." },
       { pose: "at_sink", focus: "sample_vials", tool: "test_kit", duration: 2, description: "Fills the sample bottles straight from the running cold tap." },
-      { pose: "at_pressure_tank", focus: "pressure_tank", tool: "gauge", duration: 2, description: "Back in the basement, he reads the pressure-tank gauge through a full cycle." },
+      { pose: "at_pressure_tank", focus: "pressure_tank", tool: "gauge", duration: 2, only: "well", description: "Back in the basement, reads the pressure-tank gauge through a full cycle." },
       { pose: "at_sink", focus: "laundry_sink", tool: "strips", duration: 15, description: "Runs the Spectrum strip panel on the laundry sink \u2014 iron, hardness, pH, manganese, chlorine." },
       { pose: "writing_on_tablet", focus: "tablet", tool: "tablet", duration: 5, description: "Records every reading on the tablet and walks the homeowner through what each number means." },
       { pose: "at_softener", focus: "softener_fail", tool: "flashlight", duration: 3, description: "Points at the forty-year-old softener: bypassed, resin exhausted, recommends replacement." },
-      { pose: "at_doorway", focus: "doorway", tool: "clipboard", duration: 2, description: "Books the next appointment before he leaves the driveway." },
+      { pose: "at_doorway", focus: "doorway", tool: "clipboard", duration: 2, description: "Books the next appointment before leaving the driveway." },
     ],
   },
 
   softener_fail: {
     id: "softener_fail",
+    sys: "both",
     label: "Softener not working",
     short: "Softener issue",
     icon: "\u{1F527}",
@@ -39,7 +41,7 @@ const BASEMENT_SCENARIOS = {
     revenue: "~$450 \u00b7 same-day service call",
     blurb: "Salty water, or no soft water at all. Four distinct failure modes present the same way; about an hour of diagnosis separates them.",
     steps: [
-      { pose: "at_softener", focus: "softener", tool: "none", duration: 2, description: "Homeowner walks him to the softener and describes the salty taste." },
+      { pose: "at_softener", focus: "softener", tool: "none", duration: 2, description: "The homeowner leads the way to the softener and describes the salty taste." },
       { pose: "at_softener", focus: "control_valve", tool: "multimeter", duration: 5, description: "Reads the control-valve display for error codes and checks the board for voltage." },
       { pose: "at_brine_tank", focus: "brine_tank", tool: "flashlight", duration: 5, description: "Opens the brine tank: salt level, salt bridge, resin dust in the bottom." },
       { pose: "at_softener", focus: "control_valve", tool: "none", duration: 8, description: "Triggers a manual regeneration cycle and listens to each position of the valve." },
@@ -47,12 +49,13 @@ const BASEMENT_SCENARIOS = {
       { pose: "at_softener", focus: "control_valve", tool: "screwdriver", duration: 10, description: "Opens the valve body: broken piston, dead board, or exhausted resin \u2014 it is the piston." },
       { pose: "writing_on_tablet", focus: "tablet", tool: "tablet", duration: 5, description: "Prices repair against replacement on the spot, with the maintenance implication of each." },
       { pose: "at_softener", focus: "control_valve", tool: "screwdriver", duration: 20, description: "Replaces the failed piston and seal kit out of van stock." },
-      { pose: "at_sink", focus: "laundry_sink", tool: "strips", duration: 2, description: "Confirms soft water at the tap \u2014 zero grains \u2014 before he packs up." },
+      { pose: "at_sink", focus: "laundry_sink", tool: "strips", duration: 2, description: "Confirms soft water at the tap \u2014 zero grains \u2014 before packing up." },
     ],
   },
 
   pfas: {
     id: "pfas",
+    sys: "well",
     label: "PFAS-concerned homeowner",
     short: "PFAS install",
     icon: "\u{1F6B1}",
@@ -61,7 +64,7 @@ const BASEMENT_SCENARIOS = {
     revenue: "$3.5K\u2013$8K quote \u00b7 $5K NHDES rebate",
     blurb: "Triggered by a state notification or a positive lab result. About ninety minutes to design a two-tank lead-lag GAC system and open the NHDES rebate paperwork.",
     steps: [
-      { pose: "at_doorway", focus: "doorway", tool: "clipboard", duration: 2, description: "Homeowner meets him at the door holding a PFAS result letter." },
+      { pose: "at_doorway", focus: "doorway", tool: "clipboard", duration: 2, description: "The homeowner is at the door holding a PFAS result letter." },
       { pose: "writing_on_tablet", focus: "tablet", tool: "tablet", duration: 5, description: "Reads the report aloud and explains the NHDES rebate of up to $5,000 for private-well treatment." },
       { pose: "outside_at_well", focus: "yard", tool: "flashlight", duration: 3, description: "Walks out to the well cap to check the seal, casing height and grade around the head." },
       { pose: "at_filter", focus: "install_area", tool: "tape", duration: 5, description: "Back inside, measures the open wet-wall bay for a two-tank treatment train." },
@@ -76,6 +79,7 @@ const BASEMENT_SCENARIOS = {
 
   new_softener: {
     id: "new_softener",
+    sys: "both",
     label: "Water softener new install",
     short: "New softener",
     icon: "\u{1F30A}",
@@ -85,7 +89,7 @@ const BASEMENT_SCENARIOS = {
     blurb: "Four to six hours of plumbing. The final step — setting the salt and service cadence — is what makes the install recurring rather than one-time.",
     steps: [
       { pose: "at_softener", focus: "install_area", tool: "none", duration: 5, description: "Confirms the location with the homeowner and lays a drop cloth over the slab." },
-      { pose: "at_pressure_tank", focus: "pressure_tank", tool: "wrench", duration: 3, description: "Shuts the main off at the pressure-tank ball valve." },
+      { pose: "at_pressure_tank", focus: "pressure_tank", tool: "wrench", duration: 3, description: "Shuts the main off at the ball valve ahead of the work." },
       { pose: "at_sink", focus: "laundry_sink", tool: "none", duration: 5, description: "Drains the lines by cracking the laundry tap and the boiler drain." },
       { pose: "at_filter", focus: "wet_wall_pipes", tool: "cutter", duration: 15, description: "Cuts into the existing cold main \u2014 PEX here, copper at the transition." },
       { pose: "at_softener", focus: "new_softener", tool: "crimper", duration: 25, description: "Dry-fits the bypass valve and softener head before a single crimp is made permanent." },
@@ -94,13 +98,14 @@ const BASEMENT_SCENARIOS = {
       { pose: "at_brine_tank", focus: "brine_tank", tool: "none", duration: 5, description: "Loads two forty-pound bags of solar salt into the brine tank." },
       { pose: "at_pressure_tank", focus: "pressure_tank", tool: "none", duration: 5, description: "Brings water back slowly and walks every joint with a dry hand." },
       { pose: "at_softener", focus: "control_valve", tool: "none", duration: 10, description: "Programs the valve: fourteen grains, four people, metered regeneration at 2 AM." },
-      { pose: "at_softener", focus: "control_valve", tool: "none", duration: 45, description: "Runs the initial regeneration all the way through while he cleans up the bay." },
+      { pose: "at_softener", focus: "control_valve", tool: "none", duration: 45, description: "Runs the initial regeneration all the way through while cleaning up the bay." },
       { pose: "writing_on_tablet", focus: "laundry_sink", tool: "tablet", duration: 15, description: "Post-install hardness test, homeowner walkthrough, and the maintenance agreement offer." },
     ],
   },
 
   pump_down: {
     id: "pump_down",
+    sys: "well",
     label: "Pump not working / low pressure",
     short: "Pump down",
     icon: "\u2699\uFE0F",
@@ -126,6 +131,7 @@ const BASEMENT_SCENARIOS = {
 
   msa: {
     id: "msa",
+    sys: "both",
     label: "Annual MSA maintenance visit",
     short: "MSA visit",
     icon: "\u{1FA7A}",
@@ -137,8 +143,8 @@ const BASEMENT_SCENARIOS = {
       { pose: "at_doorway", focus: "doorway", tool: "clipboard", duration: 2, description: "Arrives on a scheduled window, no emergency, no diagnosis pressure." },
       { pose: "at_brine_tank", focus: "softener_brine", tool: "strips", duration: 10, description: "Softener service: salt level, venturi cleaned, hardness verified at the tap." },
       { pose: "at_filter", focus: "filter", tool: "filter_wrench", duration: 8, description: "Changes the sediment cartridge and dates the housing with a marker." },
-      { pose: "at_filter", focus: "uv", tool: "gloves", duration: 8, description: "UV lamp check \u2014 nine thousand hours on it, so it gets replaced annually regardless." },
-      { pose: "at_pressure_tank", focus: "pressure_tank", tool: "gauge", duration: 5, description: "Reads pressure-tank pre-charge against the cut-in setting with the air gauge." },
+      { pose: "at_filter", focus: "uv", tool: "gloves", duration: 8, only: "well", description: "UV lamp check \u2014 nine thousand hours on it, so it gets replaced annually regardless." },
+      { pose: "at_pressure_tank", focus: "pressure_tank", tool: "gauge", duration: 5, only: "well", description: "Reads pressure-tank pre-charge against the cut-in setting with the air gauge." },
       { pose: "at_sink", focus: "kitchen_faucet_offscene", tool: "filter_wrench", duration: 10, description: "Upstairs for the RO membrane and post-filter at the kitchen tap." },
       { pose: "at_sink", focus: "laundry_sink", tool: "test_kit", duration: 15, description: "Full water-quality panel so the year-over-year trend is on the record." },
       { pose: "writing_on_tablet", focus: "tablet", tool: "tablet", duration: 3, description: "Logs the service, prints the report, sets next year's reminder before leaving." },
@@ -147,6 +153,7 @@ const BASEMENT_SCENARIOS = {
 
   re_test: {
     id: "re_test",
+    sys: "well",
     label: "Real estate transaction test",
     short: "RE test",
     icon: "\u{1F3DA}\uFE0F",
@@ -166,9 +173,79 @@ const BASEMENT_SCENARIOS = {
       { pose: "writing_on_tablet", focus: "tablet", tool: "tablet", duration: 5, description: "Report delivered inside forty-eight hours, with a remediation quote if it fails." },
     ],
   },
+
+  pw_no_water: {
+    id: "pw_no_water",
+    sys: "public",
+    label: "No water \u2014 town service",
+    short: "No water (town)",
+    icon: "\u{1F6B1}",
+    duration: 55,
+    crew: "1 tech",
+    revenue: "$185 \u00b7 $450 w/ PRV",
+    blurb: "No water in a house with no pump. The fault is a valve, a regulator, a frozen run or the street \u2014 and the first job is deciding which side of the meter it sits on.",
+    steps: [
+      { pose: "at_doorway", focus: "doorway", tool: "clipboard", duration: 3, description: "Asks whether the neighbours have water. A whole-street outage is the utility's call, not a service call." },
+      { pose: "at_meter", focus: "meter", tool: "wrench", duration: 4, description: "Confirms the main shutoff at the meter is fully open \u2014 a valve left part-closed after other trades is a common cause." },
+      { pose: "outside", focus: "meter", tool: "gauge", duration: 6, description: "Gauges the outside hose bib. Street pressure should read 40\u201380 psi at the house." },
+      { pose: "at_meter", focus: "meter", tool: "flashlight", duration: 6, description: "Reads the meter register with every fixture shut. A dial still turning means a leak on the house side of the meter." },
+      { pose: "at_meter", focus: "meter", tool: "wrench", duration: 8, description: "Inspects the pressure-reducing valve. A failed PRV diaphragm drops the whole house at once and is the most common single-home cause." },
+      { pose: "at_wall", focus: "meter", tool: "flashlight", duration: 8, description: "Traces the cold line through the basement for a frozen section or a split where it passes an exterior wall." },
+      { pose: "at_filter", focus: "filter", tool: "filter_wrench", duration: 6, description: "Pulls the sediment cartridge \u2014 a fully blinded cartridge starves the house and reads exactly like a supply failure." },
+      { pose: "writing_on_tablet", focus: "tablet", tool: "tablet", duration: 8, description: "Isolates the fault to house-side or street-side and writes it up: a PRV replacement quoted, or the utility called with the meter reading." },
+      { pose: "at_meter", focus: "meter", tool: "crimper", duration: 6, description: "Replaces the PRV where that is the fault, then re-checks pressure at the bib before cleanup." },
+    ],
+  },
+
+  pw_chlorine: {
+    id: "pw_chlorine",
+    sys: "public",
+    label: "Chlorine taste and odour \u2014 carbon filter",
+    short: "Chlorine taste",
+    icon: "\u{1F6B0}",
+    duration: 90,
+    crew: "1 tech",
+    revenue: "$1,400\u2013$2,600",
+    blurb: "The most common paid job in a public-water basement. The utility has to disinfect; nobody has to make it taste good, and that gap is the sale.",
+    steps: [
+      { pose: "at_doorway", focus: "doorway", tool: "clipboard", duration: 3, description: "Takes the complaint in the homeowner's words \u2014 pool smell at every tap, strongest in the hot water." },
+      { pose: "at_sink", focus: "laundry_sink", tool: "strips", duration: 8, description: "Runs free and total chlorine at the tap. A gap between the two readings means chloramine, which needs catalytic carbon rather than standard GAC." },
+      { pose: "writing_on_tablet", focus: "tablet", tool: "tablet", duration: 6, description: "Pulls the utility's consumer confidence report to confirm which disinfectant the town actually uses." },
+      { pose: "at_install", focus: "install_area", tool: "tape", duration: 6, description: "Measures the bay \u2014 a backwashing carbon tank needs drain access and clearance above the control head." },
+      { pose: "at_install", focus: "install_area", tool: "cutter", duration: 12, description: "Cuts into the cold main and sets a bypass so the house keeps water through the install." },
+      { pose: "at_install", focus: "install_area", tool: "crimper", duration: 25, description: "Plumbs the catalytic carbon tank in, with a bypass valve and a sample port either side of it." },
+      { pose: "at_install", focus: "install_area", tool: "wrench", duration: 10, description: "Programmes the backwash cycle. Carbon needs periodic bed lift or it channels and stops working early." },
+      { pose: "at_filter", focus: "filter", tool: "filter_wrench", duration: 8, description: "Adds a sediment pre-filter ahead of the carbon so street-main grit does not foul the bed." },
+      { pose: "at_sink", focus: "laundry_sink", tool: "strips", duration: 6, description: "Re-tests chlorine at the tap and shows the homeowner the before and after side by side." },
+      { pose: "writing_on_tablet", focus: "tablet", tool: "tablet", duration: 6, description: "Books the media change \u2014 catalytic carbon runs 3\u20135 years on municipal chlorine \u2014 and dates the tank." },
+    ],
+  },
+
+  pw_pfas_ro: {
+    id: "pw_pfas_ro",
+    sys: "public",
+    label: "PFAS in the town supply \u2014 point-of-use RO",
+    short: "PFAS (town)",
+    icon: "\u{1F9EA}",
+    duration: 75,
+    crew: "1 tech",
+    revenue: "$650\u2013$1,450",
+    blurb: "Public systems must meet the federal PFAS limits, but compliance is measured across a system and homeowners read their own annual report. The drinking-water fix gets sold at the sink.",
+    steps: [
+      { pose: "at_doorway", focus: "doorway", tool: "clipboard", duration: 4, description: "The homeowner has read the PFAS result in the utility's annual water-quality report and wants the drinking water dealt with." },
+      { pose: "writing_on_tablet", focus: "tablet", tool: "tablet", duration: 8, description: "Reads the reported PFOA and PFOS figures against the federal 4 ppt limits and, in New Hampshire, the stricter state MCLs." },
+      { pose: "at_sink", focus: "sample_vials", tool: "bottles", duration: 8, description: "Pulls a lab sample at the kitchen tap regardless \u2014 the published number is a system result, not this house's tap." },
+      { pose: "at_install", focus: "install_area", tool: "tape", duration: 5, description: "Measures the under-sink cabinet: an RO needs room for three canisters, a storage tank and a drain saddle." },
+      { pose: "at_install", focus: "install_area", tool: "cutter", duration: 10, description: "Taps the cold supply and sets the feed valve." },
+      { pose: "at_install", focus: "install_area", tool: "crimper", duration: 22, description: "Mounts the RO manifold, sets the storage tank and drills the air-gap faucet through the deck." },
+      { pose: "at_install", focus: "install_area", tool: "wrench", duration: 8, description: "Fits the drain saddle and pressure-tests every joint under the cabinet." },
+      { pose: "writing_on_tablet", focus: "tablet", tool: "tablet", duration: 10, description: "States the boundary plainly: RO treats drinking and cooking water only. The shower and the laundry stay untreated, and whole-house carbon is a separate quote." },
+    ],
+  },
 };
 
-const BASEMENT_ORDER = ["free_test", "softener_fail", "pfas", "new_softener", "pump_down", "msa", "re_test"];
+const BASEMENT_ORDER = ["free_test", "softener_fail", "pfas", "new_softener", "pump_down", "msa", "re_test",
+                        "pw_no_water", "pw_chlorine", "pw_pfas_ro"];
 
 /* Tool tray — what is physically in the technician's hand, and the shape drawn into it */
 const BASEMENT_TOOLS = {

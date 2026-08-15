@@ -4,9 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Inside the Basement — New England Residential Water Thesis</title>
-<meta name="description" content="An interactive guide to a private-well home's water system: what each component does, what goes wrong, and what every service call involves — time on site, crew size, tools, and cost. Companion to the AEP Equity residential water thesis." />
-<meta property="og:title" content="Inside the Basement — How a Private-Well Water System Works" />
-<meta property="og:description" content="Click through the equipment in a well-water home, then walk real service calls step by step: time, crew, tools, cost." />
+<meta name="description" content="An interactive guide to a home water system on either a private well or a town main, treated or untreated: what each component does, what goes wrong, and what every service call involves — time on site, crew size, tools, and cost. Companion to the AEP Equity residential water thesis." />
+<meta property="og:title" content="Inside the Basement — How a Home Water System Works" />
+<meta property="og:description" content="Four basements — well or town water, treated or not. Click through the equipment, then walk real service calls step by step: time, crew, tools, cost." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://aep1992.github.io/water-thesis/basement.html" />
 <meta name="twitter:card" content="summary" />
@@ -61,6 +61,21 @@ p{max-width:72ch;margin-bottom:14px}
 .tabs{display:flex;gap:8px;margin:0 0 14px}
 .tab{font:600 13px/1 var(--sans);padding:10px 16px;border:1.5px solid var(--navy);border-radius:6px;background:transparent;color:var(--navy);cursor:pointer}
 .tab.on{background:var(--navy);color:#F6F1E4}
+
+/* system / treatment selector */
+.cfg{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin:0 0 18px}
+.cfgbtn{text-align:left;padding:13px 15px;border:1.5px solid var(--line);border-radius:8px;background:#FBF8EF;cursor:pointer;font-family:var(--sans)}
+.cfgbtn b{display:block;font:600 14px/1.3 var(--sans);color:var(--ink)}
+.cfgbtn span{display:block;font:400 12px/1.45 var(--sans);color:var(--sub);margin-top:3px}
+.cfgbtn i{display:block;font:600 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;font-style:normal;color:var(--copper)}
+.cfgbtn.on{background:var(--navy);border-color:var(--navy)}
+.cfgbtn.on b{color:#F6F1E4}
+.cfgbtn.on span{color:#C4CDD8}
+.cfgbtn.on i{color:#E0A868}
+.cfgbtn:focus-visible{outline:2px solid var(--copper);outline-offset:2px}
+.sysbadge{display:inline-block;font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:4px 7px;border-radius:4px;background:var(--cream2);color:var(--sub);border:1px solid var(--line)}
+.sysbadge.well{background:#E3EDF7;color:#1E4C8A;border-color:#C6D9EC}
+.sysbadge.public{background:#DBEEE9;color:#0B6E5F;border-color:#BEE0D8}
 .tab:focus-visible{outline:2px solid var(--copper);outline-offset:2px}
 
 /* walkthrough controls */
@@ -126,6 +141,11 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
   .stage{position:static}
   .panel{min-height:0}
 }
+@media (max-width:640px){
+  /* let the summary meta wrap instead of running off the card */
+  details.sc summary{gap:8px}
+  details.sc summary .meta{margin-left:0;white-space:normal;flex-basis:100%}
+}
 </style>
 </head>
 <body>
@@ -143,10 +163,11 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
     </div>
     <p class="mast-kicker">Companion to the New England Residential Water Thesis</p>
     <h1>Inside the Basement</h1>
-    <p class="mast-sub">A typical private-well home runs its own water utility from one wall of the basement. This page does
-      two things: shows a homeowner exactly what each piece of equipment is and what it needs, and shows an operator or
-      investor the full range of services — how long each takes, when it takes two technicians, which tools come out of
-      the van, and what it costs.</p>
+    <p class="mast-sub">A private-well home runs its own water utility from one wall of the basement; a public-water home
+      runs a shorter version of the same wall. This page does two things: shows a homeowner exactly what each piece of
+      equipment is and what it needs — in whichever of the four basements is theirs — and shows an operator or investor
+      the full range of services, with how long each takes, when it takes two technicians, which tools come out of the
+      van, and what it costs.</p>
   </div>
 </header>
 
@@ -194,10 +215,12 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
 <section id="diagram">
   <div class="wrap">
     <p class="sec-n">01 — The System</p>
-    <h2>One wall, eleven parts</h2>
-    <p class="sec-sub">This is the standard equipment line in a treated well-water home, in flow order — water enters from
-      the well at left and leaves house-ready at right. <strong>Click any numbered part</strong>, or switch to
-      <strong>Walk a service call</strong> to watch a real visit move through the same equipment.</p>
+    <h2 id="diagHead">One wall, eleven parts</h2>
+    <p class="sec-sub">Four basements, in flow order — water enters at left and leaves house-ready at right. Pick the one
+      that matches the house: a well or a town main, treated or untreated. <strong>Click any numbered part</strong>, or
+      switch to <strong>Walk a service call</strong> to watch a real visit move through that equipment.</p>
+
+    <div class="cfg" id="cfgPick" role="group" aria-label="Choose the system this basement runs"></div>
 
     <div class="tabs" role="tablist">
       <button class="tab on" id="tabParts" role="tab">Parts of the system</button>
@@ -236,9 +259,13 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
             <rect x="720" y="0" width="18" height="34" fill="#2C3947"/><rect x="1020" y="0" width="18" height="34" fill="#2C3947"/>
             <rect x="1320" y="0" width="18" height="34" fill="#2C3947"/></g>
 
-          <!-- foundation + buried service line from the well -->
+          <!-- continuous service main: equipment draws on top of it, so hiding a
+               vessel leaves clean pipe rather than a gap -->
+          <path d="M0 408 H1200" stroke="#38BDF8" stroke-width="8" fill="none" opacity=".9"/>
+
+          <!-- foundation + service entry -->
           <rect x="0" y="34" width="56" height="486" fill="#141C26"/>
-          <g class="hot" data-c="entry" tabindex="0" role="button" aria-label="Well line and main shutoff">
+          <g class="hot" data-c="entry" data-cfg="well" tabindex="0" role="button" aria-label="Well line and main shutoff">
             <rect class="halo" x="8" y="366" width="216" height="86" rx="10"/>
             <path d="M0 408 H190" stroke="#38BDF8" stroke-width="9" fill="none"/>
             <rect x="56" y="398" width="12" height="20" fill="#F59E0B"/>
@@ -247,8 +274,26 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
             <text x="16" y="446" font-family="Inter,sans-serif" font-size="12.5" letter-spacing=".1em" fill="#7DA5C4">FROM THE WELL</text>
           </g>
 
+          <!-- public-water entry: meter, shutoffs, backflow preventer -->
+          <g class="hot" data-c="meter" data-cfg="public" tabindex="0" role="button" aria-label="Water meter and backflow preventer">
+            <rect class="halo" x="52" y="336" width="268" height="118" rx="10"/>
+            <path d="M0 408 H320" stroke="#38BDF8" stroke-width="9" fill="none"/>
+            <rect x="56" y="398" width="12" height="20" fill="#F59E0B"/>
+            <circle cx="92" cy="408" r="12" fill="none" stroke="#9AA6B4" stroke-width="5"/>
+            <rect x="88" y="384" width="8" height="14" fill="#9AA6B4"/>
+            <rect x="112" y="388" width="86" height="42" rx="8" fill="#A9814B"/>
+            <rect x="118" y="394" width="74" height="12" rx="3" fill="#8A6A38" opacity=".7"/>
+            <circle cx="155" cy="374" r="17" fill="#EBE5D9" stroke="#7A5C34" stroke-width="3"/>
+            <text x="155" y="379" font-family="JetBrains Mono,monospace" font-size="10" fill="#1B2532" text-anchor="middle">0184</text>
+            <circle cx="216" cy="408" r="12" fill="none" stroke="#9AA6B4" stroke-width="5"/>
+            <rect x="242" y="390" width="58" height="34" rx="6" fill="#4A5462"/>
+            <path d="M254 390v-16h34v16" stroke="#9AA6B4" stroke-width="4" fill="none"/>
+            <circle cx="271" cy="407" r="7" fill="#7DD3FC" opacity=".75"/>
+            <text x="16" y="446" font-family="Inter,sans-serif" font-size="12.5" letter-spacing=".1em" fill="#7DA5C4">FROM THE STREET</text>
+          </g>
+
           <!-- pressure switch + gauge -->
-          <g class="hot" data-c="pswitch" tabindex="0" role="button" aria-label="Pressure switch and gauge">
+          <g class="hot" data-c="pswitch" data-cfg="well" tabindex="0" role="button" aria-label="Pressure switch and gauge">
             <rect class="halo" x="196" y="330" width="96" height="122" rx="10"/>
             <path d="M190 408 H300" stroke="#38BDF8" stroke-width="9" fill="none"/>
             <rect x="216" y="358" width="34" height="26" rx="3" fill="#4A5462"/>
@@ -258,7 +303,7 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
           </g>
 
           <!-- pressure tank -->
-          <g class="hot" data-c="tank" tabindex="0" role="button" aria-label="Pressure tank">
+          <g class="hot" data-c="tank" data-cfg="well" tabindex="0" role="button" aria-label="Pressure tank">
             <rect class="halo" x="288" y="236" width="128" height="290" rx="12"/>
             <ellipse cx="352" cy="514" rx="60" ry="9" fill="#101820" opacity=".55"/>
             <path d="M300 300c0-30 24-50 52-50s52 20 52 50v186c0 8-5 12-12 12h-80c-7 0-12-4-12-12z" fill="url(#tankBlue)"/>
@@ -270,11 +315,8 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
             <path d="M300 408 h-0" stroke="#38BDF8" stroke-width="9"/>
           </g>
 
-          <!-- main line along wall -->
-          <path d="M404 408 H520 M600 408 H660 M760 408 H840 M950 408 H1010 M1120 408 H1190" stroke="#38BDF8" stroke-width="8" fill="none" opacity=".9"/>
-
           <!-- sediment filter -->
-          <g class="hot" data-c="sediment" tabindex="0" role="button" aria-label="Sediment filter">
+          <g class="hot" data-c="sediment" data-cfg="wt pt" tabindex="0" role="button" aria-label="Sediment filter">
             <rect class="halo" x="512" y="330" width="100" height="164" rx="10"/>
             <rect x="530" y="352" width="64" height="26" rx="4" fill="#4A5462"/>
             <path d="M540 378h44v78a22 22 0 0 1-44 0z" fill="#DCE7F0" opacity=".85"/>
@@ -282,7 +324,7 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
           </g>
 
           <!-- softener + valve -->
-          <g class="hot" data-c="softener" tabindex="0" role="button" aria-label="Water softener">
+          <g class="hot" data-c="softener" data-cfg="wt pt" tabindex="0" role="button" aria-label="Water softener">
             <rect class="halo" x="648" y="212" width="126" height="314" rx="12"/>
             <ellipse cx="710" cy="514" rx="52" ry="9" fill="#101820" opacity=".55"/>
             <path d="M666 296c0-26 20-44 44-44s44 18 44 44v206c0 8-5 12-12 12h-64c-7 0-12-4-12-12z" fill="url(#softG)"/>
@@ -295,7 +337,7 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
           </g>
 
           <!-- brine tank -->
-          <g class="hot" data-c="brine" tabindex="0" role="button" aria-label="Brine tank">
+          <g class="hot" data-c="brine" data-cfg="wt pt" tabindex="0" role="button" aria-label="Brine tank">
             <rect class="halo" x="786" y="332" width="118" height="194" rx="12"/>
             <ellipse cx="845" cy="514" rx="48" ry="8" fill="#101820" opacity=".5"/>
             <path d="M800 366h90v138c0 8-5 12-12 12h-66c-7 0-12-4-12-12z" fill="#4A5462"/>
@@ -305,7 +347,7 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
           </g>
 
           <!-- UV -->
-          <g class="hot" data-c="uv" tabindex="0" role="button" aria-label="UV sterilizer">
+          <g class="hot" data-c="uv" data-cfg="wt" tabindex="0" role="button" aria-label="UV sterilizer">
             <rect class="halo" x="942" y="300" width="196" height="92" rx="10"/>
             <rect x="960" y="330" width="160" height="30" rx="15" fill="url(#steel)"/>
             <rect x="1104" y="326" width="22" height="38" rx="4" fill="#4A5462"/>
@@ -315,7 +357,7 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
           </g>
 
           <!-- optional treatment bay -->
-          <g class="hot" data-c="addon" tabindex="0" role="button" aria-label="Optional treatments: arsenic, PFAS, radon, RO">
+          <g class="hot" data-c="addon" data-cfg="wt pt" tabindex="0" role="button" aria-label="Optional treatments: arsenic, PFAS, radon, RO">
             <rect class="halo" x="1010" y="404" width="180" height="122" rx="10"/>
             <rect x="1024" y="418" width="66" height="96" rx="8" fill="none" stroke="#C9BFA9" stroke-width="2.5" stroke-dasharray="8 6" opacity=".75"/>
             <rect x="1104" y="418" width="66" height="96" rx="8" fill="none" stroke="#C9BFA9" stroke-width="2.5" stroke-dasharray="8 6" opacity=".75"/>
@@ -323,7 +365,7 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
           </g>
 
           <!-- water heater -->
-          <g class="hot" data-c="heater" tabindex="0" role="button" aria-label="Water heater">
+          <g class="hot" data-c="heater" data-cfg="all" tabindex="0" role="button" aria-label="Water heater">
             <rect class="halo" x="1196" y="222" width="130" height="304" rx="12"/>
             <ellipse cx="1261" cy="514" rx="56" ry="9" fill="#101820" opacity=".55"/>
             <path d="M1210 288c0-28 23-48 51-48s51 20 51 48v216c0 8-5 12-12 12h-78c-7 0-12-4-12-12z" fill="url(#steel)"/>
@@ -336,7 +378,7 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
           </g>
 
           <!-- laundry sink -->
-          <g class="hot" data-c="sink" tabindex="0" role="button" aria-label="Laundry sink">
+          <g class="hot" data-c="sink" data-cfg="all" tabindex="0" role="button" aria-label="Laundry sink">
             <rect class="halo" x="1336" y="318" width="156" height="208" rx="10"/>
             <path d="M1354 380h120v54c0 8-6 14-14 14h-92c-8 0-14-6-14-14z" fill="#7A8694"/>
             <path d="M1360 386h108v40h-108z" fill="#5A6472"/>
@@ -346,7 +388,7 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
           </g>
 
           <!-- floor drain -->
-          <g class="hot" data-c="drain" tabindex="0" role="button" aria-label="Floor drain">
+          <g class="hot" data-c="drain" data-cfg="all" tabindex="0" role="button" aria-label="Floor drain">
             <rect class="halo" x="560" y="548" width="130" height="56" rx="10"/>
             <ellipse cx="625" cy="576" rx="42" ry="12" fill="#141C26"/>
             <ellipse cx="625" cy="574" rx="34" ry="9" fill="#2C3947"/>
@@ -373,26 +415,30 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
   <div class="wrap">
     <p class="sec-n">02 — The Range of Services</p>
     <h2>Every service, with time, crew, tools and cost</h2>
-    <p class="sec-sub">The full residential service range of a licensed well-water operator. Crew size is driven by
-      weight, safety and licensing — not preference.</p>
+    <p class="sec-sub">The full residential service range, across both systems. Crew size is driven by weight, safety
+      and licensing — not preference. A public-water basement carries fewer of these jobs, but the ones it does carry are
+      the highest-frequency, lowest-crew work in the book.</p>
 
     <div class="tbl-scroll">
       <table>
-        <thead><tr><th>Service</th><th class="num">Time on site</th><th class="num">Techs</th><th>Why that crew</th><th>Primary tools</th><th class="num">Typical cost</th></tr></thead>
+        <thead><tr><th>Service</th><th>System</th><th class="num">Time on site</th><th class="num">Techs</th><th>Why that crew</th><th>Primary tools</th><th class="num">Typical cost</th></tr></thead>
         <tbody>
-          <tr><td><b>In-home water test</b></td><td class="num">30–45 min</td><td class="num">1</td><td>Test kit work at the utility sink</td><td>Digital photometer, strip panel, reagent kit, pressure gauge; EPA-verified arsenic field kit where indicated</td><td class="num">$0–$150</td></tr>
-          <tr><td><b>Lab sampling (arsenic, radon, PFAS, bacteria)</b></td><td class="num">~30 min + lab</td><td class="num">1</td><td>Sample pull only; analysis is at an accredited lab</td><td>Chain-of-custody bottles, cooler</td><td class="num">$150–$475</td></tr>
-          <tr><td><b>Softener repair</b></td><td class="num">~1 hr</td><td class="num">1</td><td>Bench-level valve work</td><td>Multimeter, screwdrivers, seal kits, hardness strips</td><td class="num">$300–$800</td></tr>
-          <tr><td><b>Softener install</b></td><td class="num">3–4 hrs</td><td class="num">1</td><td>One tech with a hand truck handles a 120-lb unit</td><td>Pipe cutter, PEX crimper, torch, hand truck</td><td class="num">$2,000–$3,200</td></tr>
-          <tr><td><b>Sediment filter service</b></td><td class="num">~20 min</td><td class="num">1</td><td>Cartridge swap</td><td>Filter wrench, bucket</td><td class="num">$65–$125</td></tr>
-          <tr><td><b>UV install / annual lamp swap</b></td><td class="num">1–2 hrs / 20 min</td><td class="num">1</td><td>Wall-mount plumbing + plug-in ballast</td><td>Pipe cutter, gloves (lamp oils), gauge</td><td class="num">$800–$1,400 / $195–$325</td></tr>
-          <tr><td><b>Pressure tank replacement</b></td><td class="num">2–3 hrs</td><td class="num">1</td><td>Tank is bulky but under 100 lbs empty</td><td>Pipe wrenches, air gauge, dolly</td><td class="num">$700–$1,600</td></tr>
-          <tr><td><b>Well pump replacement</b></td><td class="num">3–6 hrs</td><td class="num"><b>2</b></td><td><b>200–600 ft of drop pipe must be pulled and controlled — two sets of hands or a hoist truck, plus a licensed pump installer by law</b></td><td>Pump hoist / pulling rig, pipe wrenches, multimeter, splice kit, torque arrestor</td><td class="num">$2,000–$6,500</td></tr>
-          <tr><td><b>Whole-house arsenic system</b></td><td class="num">~8 hrs</td><td class="num"><b>2</b></td><td><b>Two media vessels at 150–300 lbs each, placed and plumbed in series</b></td><td>Crimper, cutter, dolly, media funnel</td><td class="num">$3,400–$6,800</td></tr>
-          <tr><td><b>PFAS carbon (GAC) system</b></td><td class="num">~3 hrs</td><td class="num"><b>2</b></td><td><b>Dual tanks; lifting and rebate paperwork on the same visit</b></td><td>Crimper, cutter, dolly</td><td class="num">$3,200–$5,200</td></tr>
-          <tr><td><b>Radon aeration system</b></td><td class="num">~5 hrs</td><td class="num"><b>2</b></td><td><b>Two trades in one visit: plumbing plus a vent run and dedicated electrical</b></td><td>Hole saw, vent stack, blower kit</td><td class="num">~$7,500</td></tr>
-          <tr><td><b>Whole-house RO (complex)</b></td><td class="num">~12 hrs / 2 days</td><td class="num"><b>2</b></td><td><b>Multi-vessel plumbing, storage tank, repressurization</b></td><td>Full install kit</td><td class="num">~$12,500</td></tr>
-          <tr><td><b>Annual maintenance visit</b></td><td class="num">~40 min</td><td class="num">1</td><td>Route work — salt, filters, lamp, re-test</td><td>Salt, cartridges, lamp, strip panel</td><td class="num">$175–$495/yr</td></tr>
+          <tr><td><b>In-home water test</b></td><td>Both</td><td class="num">30–45 min</td><td class="num">1</td><td>Test kit work at the utility sink</td><td>Digital photometer, strip panel, reagent kit, pressure gauge; EPA-verified arsenic field kit where indicated</td><td class="num">$0–$150</td></tr>
+          <tr><td><b>Lab sampling (arsenic, radon, PFAS, bacteria)</b></td><td>Both</td><td class="num">~30 min + lab</td><td class="num">1</td><td>Sample pull only; analysis is at an accredited lab</td><td>Chain-of-custody bottles, cooler</td><td class="num">$150–$475</td></tr>
+          <tr><td><b>Softener repair</b></td><td>Both</td><td class="num">~1 hr</td><td class="num">1</td><td>Bench-level valve work</td><td>Multimeter, screwdrivers, seal kits, hardness strips</td><td class="num">$300–$800</td></tr>
+          <tr><td><b>Softener install</b></td><td>Both</td><td class="num">3–4 hrs</td><td class="num">1</td><td>One tech with a hand truck handles a 120-lb unit</td><td>Pipe cutter, PEX crimper, torch, hand truck</td><td class="num">$2,000–$3,200</td></tr>
+          <tr><td><b>Sediment filter service</b></td><td>Both</td><td class="num">~20 min</td><td class="num">1</td><td>Cartridge swap</td><td>Filter wrench, bucket</td><td class="num">$65–$125</td></tr>
+          <tr><td><b>UV install / annual lamp swap</b></td><td>Well</td><td class="num">1–2 hrs / 20 min</td><td class="num">1</td><td>Wall-mount plumbing + plug-in ballast</td><td>Pipe cutter, gloves (lamp oils), gauge</td><td class="num">$800–$1,400 / $195–$325</td></tr>
+          <tr><td><b>Pressure tank replacement</b></td><td>Well</td><td class="num">2–3 hrs</td><td class="num">1</td><td>Tank is bulky but under 100 lbs empty</td><td>Pipe wrenches, air gauge, dolly</td><td class="num">$700–$1,600</td></tr>
+          <tr><td><b>Well pump replacement</b></td><td>Well</td><td class="num">3–6 hrs</td><td class="num"><b>2</b></td><td><b>200–600 ft of drop pipe must be pulled and controlled — two sets of hands or a hoist truck, plus a licensed pump installer by law</b></td><td>Pump hoist / pulling rig, pipe wrenches, multimeter, splice kit, torque arrestor</td><td class="num">$2,000–$6,500</td></tr>
+          <tr><td><b>Whole-house arsenic system</b></td><td>Well</td><td class="num">~8 hrs</td><td class="num"><b>2</b></td><td><b>Two media vessels at 150–300 lbs each, placed and plumbed in series</b></td><td>Crimper, cutter, dolly, media funnel</td><td class="num">$3,400–$6,800</td></tr>
+          <tr><td><b>PFAS carbon (GAC) system</b></td><td>Well</td><td class="num">~3 hrs</td><td class="num"><b>2</b></td><td><b>Dual tanks; lifting and rebate paperwork on the same visit</b></td><td>Crimper, cutter, dolly</td><td class="num">$3,200–$5,200</td></tr>
+          <tr><td><b>Radon aeration system</b></td><td>Well</td><td class="num">~5 hrs</td><td class="num"><b>2</b></td><td><b>Two trades in one visit: plumbing plus a vent run and dedicated electrical</b></td><td>Hole saw, vent stack, blower kit</td><td class="num">~$7,500</td></tr>
+          <tr><td><b>Whole-house RO (complex)</b></td><td>Both</td><td class="num">~12 hrs / 2 days</td><td class="num"><b>2</b></td><td><b>Multi-vessel plumbing, storage tank, repressurization</b></td><td>Full install kit</td><td class="num">~$12,500</td></tr>
+          <tr><td><b>Pressure-reducing valve (PRV) diagnosis + replacement</b></td><td>Public</td><td class="num">~1 hr</td><td class="num">1</td><td>Valve swap at the meter</td><td>Pipe wrenches, pressure gauge, crimper</td><td class="num">$185–$450</td></tr>
+          <tr><td><b>Catalytic carbon — chlorine / chloramine</b></td><td>Public</td><td class="num">~1.5 hrs</td><td class="num">1</td><td>Single backwashing tank, hand-truck weight</td><td>Cutter, crimper, drain saddle, chlorine strips</td><td class="num">$1,400–$2,600</td></tr>
+          <tr><td><b>Point-of-use RO (under sink)</b></td><td>Both</td><td class="num">~1.25 hrs</td><td class="num">1</td><td>Cabinet work, one tech</td><td>Cutter, crimper, deck drill, drain saddle</td><td class="num">$650–$1,450</td></tr>
+          <tr><td><b>Annual maintenance visit</b></td><td>Both</td><td class="num">~40 min</td><td class="num">1</td><td>Route work — salt, filters, lamp, re-test</td><td>Salt, cartridges, lamp, strip panel</td><td class="num">$175–$495/yr</td></tr>
         </tbody>
       </table>
     </div>
@@ -415,16 +461,18 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
   <div class="wrap">
     <p class="sec-n">03 — The Written Procedures</p>
     <h2>Every service call, step by step</h2>
-    <p class="sec-sub">The same walkthroughs as complete written procedures — each step with its minutes and the tool in
-      hand. Reconstructed from operator service catalogs and standard trade diagnostic order (AEP analysis, modeled).</p>
+    <p class="sec-sub">Every walkthrough as a complete written procedure — each step with its minutes and the tool in
+      hand — including the calls that only happen on one of the two systems. Steps marked <em>well only</em> drop out of
+      the visit on a public-water home. Reconstructed from operator service catalogs and standard trade diagnostic order
+      (AEP analysis, modeled).</p>
     <div id="scDocs"></div>
   </div>
 </section>
 
 <footer class="foot">
   <div class="wrap">Part of <a href="index.html">The New England Residential Water Thesis</a> · Prepared by
-    <a href="https://aepequity.com">Atomus Equity Partners</a> · Q3 2026. Equipment layout is a representative treated
-    well-water home; scenarios and durations are modeled AEP analysis, not any single company's procedures.</div>
+    <a href="https://aepequity.com">Atomus Equity Partners</a> · Q3 2026. Equipment layouts are representative of each
+    of the four cases; scenarios and durations are modeled AEP analysis, not any single company's procedures.</div>
 </footer>
 
 <script src="basement-scenarios.js"></script>
@@ -437,6 +485,10 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
 
   /* ---------------- component data (homeowner layer) ---------------- */
   const COMPONENTS = {
+    meter:   { name: "Water meter & backflow preventer", spot: "A brass or composite body with a dial or digital register where the pipe enters the wall, a shutoff valve either side, and often a wired remote reader running outside.", is: "The utility's boundary. Everything upstream of it is the town's responsibility; everything downstream is yours.",
+      does: "Measures what the house draws and bills it. The backflow preventer stops water in your plumbing from being pushed back into the public main.",
+      trouble: "The meter itself rarely fails. The pressure-reducing valve fitted just after it does \u2014 a torn PRV diaphragm drops pressure through the whole house at once, which is the public-water equivalent of a dead pump.",
+      service: "The meter is the utility's asset and the utility's job. The shutoff, the PRV and everything downstream of them are the operator's work.", fee: "$185\u2013$450 PRV diagnostic + replacement" },
     entry:   { n: 1, name: "Well line & main shutoff", spot: "A single pipe coming through the foundation wall down low, with a brass or lever valve on it. On public water, a meter sits here instead.", is: "The buried line from your wellhead, entering through the foundation, with the house's main shutoff valve.",
       does: "Everything your home drinks arrives through this pipe, pushed by the submersible pump hanging 200–500 ft down the well outside.",
       trouble: "Rarely fails itself — but every homeowner should know where this valve is. Closing it stops all water to the house in an emergency.",
@@ -456,7 +508,10 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
     softener:{ n: 5, name: "Water softener", spot: "Tall, narrow tank — beige, black or gray — with an electronic control head and small display on top.", is: "The tall tank with the control valve on top.",
       does: "Removes hardness (and low levels of iron) by ion exchange, then cleans itself overnight with brine from the salt tank. New England bedrock water commonly runs 10–15+ grains hard.",
       trouble: "Salty or hard water returning, error codes on the valve, or a unit that runs but doesn't soften — pistons, boards and resin all age. Resin lasts roughly 5–10 years.",
-      service: "Annual service visit; repairs are bench work; a full replacement is a 3–4 hour, one-tech install.", fee: "$175–$275/yr service · $2,000–$3,200 new" },
+      service: "Annual service visit; repairs are bench work; a full replacement is a 3–4 hour, one-tech install.", fee: "$175–$275/yr service · $2,000–$3,200 new",
+      alt: { public: {
+        does: "Identical machine, identical job. Hardness arrives from the source water, so a hard municipal supply scales water heaters and fixtures exactly the way well water does — which is why softeners are the most common paid install in a public-water basement.",
+        trouble: "Same failure modes as on a well: hard water returning, valve error codes, aged resin. What changes is the diagnosis around it — there is no pump or pressure tank to rule out first." } } },
     brine:   { n: 6, name: "Brine (salt) tank", spot: "A square or round plastic bin with a loose lid, part-full of white salt pellets, standing beside the softener.", is: "The short square or round bin beside the softener.",
       does: "Holds the salt that regenerates the softener's resin. The softener draws brine from it automatically.",
       trouble: "Empty tank = hard water returns. A “salt bridge” (crusted dome over a void) quietly does the same thing while the tank looks full.",
@@ -468,7 +523,12 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
     addon:   { n: 8, name: "Treatment bay (if your water needs it)", spot: "Extra tall tanks beyond the softener. Twin tanks plumbed in series usually mean arsenic or carbon (PFAS) treatment; a unit with a vent pipe running outside is radon aeration.", is: "Space on the line where problem-specific systems go, sized by your lab results.",
       does: "Arsenic media vessels, PFAS carbon (GAC) tanks, radon aeration, or point-of-use reverse osmosis — each targets one contaminant your test found. Most treated homes run one or two; nobody needs all of them.",
       trouble: "These exist because New England bedrock water does: ~1 in 5 NH wells exceeds the federal arsenic limit, and roughly half carry radon at levels of concern (USGS, NHDES).",
-      service: "Arsenic: $3,400–$6,800 · PFAS GAC: $3,200–$5,200 (NHDES rebates up to $5,000) · Radon aeration: ~$7,500 · Media replaced every 2–5 years on test results.", fee: "Sized by lab results" },
+      service: "Arsenic: $3,400–$6,800 · PFAS GAC: $3,200–$5,200 (NHDES rebates up to $5,000) · Radon aeration: ~$7,500 · Media replaced every 2–5 years on test results.", fee: "Sized by lab results",
+      alt: { public: {
+        does: "On town water this bay is normally a carbon tank for chlorine, chloramine and taste, or a point-of-use reverse-osmosis unit under the kitchen sink. Arsenic, uranium and radon systems are rare here — the utility already treats to the federal limits before the meter.",
+        trouble: "The gap the utility does not cover: disinfectant taste and odour, and a PFAS result that is compliant as a system average but that a homeowner reads in the annual report and wants dealt with at their own tap.",
+        service: "Whole-house catalytic carbon: $1,400–$2,600 · point-of-use RO: $650–$1,450 · carbon media replaced every 3–5 years.",
+        fee: "$650–$2,600 typical" } } },
     heater:  { n: 9, name: "Water heater", spot: "The familiar big cylinder. A flue pipe on top means gas; side access panels mean electric.", is: "The big tank at the end of the line — not water treatment, but its biggest beneficiary.",
       does: "Heats house-ready water. It's last in line on purpose: everything upstream protects it.",
       trouble: "Hard, untreated water scales the elements and can cut its life in half — the most expensive symptom of skipping a softener.",
@@ -483,21 +543,56 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
 
   /* dot positions for numbering */
   const DOTS = {
-    entry: [100, 380], pswitch: [244, 320], tank: [352, 226], sediment: [562, 320],
+    entry: [100, 380], meter: [155, 336], pswitch: [244, 320], tank: [352, 226], sediment: [562, 320],
     softener: [710, 202], brine: [845, 322], uv: [1040, 290], addon: [1097, 540],
     heater: [1261, 212], sink: [1414, 308], drain: [625, 616],
   };
 
+  /* the four basements. `parts` is flow order, and drives the numbering. */
+  const CONFIGS = {
+    wr: { label: "Well, no treatment", sys: "well", note: "Raw well water straight to the taps",
+          parts: ["entry", "pswitch", "tank", "heater", "sink", "drain"],
+          cap: "Well water, untreated: pump, pressure control, then straight to the fixtures. Whatever the bedrock put in this water is what the house drinks — nobody tests or treats it unless the owner arranges it." },
+    wt: { label: "Well, treated", sys: "well", note: "The full train — what §06 of the thesis shows",
+          parts: ["entry", "pswitch", "tank", "sediment", "softener", "brine", "uv", "addon", "heater", "sink", "drain"],
+          cap: "Well water, treated: pressure control, then sediment, softening, disinfection and any contaminant-specific vessels the lab results call for. UV sits last because it needs clear water." },
+    pr: { label: "Public water, no treatment", sys: "public", note: "Meter in, taps out — no equipment at all",
+          parts: ["meter", "heater", "sink", "drain"],
+          cap: "Town water, untreated: the meter, then a long empty run to the water heater. This is the most common basement in New England and it holds no equipment an operator services — every job here starts as a new sale." },
+    pt: { label: "Public water, treated", sys: "public", note: "Softener and carbon — no pump, no UV",
+          parts: ["meter", "sediment", "softener", "brine", "addon", "heater", "sink", "drain"],
+          cap: "Town water, treated: no pressure tank and normally no UV, because the utility supplies the pressure and already disinfects. What remains is hardness, taste and point-of-use polishing — the same machines, sold for different reasons." },
+  };
+  const CFG_ORDER = ["wr", "wt", "pr", "pt"];
+  let cfg = "wt";
+  const sysOf = () => CONFIGS[cfg].sys;
+  const partsOf = () => CONFIGS[cfg].parts;
+  const numOf = id => partsOf().indexOf(id) + 1;
+
+  $("#cfgPick").innerHTML = CFG_ORDER.map(k => {
+    const c = CONFIGS[k];
+    return `<button class="cfgbtn" data-cfg="${k}"><i>${c.sys === "well" ? "Private well" : "Public water"}</i>
+      <b>${esc(c.label)}</b><span>${esc(c.note)} · ${c.parts.length} parts</span></button>`;
+  }).join("");
+
   const dots = $("#dots");
-  Object.entries(DOTS).forEach(([id, [x, y]]) => {
-    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    g.setAttribute("class", "dot");
-    g.setAttribute("data-c", id);
-    g.innerHTML = `<circle cx="${x}" cy="${y}" r="14"/><text x="${x}" y="${y + 4.5}">${COMPONENTS[id].n}</text>`;
-    dots.appendChild(g);
-  });
+  function drawDots() {
+    dots.innerHTML = partsOf().map((id, i) => {
+      const [x, y] = DOTS[id];
+      return `<g class="dot" data-c="${id}"><circle cx="${x}" cy="${y}" r="14"/><text x="${x}" y="${y + 4.5}">${i + 1}</text></g>`;
+    }).join("");
+    $$(".dot").forEach(el => bindPick(el));
+  }
 
   const hots = $$(".hot");
+  function applyConfig() {
+    const parts = partsOf();
+    hots.forEach(h => { h.style.display = parts.includes(h.dataset.c) ? "" : "none"; });
+    $$("#cfgPick .cfgbtn").forEach(b => b.classList.toggle("on", b.dataset.cfg === cfg));
+    $("#diagHead").textContent = `${CONFIGS[cfg].label} — ${parts.length} parts`;
+    drawDots();
+  }
+
   let mode = "parts";
   let selected = "softener";
 
@@ -509,11 +604,13 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
   }
 
   function showComponent(id) {
+    if (!partsOf().includes(id)) id = partsOf()[0];
     selected = id;
-    const c = COMPONENTS[id];
+    const base = COMPONENTS[id];
+    const c = Object.assign({}, base, (base.alt && base.alt[sysOf()]) || {});
     highlight(id, false);
     $("#panel").innerHTML = `
-      <span class="k">Part ${c.n} of ${Object.keys(COMPONENTS).length}</span>
+      <span class="k">Part ${numOf(id)} of ${partsOf().length} · ${CONFIGS[cfg].label}</span>
       <h4>${c.name}</h4>
       ${c.spot ? `<div class="row"><b>How to spot it</b><span>${c.spot}</span></div>` : ""}
       <div class="row"><b>What it is</b><span>${c.is}</span></div>
@@ -530,53 +627,67 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
     softener: "softener", softener_fail: "softener", control_valve: "softener", softener_brine: "softener",
     brine_tank: "brine", uv: "uv", filter: "sediment", install_area: "addon", new_softener: "softener",
     new_system: "addon", water_heater: "heater", floor_drain: "drain", yard: "entry",
+    meter: "meter", prv: "meter", street: "meter",
   };
   const mins = n => n >= 120 ? (n / 60).toFixed(1).replace(".0", "") + " hr" : n + " min";
+  /* on-site time is summed from the steps, never declared separately, so the
+     header and the progress bar can never disagree */
+  /* a step tagged `only` belongs to one system; on the other it is not part
+     of the visit at all, so it drops out of the walkthrough and the clock */
+  const stepsOf = sc => sc.steps.filter(st => !st.only || st.only === sysOf());
+  const dur = sc => stepsOf(sc).reduce((a, st) => a + st.duration, 0);
   const toolLabel = t => (typeof BASEMENT_TOOLS !== "undefined" && BASEMENT_TOOLS[t] && BASEMENT_TOOLS[t].label) || null;
 
   const order = (typeof BASEMENT_ORDER !== "undefined") ? BASEMENT_ORDER : Object.keys(BASEMENT_SCENARIOS);
-  let scId = order[0], idx = 0, playing = false, timer = null;
+  const appliesHere = id => { const v = BASEMENT_SCENARIOS[id].sys; return v === "both" || v === sysOf(); };
+  const scenariosHere = () => order.filter(appliesHere);
+  let scId = "free_test", idx = 0, playing = false, timer = null;
 
-  $("#walkChips").innerHTML = order.map(id => {
-    const sc = BASEMENT_SCENARIOS[id];
-    return `<button class="chip" data-sc="${id}">${sc.icon} ${esc(sc.short)}<span class="d">${mins(sc.duration)}</span></button>`;
-  }).join("");
+  function drawChips() {
+    $("#walkChips").innerHTML = scenariosHere().map(id => {
+      const sc = BASEMENT_SCENARIOS[id];
+      return `<button class="chip" data-sc="${id}">${sc.icon} ${esc(sc.short)}<span class="d">${mins(dur(sc))}</span></button>`;
+    }).join("");
+    $$("#walkChips .chip").forEach(c => c.classList.toggle("on", c.dataset.sc === scId));
+  }
 
   function stopPlay() { playing = false; clearInterval(timer); const b = $("#wtPlay"); if (b) { b.classList.remove("on"); b.textContent = "▶ Auto-play"; } }
 
   function showStep() {
     const sc = BASEMENT_SCENARIOS[scId];
-    const st = sc.steps[idx];
+    const steps = stepsOf(sc);
+    idx = Math.min(idx, steps.length - 1);
+    const st = steps[idx];
     const target = FOCUS_MAP[st.focus] !== undefined ? FOCUS_MAP[st.focus] : null;
     highlight(target, true);
-    const elapsed = sc.steps.slice(0, idx + 1).reduce((a, s) => a + s.duration, 0);
-    const total = sc.steps.reduce((a, s) => a + s.duration, 0);
+    const elapsed = steps.slice(0, idx + 1).reduce((a, s) => a + s.duration, 0);
+    const total = dur(sc);
     const tl = toolLabel(st.tool);
     $("#panel").innerHTML = `
       <span class="k">${sc.icon} ${esc(sc.label)}</span>
       <div class="wt-meta" style="margin-top:8px">
-        <span><b>${mins(sc.duration)}</b> on site</span>
+        <span><b>${mins(dur(sc))}</b> on site</span>
         <span><b>${esc(sc.crew)}</b></span>
         <span><b>${esc(sc.revenue)}</b></span>
       </div>
-      <div class="step-head"><span class="n">STEP ${idx + 1} / ${sc.steps.length}</span><span class="t">${st.duration} min</span></div>
+      <div class="step-head"><span class="n">STEP ${idx + 1} / ${steps.length}</span><span class="t">${st.duration} min</span></div>
       <p class="step-desc">${deRyan(st.description)}</p>
       ${tl && !/hands free/i.test(tl) ? `<span class="tool-chip">🧰 ${esc(tl)}</span>` : ""}
       <div class="wt-btns">
         <button class="btn" id="wtPrev" ${idx === 0 ? "disabled" : ""}>◀ Back</button>
-        <button class="btn primary" id="wtNext" ${idx === sc.steps.length - 1 ? "disabled" : ""}>Next ▶</button>
+        <button class="btn primary" id="wtNext" ${idx === steps.length - 1 ? "disabled" : ""}>Next ▶</button>
         <button class="btn" id="wtPlay">${playing ? "❚❚ Pause" : "▶ Auto-play"}</button>
       </div>
       <div class="mins-bar"><i style="width:${(elapsed / total) * 100}%"></i></div>
       <p class="mins-lab">${elapsed} of ${total} minutes on site</p>`;
     if (playing) $("#wtPlay").classList.add("on");
     $("#wtPrev").onclick = () => { stopPlay(); idx = Math.max(0, idx - 1); showStep(); };
-    $("#wtNext").onclick = () => { stopPlay(); idx = Math.min(sc.steps.length - 1, idx + 1); showStep(); };
+    $("#wtNext").onclick = () => { stopPlay(); idx = Math.min(steps.length - 1, idx + 1); showStep(); };
     $("#wtPlay").onclick = () => {
       if (playing) { stopPlay(); showStep(); return; }
       playing = true;
       timer = setInterval(() => {
-        if (idx >= BASEMENT_SCENARIOS[scId].steps.length - 1) { stopPlay(); showStep(); return; }
+        if (idx >= stepsOf(BASEMENT_SCENARIOS[scId]).length - 1) { stopPlay(); showStep(); return; }
         idx += 1; showStep();
       }, 2400);
       showStep();
@@ -584,7 +695,9 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
   }
 
   function selectScenario(id) {
-    stopPlay(); scId = id; idx = 0;
+    stopPlay();
+    if (!appliesHere(id)) id = scenariosHere()[0];
+    scId = id; idx = 0;
     $$("#walkChips .chip").forEach(c => c.classList.toggle("on", c.dataset.sc === id));
     showStep();
   }
@@ -597,35 +710,52 @@ details.sc ol li .tool{display:block;font-size:12.5px;color:var(--sub)}
     $("#walkChips").style.display = m === "walk" ? "flex" : "none";
     $("#stageCap").textContent = m === "walk"
       ? "The highlighted part is where the technician is working at this step."
-      : "Flow order, left to right: well line → pressure control → filtration → softening → disinfection → optional treatment → hot water → fixtures.";
+      : CONFIGS[cfg].cap;
     if (m === "parts") showComponent(selected);
     else selectScenario(scId);
   }
   $("#tabParts").onclick = () => setMode("parts");
   $("#tabWalk").onclick = () => setMode("walk");
 
-  $$(".hot, .dot").forEach(el => {
+  function bindPick(el) {
     const go = () => { if (mode !== "parts") setMode("parts"); showComponent(el.dataset.c); };
     el.addEventListener("click", go);
     el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
-  });
+  }
+  $$(".hot").forEach(bindPick);
   $("#walkChips").addEventListener("click", e => {
     const b = e.target.closest(".chip"); if (b) selectScenario(b.dataset.sc);
   });
 
+  $("#cfgPick").addEventListener("click", e => {
+    const b = e.target.closest(".cfgbtn"); if (!b || b.dataset.cfg === cfg) return;
+    cfg = b.dataset.cfg;
+    stopPlay();
+    applyConfig();
+    drawChips();
+    if (mode === "parts") { showComponent(selected); $("#stageCap").textContent = CONFIGS[cfg].cap; }
+    else selectScenario(scId);
+  });
+
+  applyConfig();
+  drawChips();
   showComponent("softener");
+  $("#stageCap").textContent = CONFIGS[cfg].cap;
 
   /* ---------------- written procedures ---------------- */
+  const SYSLABEL = { well: "Well only", public: "Public water", both: "Both systems" };
   $("#scDocs").innerHTML = order.map((id, i) => {
     const sc = BASEMENT_SCENARIOS[id];
     if (!sc) return "";
     return `<details class="sc"${i === 0 ? " open" : ""}>
       <summary>${sc.icon} ${esc(sc.label)}
-        <span class="meta">${mins(sc.duration)} · ${esc(sc.crew)} · ${esc(sc.revenue)}</span></summary>
+        <span class="sysbadge ${sc.sys === "both" ? "" : sc.sys}">${SYSLABEL[sc.sys]}</span>
+        <span class="meta">${mins(sc.steps.reduce((a, st) => a + st.duration, 0))} · ${esc(sc.crew)} · ${esc(sc.revenue)}</span></summary>
       <p class="blurb">${esc(sc.blurb)}</p>
       <ol>${sc.steps.map(st => {
         const tl = toolLabel(st.tool);
         return `<li>${deRyan(st.description)}<span class="mins">${st.duration} min</span>
+          ${st.only ? `<span class="mins" style="color:var(--sub)">${st.only} only</span>` : ""}
           ${tl && !/hands free/i.test(tl) ? `<span class="tool">Tool: ${esc(tl)}</span>` : ""}</li>`;
       }).join("")}</ol>
     </details>`;
