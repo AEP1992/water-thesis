@@ -4,9 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The New England Residential Water Thesis — AEP Equity</title>
-<meta name="description" content="An investment thesis on New England residential water services: the market, the players, the regulation, what breaks in homes, how technicians fix and test it, the licensing that gates the labor, and the economics of the trade. Prepared by Atomus Equity Partners." />
+<meta name="description" content="An investment thesis on New England residential water services: the market, the players, the regulation, what breaks in homes, how technicians fix and test it, what the licensing does and does not gate, and the economics of the trade. Prepared by Atomus Equity Partners." />
 <meta property="og:title" content="The New England Residential Water Thesis — AEP Equity" />
-<meta property="og:description" content="The market, the players, the regulation, what breaks in homes, how technicians fix and test it, the licensing that gates the labor, and the economics of the trade. Prepared by Atomus Equity Partners." />
+<meta property="og:description" content="The market, the players, the regulation, what breaks in homes, how technicians fix and test it, what the licensing does and does not gate, and the economics of the trade. Prepared by Atomus Equity Partners." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://aep1992.github.io/water-thesis/" />
 <meta name="twitter:card" content="summary" />
@@ -165,7 +165,7 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
     <nav class="toc" aria-label="Contents">
       <a href="#thesis"><b>01</b>The thesis</a>
       <a href="#market"><b>02</b>State of the market</a>
-      <a href="#regulation"><b>03</b>Regulatory tailwinds</a>
+      <a href="#regulation"><b>03</b>What drives demand</a>
       <a href="#players"><b>04</b>The players</a>
       <a href="#problems"><b>05</b>What goes wrong in homes</a>
       <a href="#systems"><b>06</b>How the systems work</a>
@@ -184,22 +184,24 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
     <h2>Summary</h2>
     <p class="sec-sub">Three claims, each documented in the sections below.</p>
     <div class="thesis-box">
-      <p class="big">New England residential water combines non-discretionary demand, state-license-constrained labor
-        supply, and an active consolidation market with entry at ~3–4× owner earnings and platform exits at 8–12×
-        EBITDA. No platform operating today is residential-water-first.</p>
+      <p class="big">New England residential water combines demand that is event-triggered rather than deferrable, a
+        treatment trade that no state licenses, and an active consolidation market with entry at ~3–4× owner earnings
+        and platform exits at 8–12× EBITDA. No platform operating today is residential-water-first.</p>
       <div class="pillars">
         <div class="pillar">
           <h4>Demand</h4>
-          <p>~1.2M private-well households (~3M residents). No federal regulation applies at a private tap. Arsenic,
-            radon, uranium, iron and PFAS occur naturally or persistently in the bedrock aquifer. Pump failures, failed
-            real-estate tests and MCL exceedances cannot be deferred.</p>
-          <p style="margin-top:8px"><em class="src-i">NHDES · Maine CDC · USGS · EPA</em></p>
+          <p>~1.2M private-well households (~3M residents). No federal rule reaches a private tap — the Safe Drinking
+            Water Act stops at public systems. Arsenic, radon, uranium, iron and PFAS occur naturally or persistently in
+            the bedrock aquifer. Demand is triggered, not mandated: a dead pump, a failed test inside a real-estate
+            contingency window, or a lab result a family will not live with.</p>
+          <p style="margin-top:8px"><em class="src-i">EPA, SDWA scope · NHDES · Maine CDC · USGS</em></p>
         </div>
         <div class="pillar">
-          <h4>Supply</h4>
-          <p>Well-pump work legally requires state licenses (NH: 3 years' experience + exam). NH's licensed
-            pump-installer count fell 22% in the five years to 2025.</p>
-          <p style="margin-top:8px"><em class="src-i">NH RSA 482-B · NH Water Well Board minutes, 2025</em></p>
+          <h4>Labor</h4>
+          <p>No state licenses residential water treatment. New Hampshire and Maine license well and pump work only;
+            WQA certification is voluntary. Treatment capacity is therefore hired and trained in months — which is what
+            makes the business buildable, and equally means no license protects it. Detail in §08.</p>
+          <p style="margin-top:8px"><em class="src-i">NH RSA 482-B (wells and pumps) · Maine Title 32 Ch. 69-C · WQA, voluntary</em></p>
         </div>
         <div class="pillar">
           <h4>Exit</h4>
@@ -265,19 +267,31 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
         on a real-estate test.</li>
       <li><strong>PFAS</strong> — industrial "forever chemicals"; regulation, deadlines and rebates in §03.</li>
     </ul>
-    <p>No utility monitors these wells. Testing, treatment and repair are initiated by the homeowner and performed by
-      local licensed operators.</p>
+    <p>No utility monitors these wells and no rule requires the owner to. Testing, treatment and repair are initiated
+      by the homeowner and performed by local operators — licensed for the pump work, unlicensed for the treatment
+      (§08).</p>
   </div>
 </section>
 
 <!-- ============ 03 REGULATION ============ -->
 <section id="regulation">
   <div class="wrap">
-    <p class="sec-n">03 — Regulatory Tailwinds</p>
-    <h2>Regulatory drivers</h2>
-    <p class="sec-sub">Four demand drivers. Three are dated in statute; one is demographic.</p>
+    <p class="sec-n">03 — Regulation &amp; Demand Catalysts</p>
+    <h2>What actually drives demand</h2>
+    <p class="sec-sub">Four drivers. The statutory one binds public water systems, not private wells; the other three
+      are demographic, financial and commercial.</p>
 
-    <h3>1 · The PFAS clock</h3>
+    <div class="callout" style="border-left-color:var(--red)">
+      <p><strong>Where regulation binds, and where it does not.</strong> Every PFAS deadline below applies to
+        <strong>community public water systems</strong> under the Safe Drinking Water Act. None of it reaches a private
+        well. A private-well household sitting at ten times the federal PFOA limit is under no legal obligation to test,
+        treat, disclose or do anything at all. For the ~1.2M well households in §02, regulation supplies awareness, a
+        testing standard and — in New Hampshire — a subsidy. It does not supply a mandate. The mandate exists only on the
+        public-system side, which is a different customer, a different sales cycle and a different business.
+        <em class="src-i">EPA, SDWA scope · 40 CFR 141, national primary drinking water regulations (public systems)</em></p>
+    </div>
+
+    <h3>1 · The PFAS clock — public systems only</h3>
     <div class="tl">
       <div class="tl-item done"><b>2020</b><span>New Hampshire enacts enforceable PFAS drinking-water limits under RSA 485 — four years before any federal standard existed. NHDES has since sampled ~190 waste sites for PFAS; ~140 exceed groundwater standards. <em class="src-i">NHDES occurrence report, Dec 2024</em></span></div>
       <div class="tl-item done"><b>Apr 10, 2024</b><span>EPA signs the first-ever national PFAS drinking-water rule; effective June 25, 2024. <em class="src-i">Federal Register 2024-07773</em></span></div>
@@ -318,6 +332,8 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
     </div>
 
     <h3>Residential PFAS sale triggers</h3>
+    <p>None of the following is a legal requirement on a private-well owner. Each is a moment at which a household
+      chooses to act, and the reason the private-well segment is sold rather than mandated.</p>
     <div class="tbl-scroll">
       <table>
         <thead><tr><th>Trigger</th><th>Timeline</th><th>Typical service</th><th class="num">Ticket</th></tr></thead>
@@ -465,7 +481,7 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
           <tr><td><b>No water</b></td><td>Dry tap — failed pump, pressure switch, or control box</td><td>Emergency, same-day</td><td class="num">$800–$6,500</td></tr>
           <tr><td><b>Real-estate transaction</b></td><td>Lender or buyer requires a water test inside the contingency window (FHA/VA panels)</td><td>Deadline-driven</td><td class="num">$150–$400 → installs</td></tr>
           <tr><td><b>Staining &amp; taste</b></td><td>Orange/black stains, metallic taste, rotten-egg smell — iron, manganese, sulfur</td><td>Patience-driven</td><td class="num">$1,800–$3,500</td></tr>
-          <tr><td><b>Failed lab test — arsenic / uranium / radon</b></td><td>A report with a number above the limit</td><td>Health-driven</td><td class="num">$1,450–$7,500</td></tr>
+          <tr><td><b>Failed lab test — arsenic / uranium / radon</b></td><td>A report with a number above the federal or state health standard — advisory at a private tap, not enforceable</td><td>Health-driven</td><td class="num">$1,450–$7,500</td></tr>
           <tr><td><b>PFAS letter or news</b></td><td>State notification or local coverage; NHDES rebate covers most of the fix</td><td>Awareness-driven</td><td class="num">~$5,200 (−$5K rebate)</td></tr>
           <tr><td><b>Hard water / scale</b></td><td>Dead water heater, crusted fixtures, dry skin</td><td>Replacement cycle</td><td class="num">$2,000–$3,200</td></tr>
           <tr><td><b>Softener quit working</b></td><td>20–40-year-old unit finally exhausts its resin</td><td>Repair vs replace</td><td class="num">$300–$2,800</td></tr>
@@ -852,7 +868,8 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
   <div class="wrap">
     <p class="sec-n">07 — How It Gets Fixed &amp; Tested</p>
     <h2>Service delivery and testing</h2>
-    <p class="sec-sub">Service calls follow a fixed diagnostic sequence executed by a licensed technician. The full
+    <p class="sec-sub">Service calls follow a fixed diagnostic sequence executed by a trained technician — licensed
+      only where the work touches the pump. The full
       sequence, the on-site test panel, and the lab chain are documented below.</p>
 
     <div class="callout" style="border-left-color:var(--blue)">
@@ -1074,23 +1091,43 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
   <div class="wrap">
     <p class="sec-n">08 — Licensing &amp; Labor</p>
     <h2>Licensing and labor</h2>
-    <p class="sec-sub">The work requires state licenses and certifications with multi-year experience requirements.</p>
+    <p class="sec-sub">Two different labor markets sit under one roof, and they are routinely conflated. Well and pump
+      work is licensed by statute with a multi-year experience requirement. Water treatment is not licensed at all.</p>
+
+    <div class="callout">
+      <p><strong>No state licenses water treatment.</strong> There is no water-treatment, water-conditioning or
+        filtration installer license in New Hampshire or Maine. Three separate things get mistaken for one:
+        <strong>(1)</strong> the NH and ME <em>pump installer</em> licenses, which gate well construction and pump work
+        and nothing downstream of the pressure tank; <strong>(2)</strong> <em>plumbing</em> licensure, which is triggered
+        by making a potable-water connection rather than by the treatment function itself, and whose scope varies by
+        state and municipality; and <strong>(3)</strong> NHDES <em>water works operator</em> certification, which applies
+        to people operating public water systems, not to anyone working in a house. WQA's CI and CWS credentials are
+        voluntary trade certifications, not licenses.</p>
+      <p style="margin-top:10px">The consequence runs both ways. A treatment-first operator can staff up in months
+        rather than years — and so can every competitor, which is why defensibility in this business has to come from
+        route density, contracted recurring revenue and demand generation rather than from a credential.
+        <em class="src-i">NH Water Well Board licensing scope · Maine Title 32 Ch. 69-C · NHDES water works operator
+        certification (public systems) · WQA professional certification, voluntary</em></p>
+    </div>
 
     <div class="tbl-scroll">
       <table>
         <thead><tr><th>Credential</th><th>Issuer</th><th>Requirement</th><th>What it gates</th></tr></thead>
         <tbody>
-          <tr><td><b>Pump Installer license (NH)</b></td><td>NH DES Water Well Board (RSA 482-B)</td><td><b>3 years'</b> trade experience + exam · annual renewal + 2 CE hrs/yr</td><td>Pump installation performed as a business in NH (property-owner work exempt)</td></tr>
+          <tr><td><b>Water treatment installation</b></td><td class="dim">No issuer — no such license</td><td class="dim">None</td><td><b>Nothing.</b> Softeners, sediment and iron filters, carbon, UV and RO can be installed in NH and ME without any trade license</td></tr>
+          <tr><td><b>Pump Installer license (NH)</b></td><td>NH DES Water Well Board (RSA 482-B)</td><td><b>3 years'</b> trade experience + exam · annual renewal + 2 CE hrs/yr</td><td>Well construction and pump installation performed as a business in NH — not the treatment train (property-owner work exempt)</td></tr>
           <tr><td><b>Pump Installer — journeyman/master (ME)</b></td><td>Maine Water Well Commission (Title 32, Ch. 69-C)</td><td>Journeyman: 1 yr / 350+ hrs as apprentice + exam; master tier above</td><td>The same gate in Maine; companies need a licensed master on staff</td></tr>
-          <tr><td><b>WQA CI / CWS certifications</b></td><td>Water Quality Association</td><td>Coursework + proctored exams (up to 3 hrs) + experience tiers</td><td>Treatment credibility; required by many OEM dealer programs</td></tr>
-          <tr><td><b>Plumbing license (NH / ME)</b></td><td>State plumbing boards</td><td>Apprenticeship + exam</td><td>Potable-water connections — treatment installs tie into plumbing licensure, esp. in Maine</td></tr>
+          <tr><td><b>WQA CI / CWS certifications</b></td><td>Water Quality Association (trade body)</td><td><b>Voluntary.</b> Coursework + proctored exams + experience tiers; 3-year recertification</td><td>Nothing legally. Credibility with homeowners and eligibility for OEM dealer programs</td></tr>
+          <tr><td><b>Plumbing license (NH / ME)</b></td><td>State plumbing boards</td><td>Apprenticeship + exam</td><td>The potable-water connection where local code requires a permit — triggered by the plumbing, not by the treatment. Scope varies by municipality; Maine's pump-installer exemption is narrow (same room, ≤15 ft of pipe)</td></tr>
+          <tr><td><b>Water works operator (NH)</b></td><td>NHDES</td><td>Grades I–IV; education + operating experience</td><td class="dim">Operating a <b>public</b> water system. Not applicable to residential work — listed here because it is the credential most often confused for one</td></tr>
           <tr><td><b>Class B CDL + DOT card</b></td><td>State DMV / FMCSA</td><td>Testing + medical card</td><td>Pump-hoist trucks rated 26,001 lbs GVWR or more (lighter hoists need no CDL)</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p class="src">Sources: NH RSA 482-B and NH DES Water Well Board · Maine Title 32 Ch. 69-C / Maine Water Well
-      Commission · WQA certification pages · FMCSA CDL classes.</p>
+    <p class="src">Sources: NH RSA 482-B and NH DES Water Well Board licensing scope · Maine Title 32 Ch. 69-C /
+      Maine Water Well Commission · Maine Title 32 Ch. 49 (plumbers) · NHDES water works operator certification ·
+      WQA professional certification · FMCSA CDL classes.</p>
 
     <h3>Technician levels — capability, pay, daily revenue</h3>
     <div class="tbl-scroll">
@@ -1107,8 +1144,12 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
     </div>
     <p class="src">Ladder structure and pay bands: AEP analysis (modeled). Posted wage ranges: ZipRecruiter /
       Indeed NH listings — $20–30/hr typical, experienced residential treatment techs $35–43/hr. License decline: NH
-      Water Well Board minutes, April 2025 (−22% licensed pump installers over five years). Level 4 is the chokepoint —
-      the three-year license clock is statutory.</p>
+      Water Well Board minutes, April 2025 (−22% licensed pump installers over five years).</p>
+    <p class="note">Levels 1–3 are the treatment ladder and carry <strong>no statutory gate</strong> — they are limited
+      by training and supervision, not by law, and can be built in months. Levels 4 and 5 are the pump ladder, where the
+      three-year New Hampshire clock is statutory and the licensed pool has shrunk 22% in five years. An operator that
+      never touches a pump never meets that constraint; an operator that wants pump capability will find it faster to
+      buy than to grow.</p>
 
   </div>
 </section>
@@ -1121,10 +1162,10 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
     <p class="sec-sub">Four phases; each is gated by the one before it.</p>
 
     <div class="cards">
-      <div class="card"><span class="k">Phase 1 · Capacity</span><h4>Hire before marketing</h4><p>Build the licensed-tech pipeline first: apprentices on the three-year license clock, WQA certification funded up the ladder, a second install crew.</p></div>
+      <div class="card"><span class="k">Phase 1 · Capacity</span><h4>Hire before marketing</h4><p>Treatment technicians are productive in months — there is no license clock on filtration. Fund WQA certification for credibility and dealer-program access, and stand up the second install crew before demand is generated. A licensed pump installer is a separate, later hire.</p></div>
       <div class="card"><span class="k">Phase 2 · Recurring</span><h4>Productize maintenance</h4><p>Named membership tiers attached at every install and service call (step 17, §07), pricing indexed to media costs. Converts per-call maintenance billing into contracted recurring revenue.</p></div>
       <div class="card"><span class="k">Phase 3 · Demand</span><h4>Turn on the ignored channels</h4><p>Local search on high-rating profiles, PFAS marketing, NHDES rebate administration, and formalized realtor/lender referral channels.</p></div>
-      <div class="card"><span class="k">Phase 4 · Consolidate</span><h4>Buy the retiring incumbents</h4><p>Tuck-in acquisitions of $1–3M shops at ~3–4× owner earnings as founders exit — each adding licensed technicians, an installed service base, and route density. A-Z Water Systems (ME) executed this model across three acquisitions.</p></div>
+      <div class="card"><span class="k">Phase 4 · Consolidate</span><h4>Buy the retiring incumbents</h4><p>Tuck-in acquisitions of $1–3M shops at ~3–4× owner earnings as founders exit — each adding trained technicians, an installed service base, and route density — and, where the seller holds one, the pump license. A-Z Water Systems (ME) executed this model across three acquisitions.</p></div>
     </div>
 
     <div class="callout">
@@ -1133,9 +1174,12 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
         sequenced after a residential base.</p>
     </div>
 
-    <p>In summary: ~1.2M unregulated private-well households; state-license-gated labor with a documented 22% five-year
-      decline in NH licensed installers; fixed service schedules on every installed system, currently uncontracted;
-      entry at ~3–4× owner earnings; documented buyers and exits at 8–12× EBITDA.</p>
+    <p>In summary: ~1.2M private-well households outside any federal rule, where demand is triggered by events rather
+      than compelled by regulation; a treatment trade with no licensing gate, which cuts both ways — capacity can be
+      built in months, and no credential protects the position once it is built; fixed service schedules on every
+      installed system, currently uncontracted; entry at ~3–4× owner earnings; documented buyers and exits at 8–12×
+      EBITDA. Where a license does bind — well and pump work — the New Hampshire installer pool has fallen 22% in five
+      years, which is an argument for acquiring that capability rather than growing it.</p>
   </div>
 </section>
 
@@ -1175,7 +1219,10 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
       <a href="https://www.des.nh.gov/sites/g/files/ehbemt341/files/documents/20250409-wwb-minutes.pdf">NH Water Well Board minutes, Apr 2025 (licensee decline)</a> ·
       <a href="https://www.mainelegislature.org/legis/statutes/32/title32ch69-C.pdf">Maine Title 32 Ch. 69-C</a> ·
       <a href="https://www.maine.gov/dhhs/mecdc/environmental-health/dwp/professionals/wellDrillers.shtml">Maine Water Well Commission</a> ·
-      <a href="https://wqa.org/grow/professional-certification/exams/">WQA certification exams</a> ·
+      <a href="https://wqa.org/grow/professional-certification/">WQA professional certification (voluntary)</a> ·
+      <a href="https://www.des.nh.gov/about/boards-and-committees/water-well-board/licensing">NH Water Well Board — what the license covers</a> ·
+      <a href="https://www.mainelegislature.org/legis/statutes/32/title32ch49.pdf">Maine Title 32 Ch. 49 (plumbers)</a> ·
+      <a href="https://www.des.nh.gov/water/drinking-water/public-water-systems/operator-certification">NHDES water works operator certification (public systems)</a> ·
       <a href="https://www.ziprecruiter.com/Salaries/Water-Treatment-Operator-Salary--in-New-Hampshire">ZipRecruiter / Indeed NH wage postings</a> ·
       <a href="https://www.census.gov/construction/c30/pdf/release.pdf">Census C30 construction spending</a> ·
       <a href="https://fred.stlouisfed.org/series/WPU06790961">BLS PPI, water-treating compounds</a>.
