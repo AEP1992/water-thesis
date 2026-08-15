@@ -92,7 +92,18 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
 
 .diagram{background:var(--navy);border-radius:10px;padding:22px;margin:22px 0}
 .diagram svg{width:100%;height:auto;display:block}
-.diagram figcaption{color:#9FB0C2;font-size:12.5px;margin-top:12px;line-height:1.5}
+.diagram figcaption{color:#9FB0C2;font-size:12.5px;margin-top:14px;line-height:1.5}
+.dgm-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.dgm-scroll svg{min-width:780px}
+.dgm-key{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:10px 24px}
+.dgm-key li{position:relative;padding-left:28px;font-size:12.5px;line-height:1.5;color:#9FB0C2}
+.dgm-key li b{color:#E9E4D6;font-weight:600}
+.dgm-key li i{position:absolute;left:0;top:1px;width:19px;height:19px;border-radius:50%;background:var(--copper);color:#1B2532;font:700 11px/19px var(--mono);text-align:center;font-style:normal}
+.dgm-key li.pou i{background:#5EEAD4}
+.dgm-note{margin-top:18px;border-left:3px solid var(--copper);padding-left:15px;font-size:12.5px;line-height:1.62;color:#9FB0C2}
+.dgm-note p{margin:0;max-width:100%}
+.dgm-note b{color:#E9E4D6;font-weight:600}
+.dgm-note .src-i{display:block;margin-top:7px;color:#7C8A9B}
 
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:20px 0}
 .card{background:#FBF8EF;border:1px solid var(--line);border-radius:8px;padding:16px 18px}
@@ -481,89 +492,334 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
       contaminant-by-contaminant treatment ahead of the first tap.</p>
 
     <figure class="diagram">
-      <svg viewBox="0 60 1200 700" role="img" aria-label="Cutaway of a private-well home water system: drilled well with submersible pump, pressure tank, and basement treatment train">
+      <div class="dgm-scroll">
+      <svg viewBox="0 0 1240 880" role="img" aria-label="Cutaway of a private-well home. A drilled bedrock well with a submersible pump feeds a buried service line through the foundation into the basement, where water passes in order through a pressure tank, sediment filter, calcite pH neutralizer, iron and manganese filter, softener with brine tank, granular activated carbon filter, and finally a UV sterilizer before rising to the fixtures. A point-of-use reverse-osmosis unit sits under the kitchen sink.">
         <defs>
-          <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#12324f"/><stop offset="100%" stop-color="#071a2c"/>
+          <linearGradient id="d-soil" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#173A56"/><stop offset="100%" stop-color="#061725"/>
           </linearGradient>
-          <linearGradient id="gradWater" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#38BDF8" stop-opacity=".55"/><stop offset="100%" stop-color="#14B8A6" stop-opacity=".2"/>
+          <linearGradient id="d-aq" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#38BDF8" stop-opacity=".22"/><stop offset="100%" stop-color="#14B8A6" stop-opacity=".07"/>
           </linearGradient>
-          <pattern id="bedrock" width="46" height="34" patternUnits="userSpaceOnUse" patternTransform="rotate(6)">
-            <path d="M0 17h46M23 0v34" stroke="#38BDF8" stroke-opacity=".13" stroke-width="1"/>
+          <pattern id="d-rock" width="54" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(7)">
+            <path d="M0 20h54M27 0v40" stroke="#38BDF8" stroke-opacity=".09" stroke-width="1"/>
           </pattern>
         </defs>
-        <rect x="0" y="250" width="1200" height="510" fill="url(#ground)"/>
-        <rect x="0" y="250" width="1200" height="510" fill="url(#bedrock)"/>
-        <path d="M0 470 Q 300 440 600 470 T 1200 462 L1200 760 L0 760Z" fill="url(#gradWater)"/>
-        <path d="M0 252 Q 200 240 420 250 T 820 246 T 1200 254" stroke="#38BDF8" stroke-opacity=".55" stroke-width="2" fill="none"/>
-        <g stroke="#38BDF8" stroke-opacity=".8" fill="none" stroke-width="2">
-          <path d="M690 252V150l90-58 90 58v102" />
-          <path d="M666 152 780 78l114 74" stroke-opacity=".55"/>
-          <rect x="742" y="196" width="34" height="56"/>
-          <rect x="800" y="188" width="34" height="30"/>
+
+        <!-- ===== sky, ground, aquifer ===== -->
+        <rect x="0" y="0" width="1240" height="300" fill="#243343" fill-opacity=".5"/>
+        <rect x="0" y="300" width="1240" height="580" fill="url(#d-soil)"/>
+        <rect x="0" y="300" width="1240" height="580" fill="url(#d-rock)"/>
+        <path d="M0 604 Q300 586 620 602 T1240 596 L1240 880 L0 880Z" fill="url(#d-aq)"/>
+        <path d="M0 300 H1240" stroke="#7DD3FC" stroke-opacity=".6" stroke-width="2"/>
+
+        <!-- ===== the house ===== -->
+        <path d="M430 300 V150 L790 52 L1150 150 V300 Z" fill="#1B2C3D" fill-opacity=".85"/>
+        <path d="M430 150 L790 52 L1150 150" fill="#1B2C3D" fill-opacity=".55"/>
+        <g fill="none" stroke="#A7B6C6" stroke-width="3">
+          <path d="M430 300 V150 L790 52 L1150 150 V300"/>
         </g>
+        <path d="M396 165 L790 50 L1184 165" fill="none" stroke="#A7B6C6" stroke-width="2.5" stroke-opacity=".6"/>
+        <path d="M430 300 H1150" stroke="#A7B6C6" stroke-width="3"/>
+
+        <!-- first-floor supply run + fixtures -->
+        <path d="M1145 380 V288 H520" fill="none" stroke="#38BDF8" stroke-width="3.5"/>
+        <path d="M1139 322 l6 -13 l6 13z" fill="#38BDF8"/>
+        <g fill="none" stroke="#7DD3FC" stroke-width="2.5">
+          <!-- laundry -->
+          <path d="M540 288 V246"/>
+          <rect x="506" y="200" width="68" height="46" rx="4"/>
+          <circle cx="540" cy="223" r="13"/>
+          <!-- shower -->
+          <path d="M712 288 V206"/>
+          <path d="M694 202 h36"/>
+          <path d="M702 210 v10 M712 210 v13 M722 210 v10" stroke-opacity=".6" stroke-width="2"/>
+          <path d="M676 250 v24 q0 12 12 12 h44 q12 0 12-12 v-24 z"/>
+          <!-- kitchen sink -->
+          <path d="M977 288 V246"/>
+          <path d="M977 238 V216 q0-11 11-11 h14 v9"/>
+          <path d="M948 246 v30 h58 v-30"/>
+        </g>
+        <rect x="930" y="238" width="218" height="8" fill="#A7B6C6" fill-opacity=".8"/>
+        <!-- point-of-use RO -->
+        <g fill="none" stroke="#5EEAD4" stroke-width="2.5">
+          <path d="M1062 288 V282" stroke-width="3"/>
+          <rect x="1040" y="250" width="20" height="32" rx="9"/>
+          <rect x="1066" y="250" width="20" height="32" rx="9"/>
+          <rect x="1096" y="252" width="44" height="30" rx="9"/>
+        </g>
+
+        <!-- ===== basement cutaway ===== -->
+        <rect x="430" y="300" width="720" height="430" fill="#08131E"/>
+        <rect x="430" y="706" width="720" height="24" fill="#1B2532"/>
+        <rect x="430" y="300" width="720" height="430" fill="none" stroke="#A7B6C6" stroke-width="3"/>
+        <path d="M430 706 H1150" stroke="#A7B6C6" stroke-width="1.5" stroke-opacity=".7"/>
+
+        <!-- ===== the well ===== -->
         <g>
-          <rect x="666" y="252" width="228" height="118" fill="#1B2532" fill-opacity=".55" stroke="#38BDF8" stroke-opacity=".35"/>
-          <g fill="none" stroke="#14B8A6" stroke-width="2">
-            <rect x="686" y="276" width="30" height="82" rx="14"/>
-            <rect x="726" y="276" width="30" height="82" rx="14"/>
-            <rect x="766" y="290" width="26" height="68" rx="12"/>
+          <rect x="178" y="282" width="46" height="598" fill="#04121f" fill-opacity=".9"/>
+          <rect x="181" y="500" width="40" height="380" fill="#38BDF8" fill-opacity=".22"/>
+          <path d="M181 500 H221" stroke="#7DD3FC" stroke-width="2"/>
+          <line x1="178" y1="282" x2="178" y2="880" stroke="#A7B6C6" stroke-width="3"/>
+          <line x1="224" y1="282" x2="224" y2="880" stroke="#A7B6C6" stroke-width="3"/>
+          <rect x="168" y="262" width="66" height="20" rx="3" fill="#A7B6C6"/>
+          <rect x="172" y="548" width="58" height="36" fill="#0E2740"/>
+          <path d="M172 556 L201 548 L230 564 M172 576 L201 568 L230 584" fill="none" stroke="#A7B6C6" stroke-width="2.5"/>
+          <line x1="201" y1="380" x2="201" y2="740" stroke="#E2E8F0" stroke-width="5"/>
+          <line x1="212" y1="392" x2="212" y2="740" stroke="#F59E0B" stroke-width="2" stroke-opacity=".75" stroke-dasharray="7 6"/>
+          <path d="M195 664 l6 -14 l6 14z" fill="#E2E8F0"/>
+          <g>
+            <rect x="184" y="740" width="34" height="80" rx="9" fill="#14B8A6"/>
+            <path d="M188 756h26M188 772h26M188 788h26" stroke="#0B3B37" stroke-width="4"/>
+            <rect x="193" y="820" width="16" height="16" rx="4" fill="#0F766E"/>
           </g>
-          <g stroke="#F59E0B" stroke-width="2" fill="none">
-            <rect x="800" y="300" width="52" height="14" rx="7"/>
-            <path d="M806 307h40" stroke-dasharray="4 4"/>
-          </g>
-          <g fill="none" stroke="#38BDF8" stroke-width="2">
-            <rect x="856" y="286" width="30" height="72" rx="15"/>
-          </g>
-          <path d="M640 340h46M716 300h10M756 300h10M792 307h8M852 307h4M886 322h10" stroke="#38BDF8" stroke-opacity=".7" stroke-width="2"/>
-          <path d="M640 340V318h46" stroke="#38BDF8" stroke-opacity=".7" stroke-width="2" fill="none"/>
+          <path d="M186 734h30" stroke="#F59E0B" stroke-width="3"/>
+          <rect x="218" y="366" width="20" height="28" rx="3" fill="#F59E0B"/>
+          <path d="M238 380 H430" stroke="#38BDF8" stroke-width="4"/>
+          <path d="M330 373 l13 7 l-13 7z" fill="#38BDF8"/>
         </g>
-        <path d="M330 318 H 640" stroke="#38BDF8" stroke-width="3" fill="none" stroke-opacity=".85"/>
-        <path d="M330 318 V 300" stroke="#38BDF8" stroke-width="3" fill="none" stroke-opacity=".85"/>
+
+        <!-- ===== basement header line ===== -->
+        <path d="M430 380 H1145" stroke="#38BDF8" stroke-width="4"/>
+        <path d="M545 373 l13 7 l-13 7z" fill="#38BDF8"/>
+        <path d="M706 373 l13 7 l-13 7z" fill="#38BDF8"/>
+        <path d="M900 373 l13 7 l-13 7z" fill="#38BDF8"/>
+
+        <!-- ===== equipment, in flow order ===== -->
+        <!-- 1 pressure tank -->
+        <g fill="none" stroke="#7DD3FC" stroke-width="2.5">
+          <path d="M500 380 V462" stroke-width="3"/>
+          <rect x="468" y="462" width="64" height="108" rx="18"/>
+          <path d="M468 500 H532" stroke-opacity=".5"/>
+          <rect x="538" y="464" width="26" height="22" rx="3" stroke="#A7B6C6"/>
+          <circle cx="551" cy="500" r="9" stroke="#A7B6C6" stroke-width="2"/>
+        </g>
+        <!-- 2 sediment filter -->
+        <g fill="none" stroke="#7DD3FC" stroke-width="2.5">
+          <path d="M588 380 V400" stroke-width="3"/>
+          <rect x="566" y="400" width="44" height="16" rx="3"/>
+          <path d="M572 416 v46 q0 9 9 9 h14 q9 0 9-9 v-46"/>
+          <path d="M582 424 v38 M596 424 v38" stroke-opacity=".4" stroke-width="2"/>
+        </g>
+        <!-- 3 calcite neutralizer : granular media -->
+        <g fill="none" stroke="#7DD3FC" stroke-width="2.5">
+          <path d="M668 380 V402" stroke-width="3"/>
+          <rect x="646" y="402" width="44" height="18" rx="4" stroke="#A7B6C6"/>
+          <rect x="641" y="420" width="54" height="150" rx="22"/>
+        </g>
+        <g fill="#7DD3FC" fill-opacity=".5">
+          <circle cx="653" cy="486" r="4"/><circle cx="668" cy="478" r="4"/><circle cx="683" cy="488" r="4"/>
+          <circle cx="660" cy="508" r="4"/><circle cx="676" cy="504" r="4"/><circle cx="652" cy="530" r="4"/>
+          <circle cx="669" cy="528" r="4"/><circle cx="684" cy="524" r="4"/><circle cx="661" cy="550" r="4"/><circle cx="678" cy="548" r="4"/>
+        </g>
+        <!-- 4 iron / manganese : air pocket over media -->
+        <g fill="none" stroke="#7DD3FC" stroke-width="2.5">
+          <path d="M752 380 V402" stroke-width="3"/>
+          <rect x="730" y="402" width="44" height="18" rx="4" stroke="#A7B6C6"/>
+          <rect x="725" y="420" width="54" height="150" rx="22"/>
+          <path d="M727 494 q26 -12 50 0" stroke="#F59E0B" stroke-width="2.5"/>
+        </g>
+        <g fill="#F59E0B" fill-opacity=".45">
+          <circle cx="740" cy="452" r="3.5"/><circle cx="756" cy="444" r="3.5"/><circle cx="768" cy="458" r="3.5"/>
+          <circle cx="748" cy="472" r="3.5"/><circle cx="763" cy="476" r="3.5"/>
+        </g>
+        <g fill="#7DD3FC" fill-opacity=".45">
+          <circle cx="737" cy="518" r="4"/><circle cx="753" cy="512" r="4"/><circle cx="769" cy="520" r="4"/>
+          <circle cx="744" cy="540" r="4"/><circle cx="762" cy="538" r="4"/><circle cx="752" cy="556" r="4"/>
+        </g>
+        <!-- 5 softener + brine tank -->
+        <g fill="none" stroke="#14B8A6" stroke-width="2.5">
+          <path d="M836 380 V402" stroke="#7DD3FC" stroke-width="3"/>
+          <rect x="814" y="402" width="44" height="18" rx="4" stroke="#A7B6C6"/>
+          <rect x="809" y="420" width="54" height="150" rx="22"/>
+          <rect x="872" y="480" width="48" height="90" rx="7"/>
+          <path d="M872 496 H920"/>
+          <path d="M863 448 H872 V492" stroke-width="2"/>
+        </g>
+        <g fill="#14B8A6" fill-opacity=".45">
+          <circle cx="882" cy="524" r="4"/><circle cx="897" cy="518" r="4"/><circle cx="911" cy="526" r="4"/>
+          <circle cx="888" cy="544" r="4"/><circle cx="905" cy="542" r="4"/>
+        </g>
+        <!-- 6 GAC carbon -->
+        <g fill="none" stroke="#7DD3FC" stroke-width="2.5">
+          <path d="M968 380 V402" stroke-width="3"/>
+          <rect x="946" y="402" width="44" height="18" rx="4" stroke="#A7B6C6"/>
+          <rect x="941" y="420" width="54" height="150" rx="22"/>
+        </g>
+        <g fill="#CBD5E1" fill-opacity=".3">
+          <rect x="949" y="452" width="38" height="106" rx="6"/>
+        </g>
+        <g stroke="#94A3B8" stroke-opacity=".55" stroke-width="2">
+          <path d="M953 470 h30 M953 490 h30 M953 510 h30 M953 530 h30"/>
+        </g>
+        <!-- 7 UV sterilizer, last in line -->
         <g>
-          <rect x="300" y="214" width="60" height="546" fill="#04121f" fill-opacity=".7"/>
-          <line x1="300" y1="214" x2="300" y2="760" stroke="#94A3B8" stroke-width="3"/>
-          <line x1="360" y1="214" x2="360" y2="760" stroke="#94A3B8" stroke-width="3"/>
-          <rect x="292" y="200" width="76" height="16" rx="4" fill="#94A3B8"/>
-          <g>
-            <rect x="352" y="296" width="18" height="26" fill="#F59E0B" fill-opacity=".85"/>
-            <text x="378" y="292" fill="#F59E0B" font-size="15" font-family="Inter, sans-serif" letter-spacing=".08em">PITLESS ADAPTER</text>
+          <rect x="1008" y="356" width="100" height="30" rx="15" fill="#3B2E12" stroke="#FCD34D" stroke-width="3"/>
+          <path d="M1022 371 h72" stroke="#FCD34D" stroke-width="2.5"/>
+          <g stroke="#FCD34D" stroke-width="2" stroke-opacity=".8">
+            <path d="M1034 364 v-8 M1050 364 v-8 M1066 364 v-8 M1082 364 v-8"/>
+            <path d="M1034 378 v8 M1050 378 v8 M1066 378 v8 M1082 378 v8"/>
           </g>
-          <rect x="303" y="470" width="54" height="290" fill="#38BDF8" fill-opacity=".22"/>
-          <line x1="330" y1="310" x2="330" y2="628" stroke="#CBD5E1" stroke-width="5"/>
-          <g>
-            <rect x="314" y="628" width="32" height="86" rx="8" fill="#14B8A6"/>
-            <rect x="318" y="640" width="24" height="6" fill="#1B2532" fill-opacity=".5"/>
-            <rect x="318" y="654" width="24" height="6" fill="#1B2532" fill-opacity=".5"/>
-            <rect x="318" y="668" width="24" height="6" fill="#1B2532" fill-opacity=".5"/>
-            <rect x="322" y="714" width="16" height="18" rx="4" fill="#0f766e"/>
+          <rect x="1012" y="396" width="28" height="20" rx="3" fill="none" stroke="#A7B6C6" stroke-width="2"/>
+        </g>
+
+        <!-- ===== numbered badges ===== -->
+        <g font-family="'JetBrains Mono', monospace" font-size="18" font-weight="700" text-anchor="middle">
+          <g fill="#C77D3B">
+            <circle cx="500" cy="344" r="15"/><circle cx="588" cy="344" r="15"/><circle cx="668" cy="344" r="15"/>
+            <circle cx="752" cy="344" r="15"/><circle cx="836" cy="344" r="15"/><circle cx="968" cy="344" r="15"/>
+            <circle cx="1058" cy="326" r="15"/>
           </g>
-          <path d="M312 618h36" stroke="#F59E0B" stroke-width="3"/>
+          <circle cx="1022" cy="266" r="15" fill="#5EEAD4"/>
+          <g fill="#1B2532">
+            <text x="500" y="351">1</text><text x="588" y="351">2</text><text x="668" y="351">3</text>
+            <text x="752" y="351">4</text><text x="836" y="351">5</text><text x="968" y="351">6</text>
+            <text x="1058" y="333">7</text><text x="1022" y="273">8</text>
+          </g>
         </g>
-        <g font-family="Inter, sans-serif" font-size="14" letter-spacing=".12em" fill="#7DD3FC" fill-opacity=".85">
-          <text x="120" y="242">GRADE</text>
-          <text x="120" y="462">STATIC WATER LEVEL</text>
-          <text x="380" y="672">SUBMERSIBLE PUMP</text>
-          <text x="380" y="352">DROP PIPE</text>
-          <text x="916" y="300">PRESSURE TANK</text>
-          <text x="686" y="392" fill="#5EEAD4">TREATMENT TRAIN</text>
-          <text x="800" y="336" fill="#FCD34D">UV</text>
+
+        <!-- ===== staggered equipment labels ===== -->
+        <g stroke="#64748B" stroke-width="1.5" stroke-dasharray="4 5">
+          <path d="M500 570 V590"/><path d="M668 570 V590"/><path d="M836 570 V590"/><path d="M1058 386 V590"/>
+          <path d="M588 471 V618"/><path d="M752 570 V618"/><path d="M968 570 V618"/>
         </g>
-        <g font-family="Inter, sans-serif" font-size="12" letter-spacing=".18em" fill="#38BDF8" fill-opacity=".55">
-          <text x="120" y="560">NEW ENGLAND BEDROCK AQUIFER</text>
+        <g font-family="Inter, sans-serif" font-size="16" letter-spacing=".03em" fill="#B7C4D2" text-anchor="middle">
+          <text x="500" y="606">PRESSURE</text>
+          <text x="668" y="606">pH / CALCITE</text>
+          <text x="836" y="606">SOFTENER</text>
+          <text x="1058" y="606" fill="#FCD34D">UV (LAST)</text>
+          <text x="588" y="634">SEDIMENT</text>
+          <text x="752" y="634">IRON + Mn</text>
+          <text x="968" y="634">CARBON (GAC)</text>
+        </g>
+
+        <!-- ===== labels ===== -->
+        <g font-family="Inter, sans-serif" font-size="17" letter-spacing=".06em" fill="#7DD3FC" fill-opacity=".92">
+          <text x="26" y="292">GRADE</text>
+          <text x="26" y="482">STATIC WATER</text><text x="26" y="504">LEVEL</text>
+          <text x="248" y="346">PITLESS ADAPTER</text>
+          <text x="248" y="410">SERVICE LINE</text><text x="248" y="432">BELOW FROST</text>
+          <text x="248" y="574">200–500 FT DEEP</text>
+          <text x="248" y="678">DROP PIPE</text>
+          <text x="248" y="790">SUBMERSIBLE PUMP</text>
+          <text x="166" y="248">WELLHEAD CAP</text>
+        </g>
+        <g font-family="Inter, sans-serif" font-size="17" letter-spacing=".1em" fill="#38BDF8" fill-opacity=".55">
+          <text x="26" y="714">NEW ENGLAND</text><text x="26" y="736">BEDROCK</text><text x="26" y="758">AQUIFER</text>
+        </g>
+        <text x="790" y="684" font-family="Inter, sans-serif" font-size="18" letter-spacing=".05em" fill="#5EEAD4" fill-opacity=".9" text-anchor="middle">EACH STAGE REQUIRES THE ONE BEFORE IT</text>
+        <text x="930" y="224" font-family="Inter, sans-serif" font-size="18" letter-spacing=".05em" fill="#5EEAD4" fill-opacity=".9">POINT-OF-USE RO</text>
+        <text x="1214" y="862" font-family="'JetBrains Mono', monospace" font-size="15" fill="#64748B" text-anchor="end">NOT TO SCALE — VERTICAL DEPTH COMPRESSED</text>
+      </svg>
+      </div>
+
+      <ol class="dgm-key">
+        <li><i>1</i><b>Pressure tank &amp; switch</b> — holds pressure so the pump doesn't restart on every faucet. Waterlogged tanks and burnt switch contacts are the most common "no water" causes after the pump itself.</li>
+        <li><i>2</i><b>Sediment filter</b> — cartridge housing; catches sand and grit before it reaches any control valve. Changed quarterly.</li>
+        <li><i>3</i><b>Calcite pH neutralizer</b> — raises acidic bedrock water back above 7 so it stops corroding copper and leaching lead. First in line: everything downstream is sized against corrected pH.</li>
+        <li><i>4</i><b>Iron &amp; manganese filter</b> — oxidizing media under an air pocket; pulls the staining metals before they reach the resin. Above ~3 ppm iron this vessel is mandatory, not optional.</li>
+        <li><i>5</i><b>Softener + brine tank</b> — ion-exchange resin for hardness, regenerated on a salt cycle. Sits after the iron filter, which would otherwise foul the resin bed.</li>
+        <li><i>6</i><b>GAC carbon</b> — granular activated carbon for PFAS and radon; an EPA-codified best available technology for PFAS. Media swapped on breakthrough, every 2–4 years.</li>
+        <li><i>7</i><b>UV sterilizer</b> — inactivates bacteria, and goes <em>last</em>: it needs already-clear water, and carbon beds upstream can support bacterial regrowth. Lamp replaced every 12 months.</li>
+        <li class="pou"><i>8</i><b>Reverse osmosis</b> — point-of-use only, under the kitchen sink. Final polish for drinking and cooking water, not the whole house.</li>
+      </ol>
+
+      <div class="dgm-note">
+        <p><b>Most basements hold fewer vessels than this.</b> The diagram separates every stage so the sequence is
+        legible. In practice combination units consolidate them: fine-mesh resin softeners take hardness and low-level
+        iron in one tank; air-injection oxidizing filters handle iron, manganese and hydrogen sulfide together; blended
+        media folds calcite into the same vessel as the filter; softener-plus-carbon tanks combine 5 and 6. A treated New
+        England well home typically runs <b>two to four vessels, not six</b> — the stages still occur in the same order
+        inside them, and the same chemistry decides which are needed. Fewer vessels means a lower ticket and less floor
+        space, which is how combination units are sold. <em class="src-i">Vendor line cards: Water-Right, Hellenbrand,
+        Fleck/Pentair, Charger Water — AEP analysis (modeled)</em></p>
+      </div>
+
+      <figcaption>A drilled bedrock well — most run 200–500 ft (NH median ~400 ft; some exceed 1,000 ft). A submersible pump on a drop pipe
+        pushes water up through a frost-proof pitless adapter and a buried service line into the basement. Items 1–7 are plumbed in
+        series along one header, then the treated water rises to every fixture in the house; only item 8 is point-of-use. The order is
+        not stylistic — it is what each stage requires of the one before it. Not every home carries every vessel; the panel in §07
+        decides which are present.
+        <span style="display:block;margin-top:8px;color:#7C8A9B">Sources: NHDES bedrock well design (DWGB-1-2) · Franklin Electric AIM manual · Amtrol Well-X-Trol installation manual · VIQUA / NGWA treatment-sequencing guidance · vendor installation manuals.</span></figcaption>
+    </figure>
+
+    <h3>The same house on public water</h3>
+    <p>Private wells are the minority case: the ~1.2M well households in §02 sit inside a regional stock of
+      <strong>6.20M households</strong>, so roughly four in five New England homes are on a public system. On those homes the
+      extraction half of the diagram disappears — the utility owns the pressure and has already treated to the federal
+      MCLs before the meter — but the treatment half does not. Hardness, chlorine and chloramine taste, and PFAS
+      polishing remain homeowner problems, and the equipment that solves them is the same equipment.
+      <em class="src-i">Census ACS 2024, New England division household count</em></p>
+
+    <figure class="diagram">
+      <div class="dgm-scroll">
+      <svg viewBox="0 0 1240 350" role="img" aria-label="Public-water flow: town main to meter and backflow preventer, then sediment and carbon filtration, softener if the water is hard, and point-of-use reverse osmosis. The wellhead, submersible pump and pressure tank are not present on public water.">
+        <g text-anchor="middle" font-family="Inter, sans-serif">
+          <g fill="none" stroke="#7DD3FC" stroke-width="3">
+            <rect x="40" y="44" width="196" height="116" rx="10"/>
+            <rect x="276" y="44" width="196" height="116" rx="10"/>
+            <rect x="512" y="44" width="196" height="116" rx="10"/>
+            <rect x="748" y="44" width="196" height="116" rx="10" stroke="#14B8A6"/>
+            <rect x="984" y="44" width="196" height="116" rx="10" stroke="#5EEAD4"/>
+          </g>
+          <g stroke="#38BDF8" stroke-width="4" fill="#38BDF8">
+            <path d="M236 102 H268"/><path d="M258 95 l13 7 l-13 7z" stroke="none"/>
+            <path d="M472 102 H504"/><path d="M494 95 l13 7 l-13 7z" stroke="none"/>
+            <path d="M708 102 H740"/><path d="M730 95 l13 7 l-13 7z" stroke="none"/>
+            <path d="M944 102 H976"/><path d="M966 95 l13 7 l-13 7z" stroke="none"/>
+          </g>
+          <g font-size="20" font-weight="600" fill="#E9E4D6">
+            <text x="138" y="98">TOWN MAIN</text>
+            <text x="374" y="86">METER +</text><text x="374" y="110">BACKFLOW</text>
+            <text x="610" y="86">SEDIMENT +</text><text x="610" y="110">CARBON</text>
+            <text x="846" y="86" fill="#5EEAD4">SOFTENER</text><text x="846" y="110" fill="#5EEAD4">IF HARD</text>
+            <text x="1082" y="98" fill="#5EEAD4">RO AT THE TAP</text>
+          </g>
+          <g font-size="15" fill="#9FB0C2">
+            <text x="138" y="134">utility pressure</text>
+            <text x="374" y="140">utility boundary</text>
+            <text x="610" y="140">chlorine · taste · PFAS</text>
+            <text x="846" y="140">scale · appliances</text>
+            <text x="1082" y="126">drinking + cooking</text>
+            <text x="1082" y="146">point of use only</text>
+          </g>
+        </g>
+
+        <text x="40" y="230" font-family="Inter, sans-serif" font-size="18" font-weight="600" letter-spacing=".08em" fill="#F59E0B">NOT PRESENT ON PUBLIC WATER</text>
+        <g font-family="Inter, sans-serif" font-size="19" text-anchor="middle">
+          <g fill="none" stroke="#64748B" stroke-width="2.5">
+            <rect x="40" y="250" width="212" height="50" rx="25"/>
+            <rect x="280" y="250" width="212" height="50" rx="25"/>
+            <rect x="520" y="250" width="212" height="50" rx="25"/>
+          </g>
+          <g stroke="#B45309" stroke-width="3">
+            <path d="M68 290 L224 260"/><path d="M308 290 L464 260"/><path d="M548 290 L704 260"/>
+          </g>
+          <g fill="#94A3B8">
+            <text x="146" y="282">WELLHEAD</text>
+            <text x="386" y="282">SUBMERSIBLE PUMP</text>
+            <text x="626" y="282">PRESSURE TANK</text>
+          </g>
+        </g>
+        <g font-family="Inter, sans-serif" font-size="16" fill="#9FB0C2">
+          <text x="762" y="248">The utility supplies the pressure and meets</text>
+          <text x="762" y="272">the federal MCLs before the meter. What it</text>
+          <text x="762" y="296">does not do is soften, dechlorinate or polish.</text>
         </g>
       </svg>
-      <figcaption>A drilled bedrock well — most run 200–500 ft (NH median ~400 ft; some exceed 1,000 ft — NHDES bedrock well design, DWGB-1-2). A submersible pump on a drop pipe pushes water through
-        a frost-proof pitless adapter and buried service line into the basement, where a pressure tank and a treatment
-        train condition it before the first tap.</figcaption>
+      </div>
+      <figcaption>A public-water home keeps the softener, the carbon and the point-of-use RO — stages 5, 6 and 8 of the
+        well diagram — and drops the rest: no pressure tank, no neutralizer, no iron filter, and normally no UV, because
+        the utility already disinfects. It also loses the emergency call, since there is no pump to fail. That is why
+        well households are the higher-urgency segment even though public-water households are the far larger one. The
+        identifying tell in a basement is the pressure tank: if there is one, the house is on a well.
+        <span style="display:block;margin-top:8px;color:#7C8A9B">Sources: EPA private-well and SDWA scope pages · NHDES and MassDEP public-system guidance · vendor installation manuals. Segment framing: AEP analysis (modeled).</span></figcaption>
     </figure>
 
     <div class="cards">
       <div class="card"><span class="k">Source</span><h4>Drilled bedrock well · typically 200–500 ft</h4><p>Six-inch steel casing through sand and gravel into granite. The submersible pump ($350–$1,600 as a part) hangs on hundreds of feet of drop pipe with a torque arrestor and safety rope. Pulling it is a two-person job with a rig.</p></div>
       <div class="card"><span class="k">Pressure</span><h4>Pressure tank + switch</h4><p>An air-bladder tank (20–80 gal) holds pressure so the pump doesn't start on every faucet. Waterlogged tanks and burnt pressure-switch contacts are the most common "no water" causes after the pump itself.</p></div>
-      <div class="card"><span class="k">Treatment</span><h4>The train, in strict order</h4><p>Sediment filter → calcite pH neutralizer → oxidizing iron/manganese filter → softener + brine tank → UV sterilizer → GAC carbon for PFAS/radon → optional reverse-osmosis at the kitchen tap. Order matters: neutralize before you filter, filter before you soften, disinfect last.</p></div>
+      <div class="card"><span class="k">Treatment</span><h4>The train, in strict order</h4><p>Sediment filter → calcite pH neutralizer → oxidizing iron/manganese filter → softener + brine tank → GAC carbon for PFAS/radon → UV sterilizer → optional reverse-osmosis at the kitchen tap. Order matters: neutralize before you filter, filter before you soften, and disinfect last — UV needs clear water, and a carbon bed upstream of it can support bacterial regrowth.</p></div>
       <div class="card"><span class="k">Consumables</span><h4>What recurs by design</h4><p>Softener salt (monthly–quarterly), sediment cartridges (quarterly), UV lamps (12-month life), GAC media (2–4 yrs), arsenic media (3–5 yrs), resin rebeds (~5 yrs), annual re-tests.</p></div>
     </div>
 
