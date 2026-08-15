@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The New England Residential Water Thesis — AEP Equity</title>
+<meta name="description" content="An investment thesis on New England residential water services: the market, the players, the regulation, what breaks in homes, how technicians fix and test it, the licensing that gates the labor, and the economics of the trade. Prepared by Atomus Equity Partners." />
+<meta property="og:title" content="The New England Residential Water Thesis — AEP Equity" />
+<meta property="og:description" content="The market, the players, the regulation, what breaks in homes, how technicians fix and test it, the licensing that gates the labor, and the economics of the trade. Prepared by Atomus Equity Partners." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aep1992.github.io/water-thesis/" />
+<meta name="twitter:card" content="summary" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231B2532'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-weight='900' font-size='17' fill='%23EBE5D9'%3EA%3C/text%3E%3Crect x='24.5' y='19' width='3' height='3' fill='%23C77D3B'/%3E%3C/svg%3E" />
+<style>
+:root{
+  --navy:#1B2532; --navy2:#2C3947; --cream:#F4EFE4; --cream2:#EBE5D9; --ink:#232A33;
+  --sub:#5A6472; --line:#DCD4C2; --copper:#C77D3B; --blue:#2563EB; --teal:#0E9384; --amber:#B45309; --red:#B91C1C;
+  --serif:"Fraunces",Georgia,serif; --sans:"Inter",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font:16px/1.65 var(--sans)}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.masthead{background:var(--navy);color:#E9E4D6;padding:56px 0 48px;border-bottom:4px solid var(--copper)}
+.aep-lockup{height:40px;display:block}
+.mast-kicker{font:600 11px/1.4 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#9FB0C2;margin:26px 0 10px}
+h1{font:600 clamp(34px,5.4vw,52px)/1.08 var(--serif);letter-spacing:-.01em;color:#F6F1E4;max-width:20ch}
+.mast-sub{margin-top:18px;max-width:66ch;color:#C4CDD8;font-size:17px}
+.mast-meta{margin-top:26px;font:400 12px/1.6 var(--mono);color:#8C9AAB}
+.toc{margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:4px 26px;max-width:760px}
+.toc a{font:500 13px/2 var(--sans);color:#B7C4D2}
+.toc a b{font-family:var(--mono);font-size:11px;color:var(--copper);margin-right:8px;font-weight:600}
+.toc a:hover{color:#fff;text-decoration:none}
+
+section{padding:54px 0;border-bottom:1px solid var(--line)}
+.sec-n{font:600 11px/1 var(--mono);letter-spacing:.18em;color:var(--copper);text-transform:uppercase}
+h2{font:600 clamp(24px,3.2vw,32px)/1.15 var(--serif);margin:10px 0 6px;letter-spacing:-.01em}
+.sec-sub{color:var(--sub);max-width:72ch;margin-bottom:26px}
+h3{font:600 17px/1.3 var(--sans);margin:34px 0 10px}
+p{max-width:72ch;margin-bottom:14px}
+p.tight{margin-bottom:8px}
+ul.flat{max-width:72ch;margin:0 0 14px 18px}
+ul.flat li{margin-bottom:7px}
+strong{font-weight:600}
+.note{font-size:13px;color:var(--sub);max-width:72ch}
+.badge{display:inline-block;font:600 10px/1 var(--mono);padding:3px 6px;border-radius:3px;vertical-align:1px}
+.b-v{background:#DBEEE9;color:#0B6E5F}
+.b-m{background:#F0E5D3;color:#8A5A22}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:26px 0}
+.stat{background:#FBF8EF;padding:16px 16px 14px}
+.stat b{display:block;font:600 26px/1.1 var(--serif);color:var(--navy)}
+.stat span{display:block;font-size:12.5px;color:var(--sub);margin-top:5px;line-height:1.45}
+
+.thesis-box{background:var(--navy);color:#E9E4D6;border-radius:10px;padding:34px 34px 28px;margin:0 0 8px}
+.thesis-box p.big{font:500 clamp(19px,2.6vw,24px)/1.45 var(--serif);color:#F6F1E4;max-width:100%;margin-bottom:22px}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.pillar h4{font:600 12px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--copper);margin-bottom:8px}
+.pillar p{font-size:14.5px;color:#C4CDD8;margin:0;max-width:100%}
+
+.tbl-scroll{overflow-x:auto;margin:18px 0;border:1px solid var(--line);border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:#FBF8EF;min-width:660px}
+th{font:600 11px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase;text-align:left;color:var(--sub);background:var(--cream2);padding:10px 12px;border-bottom:1px solid var(--line)}
+td{padding:10px 12px;border-bottom:1px solid #EDE7D6;vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-family:var(--mono);font-size:12.5px;white-space:nowrap}
+td b{font-weight:600}
+.dim{color:var(--sub)}
+tr.tier-row td{background:var(--navy);color:#E9E4D6;font:600 11.5px/1.4 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:8px 12px}
+tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weight:400;margin-left:8px}
+
+.bars{margin:20px 0;max-width:660px}
+.bar-row{display:grid;grid-template-columns:150px 1fr 64px;gap:10px;align-items:center;margin-bottom:8px;font-size:13.5px}
+.bar-track{background:#E7E0CE;border-radius:3px;height:16px;overflow:hidden}
+.bar-fill{height:100%;background:var(--blue);border-radius:3px}
+.bar-val{font-family:var(--mono);font-size:12px;color:var(--sub);text-align:right}
+
+.tl{border-left:2px solid var(--line);margin:20px 0 8px 6px;padding-left:22px}
+.tl-item{position:relative;padding-bottom:18px;max-width:68ch}
+.tl-item:before{content:"";position:absolute;left:-28.5px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--copper)}
+.tl-item.done:before{background:var(--navy)}
+.tl-item b{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--navy);display:block}
+.tl-item span{font-size:14px;color:var(--ink)}
+
+.diagram{background:var(--navy);border-radius:10px;padding:22px;margin:22px 0}
+.diagram svg{width:100%;height:auto;display:block}
+.diagram figcaption{color:#9FB0C2;font-size:12.5px;margin-top:12px;line-height:1.5}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:20px 0}
+.card{background:#FBF8EF;border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+.card h4{font:600 14px/1.35 var(--sans);margin-bottom:6px}
+.card p{font-size:13.5px;color:var(--sub);margin:0;max-width:100%}
+.card .k{font:600 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--copper);display:block;margin-bottom:7px}
+
+.callout{border-left:4px solid var(--copper);background:#F6F0E1;border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0;max-width:76ch}
+.callout p{margin:0 0 8px;max-width:100%}
+.callout p:last-child{margin-bottom:0}
+
+/* service-call phases */
+.phases{counter-reset:step;margin:20px 0}
+.phase-h{font:600 12px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--copper);margin:22px 0 8px}
+.steps{list-style:none;margin:0;max-width:76ch}
+.steps li{counter-increment:step;position:relative;padding:0 0 12px 44px;font-size:14.5px}
+.steps li:before{content:counter(step,decimal-leading-zero);position:absolute;left:0;top:1px;font:600 12px/1 var(--mono);color:var(--navy);background:var(--cream2);border:1px solid var(--line);border-radius:4px;padding:5px 6px}
+.steps li b{display:block;font-weight:600}
+.steps li span{color:var(--sub);font-size:13.5px}
+
+.colophon{background:var(--navy);color:#C4CDD8;padding:52px 0 44px}
+.colophon .aep-lockup{height:34px}
+.col-quote{font:italic 500 17px/1.55 var(--serif);color:#E9E4D6;max-width:60ch;margin:22px 0}
+.col-names{font-size:14px;margin-bottom:4px}
+.col-links{font-size:13px;color:#8C9AAB;margin-top:18px}
+.col-links a{color:#B7C4D2}
+.sources{font-size:12px;color:#7C8A9B;line-height:1.8;margin-top:26px;border-top:1px solid #33404F;padding-top:18px}
+.sources a{color:#8FA3B8}
+.disclaimer{font-size:11.5px;color:#6E7C8D;margin-top:18px;max-width:82ch}
+
+@media (max-width:640px){
+  .bar-row{grid-template-columns:110px 1fr 52px}
+  .thesis-box{padding:24px 20px}
+  section{padding:40px 0}
+}
+@media print{
+  .masthead,.colophon{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section{padding:26px 0}
+  .tbl-scroll{border:none}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <svg class="aep-lockup" viewBox="0 0 232 44" role="img" aria-label="AEP · Atomus Equity Partners">
+      <text x="0" y="33" font-family="Fraunces, Georgia, serif" font-weight="900" font-size="34" letter-spacing="-1.6" fill="#F6F1E4">AEP.</text>
+      <line x1="96" y1="9" x2="96" y2="35" stroke="#F6F1E4" stroke-width="1" opacity=".45"/>
+      <text x="110" y="21" font-family="Inter, sans-serif" font-weight="600" font-size="9.4" letter-spacing="1.9" fill="#F6F1E4" opacity=".92">ATOMUS</text>
+      <text x="110" y="34" font-family="Inter, sans-serif" font-weight="600" font-size="9.4" letter-spacing="1.9" fill="#F6F1E4" opacity=".92">EQUITY PARTNERS</text>
+    </svg>
+    <p class="mast-kicker">Investment Thesis · Residential Water Services · New England</p>
+    <h1>The New England Residential Water Thesis</h1>
+    <p class="mast-sub">Roughly one million New England homes run on private wells with no utility and no regulator behind
+      them. The trade that keeps their water safe is licensed, trusted, profitable — and fragmented across hundreds of small
+      companies with retiring owners. This document covers the market, the players, the regulation, what breaks in homes,
+      exactly how technicians test and fix it, the licensing that gates the labor, and the economics underneath all of it.</p>
+    <p class="mast-meta">Prepared by Atomus Equity Partners · Q3 2026 · Residential segment · Figures marked ~ are modeled benchmarks</p>
+    <nav class="toc" aria-label="Contents">
+      <a href="#thesis"><b>01</b>The thesis</a>
+      <a href="#market"><b>02</b>State of the market</a>
+      <a href="#regulation"><b>03</b>Regulatory tailwinds</a>
+      <a href="#players"><b>04</b>The players</a>
+      <a href="#problems"><b>05</b>What goes wrong in homes</a>
+      <a href="#systems"><b>06</b>How the systems work</a>
+      <a href="#fixes"><b>07</b>How it gets fixed &amp; tested</a>
+      <a href="#licensing"><b>08</b>Licensing &amp; labor</a>
+      <a href="#economics"><b>09</b>Operator economics</a>
+      <a href="#strategy"><b>10</b>The strategy</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ 01 THESIS ============ -->
+<section id="thesis">
+  <div class="wrap">
+    <p class="sec-n">01 — The Thesis</p>
+    <h2>Three facts that make the market</h2>
+    <p class="sec-sub">Everything in this document supports three claims.</p>
+    <div class="thesis-box">
+      <p class="big">Residential water in New England is non-discretionary, regulation-tailwinded, license-gated demand —
+        served by excellent small operators who cannot scale and are aging out. The window to build the region's
+        residential-first platform is open now.</p>
+      <div class="pillars">
+        <div class="pillar">
+          <h4>Demand is structural</h4>
+          <p>~1M private-well households own their entire water supply. No federal oversight at the tap, a heavy natural
+            contaminant load (arsenic, radon, uranium, iron, PFAS), and failure events that cannot be deferred. Demand
+            arrives on its own; nobody advertises for a dry tap.</p>
+        </div>
+        <div class="pillar">
+          <h4>Supply cannot respond</h4>
+          <p>The work legally requires state-licensed pump installers and certified treatment techs. Licenses take years;
+            the licensed population is shrinking. Strong independents run at ~60% gross margin but hit a hard capacity
+            ceiling near $3.5M and stop.</p>
+        </div>
+        <div class="pillar">
+          <h4>The exit is proven</h4>
+          <p>159 water-sector transactions closed in 2025. Sub-$5M shops trade at ~3–4× owner earnings; assembled platforms
+            exit at 8–12× EBITDA to sponsors already active in the region. The arbitrage is consolidation plus recurring
+            revenue — and no one has built it residential-first.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 MARKET ============ -->
+<section id="market">
+  <div class="wrap">
+    <p class="sec-n">02 — State of the Market</p>
+    <h2>A utility owned by a million households</h2>
+    <p class="sec-sub">New England's housing stock draws water two ways: from a town main, or from a hole in the yard.
+      The second group is the market, and it is invisible to most institutional capital because no utility bills it.</p>
+
+    <div class="stats">
+      <div class="stat"><b>~1M</b><span>Private-well households across the region <span class="badge b-v">verified</span></span></div>
+      <div class="stat"><b>~500–575K</b><span>Of them in NH + ME alone — the densest private-well corridor in the country</span></div>
+      <div class="stat"><b>0</b><span>Federal rules protecting private-well water — the Safe Drinking Water Act covers public systems only</span></div>
+      <div class="stat"><b>1.45M+</b><span>Private septic households across the region — the same rural customer, an adjacent trade</span></div>
+    </div>
+
+    <h3>State by state</h3>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>State</th><th class="num">Homes on private wells</th><th>What defines it</th></tr></thead>
+        <tbody>
+          <tr><td><b>Maine</b></td><td class="num">~50%</td><td>Highest well share in the region; long rural routes; licensed pump-installer regime under Title 32</td></tr>
+          <tr><td><b>New Hampshire</b></td><td class="num">~40%</td><td>The core: dense wells, the nation's most aggressive state PFAS posture, arsenic-heavy bedrock, and a state rebate program that pays homeowners to treat</td></tr>
+          <tr><td><b>Vermont</b></td><td class="num">~40%</td><td>~135–150K well households; highest private-septic share in the nation (~55%) — dense but small in absolute terms</td></tr>
+          <tr><td><b>Rhode Island</b></td><td class="num">~26%</td><td>Smaller pool; Amtrol (the region's default pressure-tank maker) is headquartered here</td></tr>
+          <tr><td><b>Connecticut</b></td><td class="num">~23%</td><td>Meaningful absolute numbers on the state's rural spine</td></tr>
+          <tr><td><b>Massachusetts</b></td><td class="num">~10%</td><td>Lowest well share but 650K+ septic systems and the region's biggest housing stock; H2O Care's home base</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Why the water needs treatment at all</h3>
+    <p>New England sits on fractured granite bedrock. Water moving through it picks up contaminants as a matter of
+      geology, not accident:</p>
+    <ul class="flat">
+      <li><strong>Arsenic</strong> — the signature bedrock contaminant. New Hampshire found it serious enough to set a state
+        limit of 5 µg/L, twice as strict as the 10 µg/L federal standard. Odorless and tasteless; found only by lab test.</li>
+      <li><strong>Radon</strong> — a dissolved radioactive gas common in bedrock wells (NH guidance flags water above
+        ~2,000 pCi/L); it off-gasses into household air at every shower.</li>
+      <li><strong>Uranium</strong> — same granite, same pathway, its own lab panel and treatment train.</li>
+      <li><strong>Iron &amp; manganese</strong> — staining, taste and appliance damage; the most common visible complaint.
+        NH treats manganese as health-based above 0.05 ppm.</li>
+      <li><strong>Hardness</strong> — 14 grains per gallon is a normal bedrock reading; scale shortens the life of every
+        water heater and fixture downstream.</li>
+      <li><strong>Low pH</strong> — acidic water (a 6.4 reading is routine) pinholes copper plumbing and leaches lead and
+        copper into drinking water.</li>
+      <li><strong>Bacteria</strong> — total coliform failures signal surface pathways into the well; automatic deal-breaker
+        on a real-estate test.</li>
+      <li><strong>PFAS</strong> — industrial "forever chemicals," now the demand story of the next five years (§03).</li>
+    </ul>
+    <p>Because no utility stands behind these homes, <strong>the homeowner is the water operator of record</strong> —
+      testing, treating and repairing on their own initiative, almost always by calling a local specialist a neighbor
+      recommended.</p>
+  </div>
+</section>
+
+<!-- ============ 03 REGULATION ============ -->
+<section id="regulation">
+  <div class="wrap">
+    <p class="sec-n">03 — Regulatory Tailwinds</p>
+    <h2>The clocks running behind demand</h2>
+    <p class="sec-sub">Four forces are moving at once. None are speculative — three are dated in statute and one is
+      demographic.</p>
+
+    <h3>1 · The PFAS clock</h3>
+    <div class="tl">
+      <div class="tl-item done"><b>2020</b><span>New Hampshire enacts enforceable PFAS drinking-water limits under RSA 485 — four years before any federal standard existed. NH DES runs active remediation on 100+ contamination sites.</span></div>
+      <div class="tl-item done"><b>Apr 10, 2024</b><span>EPA signs the first-ever national PFAS drinking-water rule; effective June 25, 2024.</span></div>
+      <div class="tl-item"><b>Apr 26, 2027</b><span>Initial monitoring deadline for all community public water systems — eight months of runway from this writing. Every monitoring result becomes local news, and awareness spills directly onto private wells.</span></div>
+      <div class="tl-item"><b>Apr 26, 2029</b><span>Full MCL compliance for public systems; violations trigger public notification within 30 days. EPA estimates 6–10% of ~66,000 US public systems will need treatment.</span></div>
+    </div>
+
+    <div class="tbl-scroll">
+      <table style="min-width:520px">
+        <thead><tr><th>Compound</th><th class="num">Federal MCL (2024)</th><th class="num">NH state MCL (2020)</th></tr></thead>
+        <tbody>
+          <tr><td><b>PFOA</b></td><td class="num">4.0 ppt</td><td class="num">12 ppt</td></tr>
+          <tr><td><b>PFOS</b></td><td class="num">4.0 ppt</td><td class="num">15 ppt</td></tr>
+          <tr><td><b>PFHxS</b></td><td class="num">10 ppt</td><td class="num">18 ppt</td></tr>
+          <tr><td><b>PFNA</b></td><td class="num">10 ppt</td><td class="num">11 ppt</td></tr>
+          <tr><td><b>HFPO-DA (GenX)</b> <span class="dim">/ Hazard Index</span></td><td class="num">10 ppt / 1.0</td><td class="num">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">NH moved first in 2020; the 2024 federal rule is now tighter still. Either way the direction is one-way:
+      limits only ratchet down. EPA's codified best available technologies — granular activated carbon (GAC), anion
+      exchange, reverse osmosis, nanofiltration — are all standard residential equipment, installed by exactly the
+      operators this thesis targets.</p>
+
+    <div class="callout">
+      <p><strong>The rebate that changes the sale.</strong> Private wells are <em>not</em> covered by the federal rule —
+        on the residential side PFAS is a pure awareness-driven sale with no mandate. But <strong>NHDES pays homeowners
+        $5,000 toward qualifying private-well treatment</strong> (or $10,000 toward a public-water connection). Against a
+        ~$5,200 whole-house GAC install, that is close to a free system — the strongest offer available in this market.
+        Today the channel is dominated by two small marketers (NH Tap, Mainline Plumbing) on "we handle the paperwork"
+        positioning, while the incumbents with the deepest install capability do not market it at all.</p>
+    </div>
+
+    <h3>What actually triggers a residential PFAS sale</h3>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Trigger</th><th>Timeline</th><th>Typical service</th><th class="num">Ticket</th></tr></thead>
+        <tbody>
+          <tr><td>PFAS detected in a neighboring public system</td><td>Immediate concern</td><td>Whole-house GAC or ion exchange</td><td class="num">$3,200–$5,200</td></tr>
+          <tr><td>Home near one of NH DES's 100+ known contamination sites</td><td>Now</td><td>Whole-house GAC or ion exchange</td><td class="num">$3,200–$5,200</td></tr>
+          <tr><td>Real-estate transaction, buyer requests testing</td><td>30–45 day close</td><td>Test + point-of-use RO or whole-house</td><td class="num">$1,450–$5,200</td></tr>
+          <tr><td>New construction in a known-affected area</td><td>Planned</td><td>Whole-house treatment at build</td><td class="num">$3,200–$5,200</td></tr>
+          <tr><td>Media coverage / customer awareness</td><td>Latent, perpetual</td><td>EPA 537.1 lab test → treatment</td><td class="num">$475 → $5,200</td></tr>
+          <tr><td>Registered brownfield within a mile</td><td>Ongoing</td><td>Test first, treat on a positive</td><td class="num">$475 → $5,200</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>2 · Owners aging out</h3>
+    <p class="tight">The strong independents were founded in the 1960s–80s. Their owners are at or past retirement age,
+      mostly without succession plans. Most will transfer to family, sell, or wind down within a five-year window — and the
+      consolidators openly market "succession planning" to them.</p>
+    <h3>3 · Institutional capital has already arrived</h3>
+    <p class="tight">159 water-sector transactions in 2025 (McLean Group). The consolidation thesis is validated — but every
+      platform so far is HVAC-led or commercial-led, not residential-water-first. Detail in §04.</p>
+    <h3>4 · Input costs forcing professionalization</h3>
+    <p class="tight">Water-supply construction spending is up ~50% since January 2023 — real demand growth. Treatment
+      chemicals are up ~12%; construction materials only ~5%, so installation margins are expanding for operators who
+      reprice. One-truck shops without indexed contracts absorb the increase instead — which accelerates seller
+      conversations.</p>
+  </div>
+</section>
+
+<!-- ============ 04 PLAYERS ============ -->
+<section id="players">
+  <div class="wrap">
+    <p class="sec-n">04 — The Players</p>
+    <h2>Everyone who works this water</h2>
+    <p class="sec-sub">The competitive set falls into three tiers: PE-backed consolidators and franchises at the top,
+      mid-size well-and-treatment independents in the middle, and small PFAS-first marketers underneath. Revenue figures
+      for private companies are estimates.</p>
+
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Company</th><th>Base / footprint</th><th class="num">Est. revenue</th><th>Ownership</th><th>What to know</th></tr></thead>
+        <tbody>
+          <tr class="tier-row"><td colspan="5">Tier 1 — Consolidators &amp; PE-backed platforms <span>institutional capital, multi-state, productized service plans</span></td></tr>
+          <tr><td><b>H2O Care / H2O Care Partners</b></td><td>Middleton MA · 16 states</td><td class="num">~$5M brand / platform</td><td>PE — Shore Capital</td><td>29 partnerships closed by Mar 2026; runs "New Hampshire WaterCare"; bought SafeWell + Aquatek specifically for well-pump capability; markets "succession planning" directly to owners</td></tr>
+          <tr><td><b>Sila Services</b></td><td>King of Prussia PA · New England+</td><td class="num">Large, undisclosed</td><td>PE — Goldman Sachs Alternatives</td><td>40+ brand home-services roll-up; water treatment inside a broader HVAC/plumbing platform</td></tr>
+          <tr><td><b>Secondwind Water (Kinetico NH)</b></td><td>Manchester NH · NH/MA/ME</td><td class="num">~$6–9M</td><td>Independent Kinetico dealer</td><td>~20–35 staff; cartridge-replacement cadence 3–4×/year — the recurring model in practice; A+ BBB</td></tr>
+          <tr><td><b>Culligan of NH</b></td><td>Manchester NH</td><td class="num">~$2–5M</td><td>National franchise</td><td>Subscription model + national brand, but a 3.1★ reputation — the clearest local share-take target</td></tr>
+          <tr><td><b>Culligan Central NH</b></td><td>Dover NH</td><td class="num">~$2–5M</td><td>National franchise</td><td>Heart of the Seacoast; 3.6★ — same weakness</td></tr>
+          <tr><td><b>Lindsay Water (EcoWater)</b></td><td>Plaistow NH</td><td class="num">~$1–3M</td><td>EcoWater dealer</td><td>60-year dealer with limited digital presence</td></tr>
+          <tr class="tier-row"><td colspan="5">Tier 2 — Mid-size well + treatment independents <span>the acquisition-profile peers, 3–6× the headcount</span></td></tr>
+          <tr><td><b>Skillings &amp; Sons</b></td><td>Amherst NH · NH/MA/sME</td><td class="num">~$13–16M</td><td>Independent</td><td>The scale benchmark: drilling + geothermal + treatment under one roof, 75–90 staff, This Old House feature</td></tr>
+          <tr><td><b>Water Treatment Equipment (Culligan ME)</b></td><td>Maine, statewide</td><td class="num">~$5–10M</td><td>Exclusive Culligan Maine</td><td>Holds the exclusive Culligan territory across Maine since 1964</td></tr>
+          <tr><td><b>Epping Well &amp; Pump</b></td><td>Epping NH · Seacoast</td><td class="num">~$4–8M</td><td>Independent</td><td>Owns Seacoast Analytical, a NELAC-accredited lab — testing as recurring revenue in-house</td></tr>
+          <tr><td><b>Air &amp; Water Quality (Kinetico ME)</b></td><td>Freeport &amp; Ellsworth ME</td><td class="num">~$2.5–4M</td><td>Exclusive Kinetico Maine</td><td>14 staff, 16,000+ systems installed — closest revenue analog to the target profile</td></tr>
+          <tr><td><b>A-Z Water Systems</b></td><td>New Gloucester ME</td><td class="num">~$2–5M</td><td>Independent mini-consolidator</td><td>Acquired Clearwater, Alpha and Affordable Water — the existing proof of the tuck-in playbook</td></tr>
+          <tr class="tier-row"><td colspan="5">Tier 3 — Small independents &amp; PFAS-first marketers <span>a fraction of the capability, most of the marketing</span></td></tr>
+          <tr><td><b>NH Tap</b></td><td>Milford / Londonderry NH</td><td class="num">~$1–3M</td><td>Independent</td><td>"PFAS-Free New Hampshire Program," NHDES-listed provider, proprietary two-tank GAC — owns the PFAS narrative in NH today</td></tr>
+          <tr><td><b>Mainline Plumbing</b></td><td>Londonderry NH</td><td class="num">~$1–2M</td><td>Independent</td><td>"Original state-approved PFAS vendor"; plumbing-first with a perfect 5.0★ profile (~300 reviews)</td></tr>
+          <tr><td><b>Fontus Water Treatment</b></td><td>Scarborough / Portland ME</td><td class="num">~$1–3M</td><td>Independent</td><td>Water + plumbing with published scheduled service plans</td></tr>
+          <tr><td><b>Atlantic Water Solutions</b></td><td>Alfred / Scarborough ME</td><td class="num">~$1–3M</td><td>Independent</td><td>Markets the entire NH+ME footprint — territorial overlap with every Seacoast incumbent</td></tr>
+          <tr><td><b>Pure Experts</b></td><td>Portland ME</td><td class="num">~$1–2M</td><td>Independent</td><td>"Memberships" with free lifetime maintenance and 0% APR financing — the membership model to copy</td></tr>
+          <tr><td><b>Aerus of Augusta</b></td><td>Augusta ME</td><td class="num">~$0.5–1.5M</td><td>Aerus franchise</td><td>Air + water combined under the former Electrolux brand</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <p><strong>The empty quadrant.</strong> Plot the field on two axes — who markets PFAS, and who sells recurring
+        maintenance — and the strongest operators (deep licensing, 4.7–4.9★ reputations, decades of installed base) cluster
+        in the quadrant that does <em>neither</em>. Capability without monetization is the most consistent pattern in the
+        market, and it defines the acquisition target profile.</p>
+      <p><strong>And the warning that comes with it:</strong> H2O Care Partners — Shore Capital, ~$3B of cumulative
+        commitments at platform formation — is executing a version of this thesis at institutional scale and is already in
+        New Hampshire. The question is not whether this market consolidates. It is who assembles the residential-first
+        platform, and at what entry prices.</p>
+    </div>
+
+    <h3>Who is buying, at every stage</h3>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Platform stage</th><th>Buyer type</th><th>Named, active buyers</th></tr></thead>
+        <tbody>
+          <tr><td><b>$2–4M EBITDA</b> · single market</td><td>Regional PE tuck-in sponsors</td><td>New Mountain (Azuria Water), Sterling Investment Partners, BTG Capital, Sylmar Capital, Shore Capital (H2O Care), Goldman Sachs Alts (Sila), Littlejohn &amp; Co.</td></tr>
+          <tr><td><b>$5–10M EBITDA</b> · 3-state platform</td><td>Strategic acquirers</td><td>H2O Care Partners, Sila Services, Culligan corporate, EcoWater / A.&nbsp;O.&nbsp;Smith, Kinetico corporate</td></tr>
+          <tr><td><b>$10M+ EBITDA</b> · multi-state</td><td>Public strategics / large PE</td><td>A.&nbsp;O.&nbsp;Smith, Pentair, Watts Water, Xylem, Grundfos, H2O America</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>2025 precedent transactions</h3>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th class="num">Date</th><th>Transaction</th><th class="num">Enterprise value</th><th class="num">Multiple</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td class="num">12/2025</td><td>ITT → SPX Flow</td><td class="num">$4.80B</td><td class="num">16.1× EBITDA</td><td>Lone Star Funds exit</td></tr>
+          <tr><td class="num">11/2025</td><td>A. O. Smith → Leonard Valve</td><td class="num">$470M</td><td class="num">—</td><td>Bessemer exit — the water-platform tuck-in precedent</td></tr>
+          <tr><td class="num">11/2025</td><td>Parker-Hannifin → Filtration Group</td><td class="num">$9.25B</td><td class="num">—</td><td>Madison Industries portfolio</td></tr>
+          <tr><td class="num">11/2025</td><td>Watts Water → Superior Boiler</td><td class="num">—</td><td class="num">—</td><td>Consolidation from a brand every regional operator stocks</td></tr>
+          <tr><td class="num">10/2025</td><td>American Water → Essential Utilities</td><td class="num">$19.10B</td><td class="num">14.3× EBITDA</td><td>Mega-utility merger sets the ceiling</td></tr>
+          <tr><td class="num">10/2025</td><td>Kemira → Water Engineering</td><td class="num">$150M</td><td class="num">—</td><td>Treatment-chemistry consolidation</td></tr>
+          <tr><td class="num">09/2025</td><td>Pentair → Hydra-Stop</td><td class="num">$290M</td><td class="num">—</td><td>Same strategic-acquirer signal</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Multiples and enterprise values from the McLean Group, "Water, Wastewater, and Environmental Industry
+      2025 Year in Review." Their read on this exact segment: <em>"Residential water treatment represents one of the
+      clearest roll-up and platform-creation opportunities in the sector, driven by fragmented local dealer bases, aging
+      ownership, and increasing consumer focus on water quality."</em></p>
+  </div>
+</section>
+
+<!-- ============ 05 WHAT BREAKS ============ -->
+<section id="problems">
+  <div class="wrap">
+    <p class="sec-n">05 — What Goes Wrong in Homes</p>
+    <h2>Ten events generate essentially all demand</h2>
+    <p class="sec-sub">None of them are created by advertising, and few can be deferred. Ticket ranges are Seacoast-market
+      benchmarks <span class="badge b-m">modeled</span>.</p>
+
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Trigger</th><th>What the homeowner experiences</th><th>Urgency</th><th class="num">Typical ticket</th></tr></thead>
+        <tbody>
+          <tr><td><b>No water</b></td><td>Dry tap — failed pump, pressure switch, or control box</td><td>Emergency, same-day</td><td class="num">$800–$6,500</td></tr>
+          <tr><td><b>Real-estate transaction</b></td><td>Lender or buyer requires a water test inside the contingency window (FHA/VA panels)</td><td>Deadline-driven</td><td class="num">$150–$400 → installs</td></tr>
+          <tr><td><b>Staining &amp; taste</b></td><td>Orange/black stains, metallic taste, rotten-egg smell — iron, manganese, sulfur</td><td>Patience-driven</td><td class="num">$1,800–$3,500</td></tr>
+          <tr><td><b>Failed lab test — arsenic / uranium / radon</b></td><td>A report with a number above the limit</td><td>Health-driven</td><td class="num">$1,450–$7,500</td></tr>
+          <tr><td><b>PFAS letter or news</b></td><td>State notification or local coverage; NHDES rebate covers most of the fix</td><td>Awareness-driven</td><td class="num">~$5,200 (−$5K rebate)</td></tr>
+          <tr><td><b>Hard water / scale</b></td><td>Dead water heater, crusted fixtures, dry skin</td><td>Replacement cycle</td><td class="num">$2,000–$3,200</td></tr>
+          <tr><td><b>Softener quit working</b></td><td>20–40-year-old unit finally exhausts its resin</td><td>Repair vs replace</td><td class="num">$300–$2,800</td></tr>
+          <tr><td><b>Low pressure / short-cycling</b></td><td>Waterlogged pressure tank or failing pump</td><td>Days, not weeks</td><td class="num">$700–$2,400</td></tr>
+          <tr><td><b>New baby / health event</b></td><td>Family decides to finally test the water</td><td>Trust-driven</td><td class="num">$150 → installs</td></tr>
+          <tr><td><b>Annual maintenance due</b></td><td>Salt, filters, UV lamp, re-test — where a contract program exists</td><td>Scheduled</td><td class="num">$175–$495/yr</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The first call after a trigger goes to <strong>whoever a neighbor recommends</strong> — which is why review profiles
+      and decades-old reputations, not marketing budgets, decide share today. The typical inbound is a homeowner who has
+      already lived with the problem for months and has just run out of patience.</p>
+  </div>
+</section>
+
+<!-- ============ 06 HOW SYSTEMS WORK ============ -->
+<section id="systems">
+  <div class="wrap">
+    <p class="sec-n">06 — How the Systems Work</p>
+    <h2>The utility in the basement</h2>
+    <p class="sec-sub">Every private-well home runs the same architecture: get water out of the ground, pressurize it,
+      then treat it problem-by-problem before the first tap.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 60 1200 700" role="img" aria-label="Cutaway of a private-well home water system: drilled well with submersible pump, pressure tank, and basement treatment train">
+        <defs>
+          <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#12324f"/><stop offset="100%" stop-color="#071a2c"/>
+          </linearGradient>
+          <linearGradient id="gradWater" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#38BDF8" stop-opacity=".55"/><stop offset="100%" stop-color="#14B8A6" stop-opacity=".2"/>
+          </linearGradient>
+          <pattern id="bedrock" width="46" height="34" patternUnits="userSpaceOnUse" patternTransform="rotate(6)">
+            <path d="M0 17h46M23 0v34" stroke="#38BDF8" stroke-opacity=".13" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect x="0" y="250" width="1200" height="510" fill="url(#ground)"/>
+        <rect x="0" y="250" width="1200" height="510" fill="url(#bedrock)"/>
+        <path d="M0 470 Q 300 440 600 470 T 1200 462 L1200 760 L0 760Z" fill="url(#gradWater)"/>
+        <path d="M0 252 Q 200 240 420 250 T 820 246 T 1200 254" stroke="#38BDF8" stroke-opacity=".55" stroke-width="2" fill="none"/>
+        <g stroke="#38BDF8" stroke-opacity=".8" fill="none" stroke-width="2">
+          <path d="M690 252V150l90-58 90 58v102" />
+          <path d="M666 152 780 78l114 74" stroke-opacity=".55"/>
+          <rect x="742" y="196" width="34" height="56"/>
+          <rect x="800" y="188" width="34" height="30"/>
+        </g>
+        <g>
+          <rect x="666" y="252" width="228" height="118" fill="#1B2532" fill-opacity=".55" stroke="#38BDF8" stroke-opacity=".35"/>
+          <g fill="none" stroke="#14B8A6" stroke-width="2">
+            <rect x="686" y="276" width="30" height="82" rx="14"/>
+            <rect x="726" y="276" width="30" height="82" rx="14"/>
+            <rect x="766" y="290" width="26" height="68" rx="12"/>
+          </g>
+          <g stroke="#F59E0B" stroke-width="2" fill="none">
+            <rect x="800" y="300" width="52" height="14" rx="7"/>
+            <path d="M806 307h40" stroke-dasharray="4 4"/>
+          </g>
+          <g fill="none" stroke="#38BDF8" stroke-width="2">
+            <rect x="856" y="286" width="30" height="72" rx="15"/>
+          </g>
+          <path d="M640 340h46M716 300h10M756 300h10M792 307h8M852 307h4M886 322h10" stroke="#38BDF8" stroke-opacity=".7" stroke-width="2"/>
+          <path d="M640 340V318h46" stroke="#38BDF8" stroke-opacity=".7" stroke-width="2" fill="none"/>
+        </g>
+        <path d="M330 318 H 640" stroke="#38BDF8" stroke-width="3" fill="none" stroke-opacity=".85"/>
+        <path d="M330 318 V 300" stroke="#38BDF8" stroke-width="3" fill="none" stroke-opacity=".85"/>
+        <g>
+          <rect x="300" y="214" width="60" height="546" fill="#04121f" fill-opacity=".7"/>
+          <line x1="300" y1="214" x2="300" y2="760" stroke="#94A3B8" stroke-width="3"/>
+          <line x1="360" y1="214" x2="360" y2="760" stroke="#94A3B8" stroke-width="3"/>
+          <rect x="292" y="200" width="76" height="16" rx="4" fill="#94A3B8"/>
+          <g>
+            <rect x="352" y="296" width="18" height="26" fill="#F59E0B" fill-opacity=".85"/>
+            <text x="378" y="292" fill="#F59E0B" font-size="15" font-family="Inter, sans-serif" letter-spacing=".08em">PITLESS ADAPTER</text>
+          </g>
+          <rect x="303" y="470" width="54" height="290" fill="#38BDF8" fill-opacity=".22"/>
+          <line x1="330" y1="310" x2="330" y2="628" stroke="#CBD5E1" stroke-width="5"/>
+          <g>
+            <rect x="314" y="628" width="32" height="86" rx="8" fill="#14B8A6"/>
+            <rect x="318" y="640" width="24" height="6" fill="#1B2532" fill-opacity=".5"/>
+            <rect x="318" y="654" width="24" height="6" fill="#1B2532" fill-opacity=".5"/>
+            <rect x="318" y="668" width="24" height="6" fill="#1B2532" fill-opacity=".5"/>
+            <rect x="322" y="714" width="16" height="18" rx="4" fill="#0f766e"/>
+          </g>
+          <path d="M312 618h36" stroke="#F59E0B" stroke-width="3"/>
+        </g>
+        <g font-family="Inter, sans-serif" font-size="14" letter-spacing=".12em" fill="#7DD3FC" fill-opacity=".85">
+          <text x="120" y="242">GRADE</text>
+          <text x="120" y="462">STATIC WATER LEVEL</text>
+          <text x="380" y="672">SUBMERSIBLE PUMP</text>
+          <text x="380" y="352">DROP PIPE</text>
+          <text x="916" y="300">PRESSURE TANK</text>
+          <text x="686" y="392" fill="#5EEAD4">TREATMENT TRAIN</text>
+          <text x="800" y="336" fill="#FCD34D">UV</text>
+        </g>
+        <g font-family="Inter, sans-serif" font-size="12" letter-spacing=".18em" fill="#38BDF8" fill-opacity=".55">
+          <text x="120" y="560">NEW ENGLAND BEDROCK AQUIFER</text>
+        </g>
+      </svg>
+      <figcaption>A drilled bedrock well, typically 200–600 ft deep. A submersible pump on a drop pipe pushes water through
+        a frost-proof pitless adapter and buried service line into the basement, where a pressure tank and a treatment
+        train condition it before the first tap.</figcaption>
+    </figure>
+
+    <div class="cards">
+      <div class="card"><span class="k">Source</span><h4>Drilled bedrock well · 200–600 ft</h4><p>Six-inch steel casing through sand and gravel into granite. The submersible pump ($350–$1,600 as a part) hangs on hundreds of feet of drop pipe with a torque arrestor and safety rope. Pulling it is a two-person job with a rig.</p></div>
+      <div class="card"><span class="k">Pressure</span><h4>Pressure tank + switch</h4><p>An air-bladder tank (20–80 gal) holds pressure so the pump doesn't start on every faucet. Waterlogged tanks and burnt pressure-switch contacts are the most common "no water" causes after the pump itself.</p></div>
+      <div class="card"><span class="k">Treatment</span><h4>The train, in strict order</h4><p>Sediment filter → calcite pH neutralizer → oxidizing iron/manganese filter → softener + brine tank → UV sterilizer → GAC carbon for PFAS/radon → optional reverse-osmosis at the kitchen tap. Order matters: neutralize before you filter, filter before you soften, disinfect last. Most homes run three to five vessels.</p></div>
+      <div class="card"><span class="k">Consumables</span><h4>What recurs by design</h4><p>Softener salt (monthly–quarterly), sediment cartridges (quarterly), UV lamps (12-month life), GAC media (2–4 yrs), arsenic media (3–5 yrs), resin rebeds (~5 yrs), annual re-tests. The system is a built-in subscription — mostly sold today as one-off phone calls.</p></div>
+    </div>
+
+    <h3>Who supplies the gear</h3>
+    <p class="tight">The regional supply chain is concentrated and knowable. <strong>R.E. Prescott Co.</strong> (Exeter NH)
+      is the dominant NH/ME distributor — most dealer-channel valves, tanks, media and pumps flow through it, with Watts,
+      Franklin Electric and Amtrol also selling direct. OEM dealer programs carry co-op marketing dollars most independents
+      never claim.</p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Category</th><th>Default brands in the region</th><th class="num">Typical material cost</th></tr></thead>
+        <tbody>
+          <tr><td><b>Well pumps</b></td><td>Franklin Electric (the default), Goulds/Xylem (premium), Grundfos SQE constant-pressure</td><td class="num">$350–$1,600</td></tr>
+          <tr><td><b>Pressure tanks</b></td><td>Amtrol Well-X-Trol (HQ'd in RI — the regional default), WellMate, Flexcon</td><td class="num">$300–$700</td></tr>
+          <tr><td><b>Softener valves</b></td><td>Fleck 5600SXT/7000SXT (Pentair), Clack WS1, Water-Right/Hellenbrand for complex chemistry</td><td class="num">$1,200–$2,400 assembled</td></tr>
+          <tr><td><b>Treatment media</b></td><td>Katalox Light (iron/Mn), Bayoxide E33 (arsenic), Calgon/Norit GAC (PFAS/radon), Purolite resin</td><td class="num">$650–$1,600 per rebed</td></tr>
+          <tr><td><b>UV disinfection</b></td><td>VIQUA/Trojan (the dealer default), Luminor</td><td class="num">$700–$1,400</td></tr>
+          <tr><td><b>Reverse osmosis</b></td><td>Watts Premier, APEC platforms on DuPont Filmtec membranes</td><td class="num">$800–$1,400</td></tr>
+          <tr><td><b>Radon aeration</b></td><td>AirWell / AirRaider bubble-up units, RadonAway (Ward Hill MA)</td><td class="num">$2,800–$4,500</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 HOW IT GETS FIXED ============ -->
+<section id="fixes">
+  <div class="wrap">
+    <p class="sec-n">07 — How It Gets Fixed &amp; Tested</p>
+    <h2>Inside the service call</h2>
+    <p class="sec-sub">The trade's core asset is a repeatable diagnostic sequence executed by a licensed technician in a
+      basement. It runs the same way on every call, and it is worth understanding in full — because every step is either a
+      revenue event or a trust event.</p>
+
+    <h3>The eighteen steps, in order</h3>
+    <div class="phases">
+      <p class="phase-h">Before arrival</p>
+      <ol class="steps">
+        <li><b>Dispatch and route</b><span>Job lands on the schedule with symptom notes; route sequenced against the other trucks.</span></li>
+        <li><b>Confirmation call</b><span>Tech calls from the previous driveway with a real arrival window — the single biggest driver of 4.9★ reviews in this trade.</span></li>
+        <li><b>History pull</b><span>Prior visits, installed equipment, media age, warranty status. At most shops this lives in paper and memory, not a CRM.</span></li>
+      </ol>
+      <p class="phase-h">On site</p>
+      <ol class="steps" style="counter-reset:step 3">
+        <li><b>Arrival and walk-up</b><span>Boot covers on; restate the complaint back to the homeowner in their own words.</span></li>
+        <li><b>Symptom interview</b><span>When did it start, hot and cold or cold only, all fixtures or one, any recent well work?</span></li>
+        <li><b>Fixture check</b><span>Run the nearest cold tap; note pressure, air, color, odor, sediment — the first real data point.</span></li>
+      </ol>
+      <p class="phase-h">Mechanical diagnosis</p>
+      <ol class="steps" style="counter-reset:step 6">
+        <li><b>Pressure tank and switch</b><span>Read the gauge through a full cycle, check air pre-charge, listen for short-cycling, inspect switch contacts.</span></li>
+        <li><b>Pump performance</b><span>Draw-down test, amp draw on the pump circuit, recovery timing — distinguishes pump failure from tank failure from well-yield problems.</span></li>
+        <li><b>Wellhead inspection</b><span>Cap seal, casing condition, pitless adapter, grade and drainage — the surface-contamination pathway.</span></li>
+      </ol>
+      <p class="phase-h">Water quality</p>
+      <ol class="steps" style="counter-reset:step 9">
+        <li><b>Existing treatment audit</b><span>Age, brand and valve type of every vessel; media condition; bypass position; salt bridge; UV lamp hours; RO membrane date.</span></li>
+        <li><b>Field water test</b><span>The fifteen-minute panel at the utility sink (detail below), plus sample pull for lab work.</span></li>
+        <li><b>Lab sample handling</b><span>Arsenic, uranium, radon, coliform and PFAS go to a certified lab under chain-of-custody, with a promised call-back date.</span></li>
+      </ol>
+      <p class="phase-h">The close</p>
+      <ol class="steps" style="counter-reset:step 12">
+        <li><b>Diagnosis</b><span>Map results onto the treatment decision tree; sequence the train — neutralize before filtering, filter before softening, UV last.</span></li>
+        <li><b>Show the homeowner</b><span>Physical evidence: the test strip, the stained media, the pitted casing. Nothing sells treatment like a jar of the customer's own water.</span></li>
+        <li><b>Options, priced on the spot</b><span>Good / better / best from the price book, with the maintenance implications of each, before leaving the basement.</span></li>
+        <li><b>Authorization and scheduling</b><span>Signature, deposit, install date, and a written note of what was deferred and why.</span></li>
+        <li><b>Maintenance enrollment</b><span>The step that mostly does not happen today — salt, media, lamp and re-test cadence should be sold here, at peak trust.</span></li>
+        <li><b>Documentation and follow-up</b><span>Photos, readings and recommendations into the record; a re-test reminder set for twelve months.</span></li>
+      </ol>
+    </div>
+
+    <h3>How the water gets tested — on site</h3>
+    <p>The in-home panel takes about fifteen minutes at the utility sink: run the cold tap two minutes, then strips and
+      reagent drops. Each reading maps directly to equipment:</p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Analyte</th><th class="num">Example reading</th><th>Threshold that matters</th><th>What it dictates</th></tr></thead>
+        <tbody>
+          <tr><td><b>Hardness</b></td><td class="num">14 gpg</td><td>&gt;7 gpg = hard</td><td>Sizes the softener (grains × people × gallons/day) and sets the salt cadence</td></tr>
+          <tr><td><b>Iron</b></td><td class="num">0.8 ppm</td><td>0.3 ppm aesthetic limit</td><td>&lt;1 ppm: softener + resin cleaner. &gt;3 ppm: oxidizing iron filter ahead of the softener</td></tr>
+          <tr><td><b>Manganese</b></td><td class="num">0.12 ppm</td><td>0.05 ppm (health-based in NH)</td><td>Usually forces a filter-plus-softener sequence — Mn oxidizes harder than iron</td></tr>
+          <tr><td><b>pH</b></td><td class="num">6.4</td><td>&lt;7 = corrosive</td><td>Calcite neutralizer first in the train, before anything else is sized</td></tr>
+          <tr><td><b>Chlorine / nitrate</b></td><td class="num">trace</td><td>context readings</td><td>Rules pathways in or out before quoting</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>How the water gets tested — the lab chain</h3>
+    <p>Anything with a health limit goes out: <strong>arsenic, uranium, radon, coliform, metals, and PFAS by EPA Method
+      537.1</strong>. Samples are pulled on site into lab-supplied bottles, labeled under chain-of-custody, and driven or
+      shipped to state-accredited labs (in NH, NELAC-accredited labs such as Eastern Analytical; competitor Epping Well
+      &amp; Pump owns one outright). Panels run $150–$475 depending on scope, results return in roughly 3–7 days, and the
+      call-back conversation — "your arsenic is 12 against a state limit of 5" — is the highest-converting sales moment in
+      the trade. Real-estate closings run the same chain on a compressed timeline: FHA/VA-style panels inside a 30–45 day
+      contingency window, where whoever answers the phone first wins the work.</p>
+
+    <h3>The work, priced</h3>
+    <p class="note">Labor hours verified against operator service catalogs and industry install references; tickets and
+      margins are Seacoast-market benchmarks <span class="badge b-m">modeled</span>.</p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Job</th><th class="num">On-site time</th><th class="num">Crew</th><th class="num">Ticket</th><th class="num">Gross margin</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td><b>Water test (in-home)</b></td><td class="num">30–45 min</td><td class="num">1</td><td class="num">$0–$150</td><td class="num">lead gen</td><td>The cheapest qualified lead in the trade; branches to seven install paths</td></tr>
+          <tr><td><b>Lab panel (arsenic, radon, PFAS…)</b></td><td class="num">30 min + lab</td><td class="num">1</td><td class="num">$150–$475</td><td class="num">~55%</td><td>Chain-of-custody to accredited labs</td></tr>
+          <tr><td><b>Softener install</b></td><td class="num">3–4 hrs</td><td class="num">1</td><td class="num">$2,000–$3,200</td><td class="num">~58%</td><td>The bread-and-butter treatment install</td></tr>
+          <tr><td><b>Whole-house sediment / carbon filter</b></td><td class="num">~3 hrs</td><td class="num">1</td><td class="num">~$2,400</td><td class="num">~60%</td><td>Common first vessel</td></tr>
+          <tr><td><b>Whole-house arsenic removal</b></td><td class="num">~8 hrs</td><td class="num">2</td><td class="num">~$6,800</td><td class="num">~52%</td><td>Point-of-use version runs ~$1,450 at ~60%</td></tr>
+          <tr><td><b>PFAS whole-house GAC</b></td><td class="num">~3 hrs</td><td class="num">2</td><td class="num">~$5,200</td><td class="num">~55%</td><td>Highest-search-volume water topic in NH; NHDES rebate covers ~$5,000</td></tr>
+          <tr><td><b>Radon bubble-up aeration</b></td><td class="num">~5 hrs</td><td class="num">2</td><td class="num">~$7,500</td><td class="num">~50%</td><td>The big-ticket health install</td></tr>
+          <tr><td><b>UV sterilizer install</b></td><td class="num">1–2 hrs</td><td class="num">1</td><td class="num">$800–$1,400</td><td class="num">~60%</td><td>Annual lamp swap (~$225–$260) recurs forever</td></tr>
+          <tr><td><b>Whole-house RO (complex)</b></td><td class="num">~12 hrs</td><td class="num">2</td><td class="num">~$12,500</td><td class="num">~48%</td><td>Two-day, two-tech job at the top of the book</td></tr>
+          <tr><td><b>Pressure tank replacement</b></td><td class="num">2–3 hrs</td><td class="num">1</td><td class="num">$700–$1,600</td><td class="num">~55%</td><td>Frequent add-on during pump calls</td></tr>
+          <tr><td><b>Well pump replacement</b></td><td class="num">3–6 hrs</td><td class="num">2</td><td class="num">$2,000–$6,500</td><td class="num">~50%</td><td>The emergency call; requires a licensed pump installer and pulling equipment</td></tr>
+          <tr><td><b>Annual maintenance visit</b></td><td class="num">~40 min</td><td class="num">1</td><td class="num">$175–$495</td><td class="num">~72%</td><td>Highest-margin work in the book — rarely sold as a program</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>What recurs, by system</h3>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Installed system</th><th>Cadence</th><th>What the visit is</th><th class="num">Fee</th></tr></thead>
+        <tbody>
+          <tr><td><b>Softener</b></td><td>Annual + salt quarterly</td><td>Resin check, valve programming, brine clean; salt delivery</td><td class="num">$175–$275 + $85–$220</td></tr>
+          <tr><td><b>UV</b></td><td>Annual</td><td>Lamp replacement (12-month life), sleeve clean, sensor check</td><td class="num">$195–$325</td></tr>
+          <tr><td><b>Iron / Mn filter</b></td><td>Annual · rebed 5–8 yrs</td><td>Air-injection check, media inspection, backwash test</td><td class="num">$175–$275 · $1,450 rebed</td></tr>
+          <tr><td><b>Arsenic media</b></td><td>Re-test annually · rebed 3–5 yrs</td><td>Media replacement is mandatory once exhausted per test</td><td class="num">$850–$1,600 rebed</td></tr>
+          <tr><td><b>PFAS GAC</b></td><td>Test every 6–12 mo · swap 2–4 yrs</td><td>GAC change-out on breakthrough</td><td class="num">$650–$1,200 swap</td></tr>
+          <tr><td><b>RO (point of use)</b></td><td>Annual · membrane 2–3 yrs</td><td>Pre/post filter change, membrane test, pressure check</td><td class="num">$150–$225 · $320 membrane</td></tr>
+          <tr><td><b>Radon aeration</b></td><td>Annual</td><td>Blower motor, spray pattern, sump switch, mineral clean</td><td class="num">$250–$385</td></tr>
+          <tr><td><b>Pressure tank / pump</b></td><td>3–5 yr checks</td><td>Pre-charge, bladder integrity; amp draw, flow, drawdown</td><td class="num">$150–$325 diagnostic</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Read that table as an investor: <strong>every installed system generates a mandatory service schedule for the rest
+      of its life.</strong> The install base is an annuity — currently collected ad hoc, one phone call at a time, at ~72%
+      gross margin when it is collected at all. Packaging it is the single largest value-creation lever in the segment (§09).</p>
+  </div>
+</section>
+
+<!-- ============ 08 LICENSING ============ -->
+<section id="licensing">
+  <div class="wrap">
+    <p class="sec-n">08 — Licensing &amp; Labor</p>
+    <h2>The moat is a license with a waiting period</h2>
+    <p class="sec-sub">This work cannot legally be done by a handyman, and the credentials cannot be bought — only earned
+      on multi-year clocks. Labor, not demand, is the binding constraint on every operator in the market.</p>
+
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Credential</th><th>Issuer</th><th>Requirement</th><th>What it gates</th></tr></thead>
+        <tbody>
+          <tr><td><b>Pump Installer license (NH)</b></td><td>NH DES Water Well Board (RSA 482-B)</td><td><b>3 years'</b> trade experience + exam · annual renewal</td><td>All well-pump work in NH — the emergency call that opens every customer relationship</td></tr>
+          <tr><td><b>Pump Installer — journeyman/master (ME)</b></td><td>Maine PW Commission (Title 32, Ch. 69-C)</td><td>Registration/apprenticeship path + exam</td><td>The same gate in Maine; dual-licensed shops are rare and valuable</td></tr>
+          <tr><td><b>WQA CI / CWS certifications</b></td><td>Water Quality Association</td><td>Coursework + exams (CWS is a 150-question exam) + experience tiers</td><td>Treatment credibility; required by many OEM dealer programs</td></tr>
+          <tr><td><b>NH water-treatment certification</b></td><td>State of NH (voluntary)</td><td>1 yr as trainee + exam + 3 CE hrs/yr</td><td>Differentiates serious treatment shops</td></tr>
+          <tr><td><b>Class B CDL + DOT card</b></td><td>State DMV / FMCSA</td><td>Testing + medical card</td><td>Operating the crane/derrick truck that pulls deep pumps</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>The technician ladder — capability, pay, and daily revenue</h3>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Level</th><th>Credentials</th><th>Works solo on</th><th class="num">Time to reach</th><th class="num">Pay</th><th class="num">Revenue/day</th></tr></thead>
+        <tbody>
+          <tr><td><b>1 · Trainee / Helper</b></td><td>Driver's license, OSHA-10</td><td>Deliveries, sample pickups, assists — nothing solo</td><td class="num">0–6 mo</td><td class="num">$20–25/hr</td><td class="num">+~30% to a lead</td></tr>
+          <tr><td><b>2 · Service Technician</b></td><td>WQA CI preferred</td><td>Tests, diagnostics, softener swaps, tanks, POU RO, UV service</td><td class="num">6–18 mo</td><td class="num">$23–30/hr</td><td class="num">$900–1,300</td></tr>
+          <tr><td><b>3 · Lead Installer</b></td><td>WQA CI → CWS</td><td>Whole-house filtration, combo trains, neutralizers, iron filters, POU arsenic</td><td class="num">18–36 mo</td><td class="num">$30–40/hr</td><td class="num">$1,400–2,000</td></tr>
+          <tr><td><b>4 · Pump Journeyman</b></td><td><b>NH pump-installer license (mandatory)</b> · ME registration · CDL-B</td><td>Submersible pulls to 600 ft, pitless service, VFD programming, well disinfection</td><td class="num"><b>3 yrs minimum</b></td><td class="num">$30–42/hr</td><td class="num">$2,500–4,200</td></tr>
+          <tr><td><b>5 · Master Pump / Senior</b></td><td>ME Master · NCCCO crane · WQA CWS</td><td>Runs the crane crew; designs complex arsenic/radon/PFAS treatment; escalation point</td><td class="num">5+ yrs</td><td class="num">$45–60/hr</td><td class="num">$3,000–6,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Pay bands are regional benchmarks <span class="badge b-m">modeled</span>; posted NH openings for water
+      treatment / pump technicians run $28–38/hr <span class="badge b-v">verified</span>. Level 4 is the chokepoint: the
+      three-year license clock cannot be shortened by capital, and the licensed population is retiring faster than it is
+      replaced in both NH and ME.</p>
+
+    <p><strong>The strategic consequence:</strong> whoever builds the licensed-technician pipeline — apprentices feeding the
+      three-year clock, WQA certification funded up the ladder — owns the only input that cannot be bought. A Level-4 tech
+      billing $2,500–4,200/day against a $30–42/hr wage is the best unit economics in home services; marketing spend without
+      that hire just fills a backlog.</p>
+  </div>
+</section>
+
+<!-- ============ 09 ECONOMICS ============ -->
+<section id="economics">
+  <div class="wrap">
+    <p class="sec-n">09 — Operator Economics</p>
+    <h2>What a strong independent looks like</h2>
+    <p class="sec-sub">A modeled composite of the segment's best operators — the acquisition target profile. All figures
+      are benchmarks, not any single company <span class="badge b-m">modeled</span>.</p>
+
+    <div class="stats">
+      <div class="stat"><b>~$2.5M</b><span>Revenue, single facility, ~90-town service radius</span></div>
+      <div class="stat"><b>~60%</b><span>Gross margin — materials bought right, labor billed tight</span></div>
+      <div class="stat"><b>~$800K</b><span>Seller's discretionary earnings (~$300K EBITDA after owner comp)</span></div>
+      <div class="stat"><b>5–8</b><span>Employees; ~5 field-productive technicians ≈ 35 billable hours/day</span></div>
+      <div class="stat"><b>4.7–4.9★</b><span>Google profile built on referrals — with no review-request system</span></div>
+      <div class="stat"><b>~$3.5M</b><span>Revenue ceiling at current crew — then growth stops without hiring</span></div>
+    </div>
+
+    <h3>Three structural gaps — every one is margin</h3>
+    <ul class="flat">
+      <li><strong>No recurring revenue.</strong> §07's maintenance table is collected ad hoc by phone. Packaged as
+        membership tiers it becomes auto-renewing, ~74%-margin revenue — and at exit, recurring revenue is what moves
+        the multiple.</li>
+      <li><strong>No marketing engine.</strong> Top shops spend near-zero on advertising. A 4.9★ profile ranks in local
+        search within days of turning spend on; benchmark math supports 30–60 qualified leads/month at ~$3,500 — more
+        demand than the current crew can absorb, which is why hiring must lead marketing.</li>
+      <li><strong>No rebate mastery.</strong> The NHDES PFAS rebate is the strongest offer in the market and the deepest
+        incumbents are not making it (§03).</li>
+    </ul>
+
+    <h3>What packaged maintenance looks like</h3>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Tier</th><th class="num">Price / yr</th><th>Includes</th><th>Target home</th></tr></thead>
+        <tbody>
+          <tr><td><b>Essential</b></td><td class="num">$295</td><td>Annual water test + softener service + priority scheduling + 10% off repairs</td><td>Single-system</td></tr>
+          <tr><td><b>Premium</b></td><td class="num">$495</td><td>Essential + UV lamp swap + RO filter change + 2 salt deliveries + 15% off</td><td>Multi-system</td></tr>
+          <tr><td><b>Complete</b></td><td class="num">$895</td><td>Premium + arsenic/radon annual test + tank check + pump diagnostic + priority emergency + 20% off</td><td>Full-system</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Modeled three-tier program at a ~$450 blended price. On a representative install base, benchmark
+      adoption ramps to ~30% penetration by year three — roughly $550K of contracted, ~74%-margin annual revenue on a
+      $2.5M base, before the pull-through work each visit generates. Every credible competitor already sells a version of
+      this; the strongest independents do not.</p>
+
+    <h3>The valuation ladder</h3>
+    <div class="bars">
+      <div class="bar-row"><span>Entry: single shop</span><div class="bar-track"><div class="bar-fill" style="width:24%;background:var(--amber)"></div></div><span class="bar-val">~3–4×</span></div>
+      <div class="bar-row"><span>Platform exit case</span><div class="bar-track"><div class="bar-fill" style="width:68%;background:var(--teal)"></div></div><span class="bar-val">8–12×</span></div>
+      <div class="bar-row"><span>Public water median</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--navy)"></div></div><span class="bar-val">14.6×</span></div>
+    </div>
+    <p class="note">EV/EBITDA-equivalent multiples. Single shops trade at low multiples of owner earnings; assembled
+      residential platforms with recurring revenue exit at 8–12× to the sponsors named in §04; 28 public water companies
+      set the ceiling at a 14.6× median (11.4–25.8× range, McLean Group 2025). The spread between entry and exit is the
+      return engine.</p>
+  </div>
+</section>
+
+<!-- ============ 10 STRATEGY ============ -->
+<section id="strategy">
+  <div class="wrap">
+    <p class="sec-n">10 — The Strategy</p>
+    <h2>A residential-first platform, built capacity-forward</h2>
+    <p class="sec-sub">The sequence matters more than the capital. Every phase is gated by the one before it.</p>
+
+    <div class="cards">
+      <div class="card"><span class="k">Phase 1 · Capacity</span><h4>Hire before marketing</h4><p>Build the licensed-tech pipeline first — apprentices on the three-year clock, WQA certification funded up the ladder, a second install crew. Demand is standing inventory; capacity is the scarce asset.</p></div>
+      <div class="card"><span class="k">Phase 2 · Recurring</span><h4>Productize maintenance</h4><p>Named membership tiers attached at every install and service call (step 17 of §07), pricing indexed to media costs. Converts the install-base annuity from ad-hoc phone calls into contracted revenue that compounds enterprise value.</p></div>
+      <div class="card"><span class="k">Phase 3 · Demand</span><h4>Turn on the ignored channels</h4><p>Local search on 4.9★ profiles, PFAS awareness marketing, NHDES rebate paperwork mastery, and formalized realtor/lender referral channels — the demand levers every strong incumbent leaves off.</p></div>
+      <div class="card"><span class="k">Phase 4 · Consolidate</span><h4>Buy the retiring incumbents</h4><p>Tuck-in acquisitions of $1–3M shops at ~3–4× owner earnings as founders exit — each adding licensed techs, an installed-base annuity, and route density. The A-Z Water playbook, properly capitalized.</p></div>
+    </div>
+
+    <div class="callout">
+      <p><strong>Why residential first:</strong> it is the largest pool (~1M wells), the most fragmented, the most
+        trust-driven, and the segment every existing platform treats as an adjacency rather than the core. Commercial and
+        compliance work are real adjacencies — they come later, on top of a residential base, not instead of one.</p>
+    </div>
+
+    <p>New England's residential water infrastructure is private, aging, and serviced by excellent companies with no
+      successors. The demand is structural, the labor is license-gated, the recurring revenue is sitting uncollected in
+      every basement, and the exit is validated by named buyers. <strong>That is the thesis.</strong></p>
+  </div>
+</section>
+
+<footer class="colophon">
+  <div class="wrap">
+    <svg class="aep-lockup" viewBox="0 0 232 44" role="img" aria-label="AEP · Atomus Equity Partners">
+      <text x="0" y="33" font-family="Fraunces, Georgia, serif" font-weight="900" font-size="34" letter-spacing="-1.6" fill="#F6F1E4">AEP.</text>
+      <line x1="96" y1="9" x2="96" y2="35" stroke="#F6F1E4" stroke-width="1" opacity=".45"/>
+      <text x="110" y="21" font-family="Inter, sans-serif" font-weight="600" font-size="9.4" letter-spacing="1.9" fill="#F6F1E4" opacity=".92">ATOMUS</text>
+      <text x="110" y="34" font-family="Inter, sans-serif" font-weight="600" font-size="9.4" letter-spacing="1.9" fill="#F6F1E4" opacity=".92">EQUITY PARTNERS</text>
+    </svg>
+    <p class="col-quote">"We invest in the real, critical services businesses that are the backbone of the American economy —
+      companies that will never be replaced by technology or AI, but will be made stronger by embracing it."</p>
+    <p class="col-names">Jackson Rimpas · Luke Prendergast · Bobby Finan</p>
+    <p class="col-links"><a href="https://aepequity.com">aepequity.com</a> · Unlocking the Power of Small Business</p>
+
+    <p class="sources"><strong>Selected sources.</strong>
+      <a href="https://www.epa.gov/sdwa/and-polyfluoroalkyl-substances-pfas">EPA PFAS National Primary Drinking Water Regulation</a> ·
+      <a href="https://www.gencourt.state.nh.us/rsa/html/L/485/485-mrg.htm">NH RSA 485 (state PFAS MCLs)</a> ·
+      <a href="https://www.des.nh.gov/water/drinking-water/pfas">NH DES PFAS Response Program &amp; rebates</a> ·
+      <a href="https://gc.nh.gov/rsa/html/L/482-B/482-B-5.htm">NH RSA 482-B (pump installer licensing)</a> ·
+      <a href="https://www.onetonline.org/link/licenseinfo?id=33-WWB01">NH DES Water Well Board</a> ·
+      <a href="https://legislature.maine.gov/statutes/32/title32ch69-C.pdf">Maine Title 32 Ch. 69-C</a> ·
+      <a href="https://wqa.org/grow/professional-certification/">WQA professional certification</a> ·
+      <a href="https://www.mcleanllc.com/">McLean Group, Water &amp; Environmental Industry 2025 Year in Review</a> ·
+      <a href="https://www.indeed.com/q-water-treatment-l-new-hampshire-jobs.html">Indeed NH wage postings</a> ·
+      <a href="https://www.thewell.guide/cost-guides/well-pump-replacement-cost">The Well Guide cost data</a> ·
+      <a href="https://currentcost.org/cost-removing-arsenic-well-water/">CurrentCost arsenic treatment guide</a> ·
+      <a href="https://www.softprowatersystems.com/pages/installation-duration-of-water-softeners">SoftPro install durations</a> ·
+      <a href="https://www.deq.nc.gov/genx/gacfaq-final/download">NC DEQ PFAS/GAC reference</a>.
+      Competitor revenue and operator figures are estimates and modeled segment benchmarks.</p>
+
+    <p class="disclaimer">This document is a market thesis prepared for discussion purposes only. It does not constitute an
+      offer to sell or a solicitation of an offer to buy any security, and any such offer would be made only through
+      definitive offering documents. Figures marked as modeled are benchmarks, not the reported results of any company.</p>
+  </div>
+</footer>
+
+</body>
+</html>
