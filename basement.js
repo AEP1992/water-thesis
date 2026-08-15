@@ -17,9 +17,10 @@
   // framing studs behind the wet wall
   let studs = "";
   for (let x = 235; x < 1340; x += 118) {
-    studs += `<rect x="${x}" y="92" width="17" height="568" fill="#C77D3B" opacity=".35"/>`;
+    studs += `<rect x="${x}" y="92" width="17" height="568" fill="#C77D3B" opacity=".42"/>
+              <rect x="${x + 13}" y="92" width="4" height="568" fill="#96581F" opacity=".3"/>`;
   }
-  studs += `<rect x="200" y="150" width="1160" height="15" fill="#C77D3B" opacity=".28"/>`;
+  studs += `<rect x="200" y="150" width="1160" height="15" fill="#C77D3B" opacity=".34"/>`;
 
   // overhead joists
   let joists = "";
@@ -167,16 +168,22 @@
      aria-label="Hand-drawn cutaway of a New Hampshire basement: pressure tank, pump control, water softener, brine tank, filter, UV unit, water heater and laundry sink along the wet wall, with a technician in the foreground.">
   <defs>
     <linearGradient id="bmtWall" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#C2BAAA"/><stop offset="1" stop-color="#ACA494"/>
+      <stop offset="0" stop-color="#DCD3C0"/><stop offset="1" stop-color="#BFB5A0"/>
     </linearGradient>
     <linearGradient id="bmtFloor" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#CFC8B8"/><stop offset="1" stop-color="#DED8CB"/>
+      <stop offset="0" stop-color="#B2AA97"/><stop offset=".28" stop-color="#C8C1B0"/><stop offset="1" stop-color="#E0DACC"/>
+    </linearGradient>
+    <radialGradient id="bmtVign" cx="50%" cy="42%" r="75%">
+      <stop offset=".55" stop-color="#1B2532" stop-opacity="0"/><stop offset="1" stop-color="#1B2532" stop-opacity=".26"/>
+    </radialGradient>
+    <linearGradient id="bmtCone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE3A8" stop-opacity=".42"/><stop offset="1" stop-color="#FFE3A8" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="bmtSky" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#3A5F7A"/><stop offset="1" stop-color="#9FB6C6"/>
     </linearGradient>
     <linearGradient id="bmtBeam" x1="0" y1="0" x2=".5" y2="1">
-      <stop offset="0" stop-color="#FDF6DF" stop-opacity=".5"/><stop offset="1" stop-color="#FDF6DF" stop-opacity="0"/>
+      <stop offset="0" stop-color="#FFE9BC" stop-opacity=".55"/><stop offset="1" stop-color="#FFE9BC" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="bmtTank" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#1E4C8A"/><stop offset=".35" stop-color="#3A76C4"/><stop offset="1" stop-color="#173C6E"/>
@@ -209,7 +216,7 @@
     <path d="M0 652h1600v10H0z" fill="#9A9283" opacity=".5"/>
 
     <!-- ceiling: joists + ductwork -->
-    <rect width="1600" height="92" fill="#8E8778"/>
+    <rect width="1600" height="92" fill="#776F60"/>
     <g>${joists}</g>
     <g id="bmtDuct">
       <rect x="190" y="18" width="1050" height="56" rx="10" fill="url(#bmtSteel)"/>
@@ -230,7 +237,30 @@
       <rect x="612" y="122" width="184" height="112" rx="4" fill="none" stroke="#5F594C" stroke-width="4"/>
     </g>
     <path d="M620 234h172l260 426H366z" fill="url(#bmtBeam)"/>
-    <ellipse cx="700" cy="700" rx="230" ry="52" fill="#FDF6DF" opacity=".2"/>
+    <ellipse cx="700" cy="700" rx="230" ry="52" fill="#FFE9BC" opacity=".24"/>
+
+    <!-- hanging work lights -->
+    <g id="bmtLamps">
+      <g>
+        <path d="M300 92v46" stroke="#39424E" stroke-width="4"/>
+        <path d="M276 138h48l-8 18h-32z" fill="#39424E"/>
+        <circle cx="300" cy="160" r="9" fill="#FFE9B0"/>
+        <circle cx="300" cy="160" r="16" fill="#FFE3A8" opacity=".35"/>
+        <path d="M283 158 L180 660 H420 L317 158z" fill="url(#bmtCone)"/>
+        <ellipse cx="300" cy="668" rx="126" ry="22" fill="#FFE3A8" opacity=".18"/>
+      </g>
+      <g>
+        <path d="M1010 92v42" stroke="#39424E" stroke-width="4"/>
+        <path d="M986 134h48l-8 18h-32z" fill="#39424E"/>
+        <circle cx="1010" cy="156" r="9" fill="#FFE9B0"/>
+        <circle cx="1010" cy="156" r="16" fill="#FFE3A8" opacity=".35"/>
+        <path d="M993 154 L880 660 H1140 L1027 154z" fill="url(#bmtCone)"/>
+        <ellipse cx="1010" cy="668" rx="136" ry="22" fill="#FFE3A8" opacity=".18"/>
+      </g>
+    </g>
+    <!-- contact shadows for vessels that lack their own -->
+    <ellipse cx="862" cy="664" rx="46" ry="12" fill="#8F8877" opacity=".4"/>
+    <ellipse cx="1386" cy="674" rx="88" ry="16" fill="#8F8877" opacity=".35"/>
 
     <!-- doorway to the stairs -->
     <g id="bmtDoorway">
@@ -473,6 +503,9 @@
     <ellipse cx="0" cy="4" rx="60" ry="13" fill="#8F8877" opacity=".4"/>
     ${ryanFigure("r")}
   </g>
+
+  <!-- vignette: sits over the scene, under the UI overlay -->
+  <rect width="1600" height="900" fill="url(#bmtVign)" pointer-events="none"/>
 
   <!-- ================= OVERLAY: RING + CALLOUT ================= -->
   <g id="bmtOverlay" aria-hidden="true">

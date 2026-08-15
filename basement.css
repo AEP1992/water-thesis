@@ -67,9 +67,9 @@
 .bmt-callout-text{font-family:"Inter",sans-serif;font-size:19px;fill:#1B2532}
 
 /* focus / dim states */
-.bmt-obj{transition:opacity .45s ease}
-.bmt-obj.dim{opacity:.6}
-.bmt-obj.hot{opacity:1}
+.bmt-obj{transition:opacity .45s ease,filter .45s ease}
+.bmt-obj.dim{opacity:.5;filter:saturate(.45) brightness(.94)}
+.bmt-obj.hot{opacity:1;filter:none}
 #bmtScene.bmt-yard-on #obj-yard{opacity:1}
 .bmt-vignette{opacity:.42}
 #bmtScene.bmt-yard-on .bmt-vignette{opacity:1}
