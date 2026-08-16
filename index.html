@@ -134,6 +134,34 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
 .sources a{color:#8FA3B8}
 .disclaimer{font-size:11.5px;color:#6E7C8D;margin-top:18px;max-width:82ch}
 
+/* ---- spoken brief ---- */
+.listen{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font:600 13px/1 var(--sans);
+  padding:12px 18px;border:1.5px solid #6E7C8D;border-radius:7px;background:transparent;color:#E9E4D6;cursor:pointer}
+.listen:hover{background:#2C3947;border-color:#B7C4D2}
+.listen:focus-visible{outline:2px solid var(--copper);outline-offset:2px}
+.listen .tri{color:var(--copper);font-size:15px;line-height:1}
+.listen .len{font:400 11.5px/1 var(--mono);color:#9FB0C2}
+section.narrating{box-shadow:inset 4px 0 0 var(--copper)}
+.player{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--navy);color:#E9E4D6;
+  border-top:2px solid var(--copper);padding:12px 0 14px;transform:translateY(115%);transition:transform .28s ease}
+.player.on{transform:none}
+.player .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.player .now{flex:1 1 200px;min-width:0}
+.player .now b{display:block;font:600 14px/1.35 var(--sans);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.player .now span{font:400 11.5px/1.5 var(--mono);color:#9FB0C2}
+.player button{font:600 13px/1 var(--sans);padding:9px 13px;border-radius:6px;border:1.5px solid #4A5666;
+  background:#2C3947;color:#E9E4D6;cursor:pointer}
+.player button:hover{background:#3A4757}
+.player button:focus-visible{outline:2px solid var(--copper);outline-offset:2px}
+.player .x{border-color:transparent;background:transparent;color:#9FB0C2}
+.pbar{flex-basis:100%;height:3px;background:#33404F;border-radius:2px;overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:var(--copper);transition:width .45s ease}
+body.playing{padding-bottom:92px}
+@media (max-width:640px){
+  .player .now b{font-size:13px}
+  .player button{padding:8px 11px;font-size:12px}
+  body.playing{padding-bottom:150px}   /* the bar wraps to two rows at this width */
+}
 @media (max-width:640px){
   .bar-row{grid-template-columns:110px 1fr 52px}
   .thesis-box{padding:24px 20px}
@@ -173,6 +201,8 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
       <a href="#licensing"><b>08</b>Licensing &amp; labor</a>
       <a href="basement.html"><b>▶</b>The Basement Simulator</a>
     </nav>
+    <button class="listen" id="listenBtn" hidden><span class="tri">▶</span> Listen to the brief
+      <span class="len">8 sections · ~6 min</span></button>
   </div>
 </header>
 
@@ -1222,5 +1252,162 @@ tr.tier-row td span{color:#9FB0C2;text-transform:none;letter-spacing:0;font-weig
   </div>
 </footer>
 
+<div class="player" id="player" role="region" aria-label="Spoken brief player">
+  <div class="wrap">
+    <div class="now">
+      <b id="pNow">—</b>
+      <span id="pPos">Section 0 of 8</span>
+    </div>
+    <button id="pPrev" aria-label="Previous section">◀◀</button>
+    <button id="pPlay" aria-label="Pause">❚❚ Pause</button>
+    <button id="pNext" aria-label="Next section">▶▶</button>
+    <button id="pStop" class="x" aria-label="Stop and close">✕</button>
+    <div class="pbar"><i id="pBar"></i></div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const synth = window.speechSynthesis;
+  const btn = document.getElementById("listenBtn");
+  if (!synth || typeof SpeechSynthesisUtterance === "undefined") return;   // no support: button stays hidden
+  btn.hidden = false;
+
+  /* Written briefs, not the page text read aloud. Every figure here also
+     appears in the section it summarises. */
+  const BRIEF = [
+    { id: "thesis", title: "01 — The thesis", text:
+      "New England has 6.2 million households. Roughly 1.2 million of them run their own water supply on a private well. The rest are on a public system that stops treating at the meter. Both groups buy the same softeners, filters and testing, from the same fragmented base of local dealers. " +
+      "Three things frame the opportunity. Demand is triggered by events rather than compelled by regulation. Labour is not gated: no state licenses water treatment, which means capacity can be built in months, and equally that no credential protects it. And there is an active market. 159 water sector transactions closed in 2025, with small shops trading at about three to four times owner earnings, and assembled platforms exiting at eight to twelve times earnings. " +
+      "This document covers the residential segment only." },
+
+    { id: "market", title: "02 — State of the market", text:
+      "About 1.2 million New England households draw water from a private well. That is roughly 3 million residents. No federal rule protects that water. The Safe Drinking Water Act covers public systems only. " +
+      "Maine and New Hampshire have the highest reliance in the region, at about 50 and 46 percent of residents. The bedrock does the rest. Around one in five New Hampshire wells exceeds the federal arsenic limit. Roughly half carry radon at levels of concern. Iron, manganese, hardness, low pH and bacteria are all common. " +
+      "Nobody monitors any of it unless the homeowner arranges it." },
+
+    { id: "regulation", title: "03 — What drives demand", text:
+      "This is the section most easily misread, so it states the boundary plainly. Every PFAS deadline, the 2027 monitoring date and the 2029 compliance date, applies to community public water systems. None of it reaches a private well. A household sitting at ten times the federal limit is under no obligation to test, to treat, or to tell anyone. " +
+      "For private wells, regulation supplies awareness, a testing standard, and in New Hampshire a rebate of up to five thousand dollars. That rebate is itself conditional on a confirmed exceedance, which makes the certified lab test the entry condition rather than an optional first step. " +
+      "The other three drivers are demographic and financial. Owners ageing out. Institutional capital consolidating the sector. And input costs, with water supply construction spending up about 56 percent since January 2023." },
+
+    { id: "players", title: "04 — The players", text:
+      "The competitive set falls into three tiers. At the top, private-equity-backed consolidators and franchises: H2O Care with Shore Capital, Sila Services with Goldman Sachs, and the Culligan and Kinetico dealer networks. " +
+      "In the middle, mid-size well and treatment independents, most founded between 1954 and 1992, and now reaching succession. " +
+      "Underneath, small PFAS-first marketers. " +
+      "The pattern worth noticing is this. The published PFAS programmes and the recurring service plans both sit in tiers one and three. The tier two independents, the operators holding the pump licences and the largest installed bases, publish neither. " +
+      "Revenue figures for private companies are estimates, not published numbers." },
+
+    { id: "problems", title: "05 — What goes wrong in homes", text:
+      "Ten events account for the recurring ways a residential job starts. A dead pump is the emergency, at eight hundred to sixty five hundred dollars. A real estate transaction forces a water test inside the contingency window. Then staining and taste, a failed arsenic or radon result, a PFAS letter, hard water, a softener that has finally quit, low pressure, a health event in the family, and scheduled annual maintenance. " +
+      "Tickets run from about a hundred and fifty dollars for a test, to seventy five hundred for radon aeration. " +
+      "Operator selection is referral driven. Established shops hold four point seven to five star review profiles built over decades, with little visible paid advertising." },
+
+    { id: "systems", title: "06 — How the systems work", text:
+      "Every private well home runs the same architecture. Extraction, then pressurisation, then treatment in a fixed order. A drilled bedrock well, typically two to five hundred feet. A submersible pump on a drop pipe. A pressure tank in the basement. " +
+      "Then the treatment train: sediment, calcite for pH, an iron and manganese filter, a softener, carbon for PFAS and radon, and ultraviolet last. UV goes last because it needs already clear water, and because a carbon bed upstream of it can support bacterial regrowth. Reverse osmosis is point of use only, under the kitchen sink. " +
+      "One caveat. The diagram separates every stage so the order is legible. In practice combination units mean a treated home usually runs two to four vessels, not six. " +
+      "On public water the extraction half disappears. No pump, no pressure tank, and normally no UV, because the utility already disinfects. The softener, the carbon and the reverse osmosis remain." },
+
+    { id: "fixes", title: "07 — How it gets fixed and tested", text:
+      "A service call follows a fixed diagnostic sequence, eighteen steps from dispatch through to follow up. Electrical leads on any no-water call, with the power off before the pressure switch or the control box is opened. " +
+      "The field panel takes about fifteen minutes at the utility sink, and it has to be run on raw water drawn ahead of the treatment train. A sample taken after the softener corrupts the result. " +
+      "Portable instruments now quantify most of that panel on site, including an EPA verified arsenic kit at about one dollar eighty a test. Two boundaries still hold. Certified PFAS quantification requires an accredited laboratory. And confirming the water is safe to drink still requires an eighteen to twenty four hour bacterial culture. " +
+      "On price, the work runs from a free water test to a twelve and a half thousand dollar whole house reverse osmosis system, at gross margins between roughly forty eight and seventy two percent. Most homeowners finance it." },
+
+    { id: "licensing", title: "08 — Licensing and labour", text:
+      "Two different labour markets sit under one roof, and they are routinely conflated. " +
+      "Well and pump work is licensed by statute. In New Hampshire that means three years of trade experience plus an exam. " +
+      "Water treatment is not licensed at all. There is no water treatment, water conditioning, or filtration installer licence in New Hampshire or in Maine. " +
+      "Three separate things get mistaken for one. The pump installer licences, which gate well construction and pump work and nothing downstream of the pressure tank. Plumbing licensure, which is triggered by making the potable water connection rather than by the treatment itself. And state water works operator certification, which applies to people operating public water systems, not to anyone working in a house. Water Quality Association certification is voluntary. " +
+      "The consequence runs both ways. A treatment first operator can staff up in months rather than years. And so can every competitor. " +
+      "That is the brief. Every figure is sourced in place in the document below." },
+  ];
+
+  const $ = id => document.getElementById(id);
+  const player = $("player");
+  let i = 0, queue = [], qi = 0, paused = false, active = false;
+
+  /* Chrome stops long utterances after ~15s, so each brief is spoken as a
+     queue of sentence-sized utterances rather than one block. */
+  const sentences = t => t.match(/[^.!?]+[.!?]+/g) || [t];
+
+  let voice = null;
+  function pickVoice() {
+    const vs = synth.getVoices().filter(v => /^en(-|_|$)/i.test(v.lang));
+    if (!vs.length) return;
+    const want = [/Google US English/i, /Google UK English Female/i, /Samantha/i,
+                  /Aria/i, /Jenny/i, /Libby/i, /Alex/i];
+    for (const w of want) { const m = vs.find(v => w.test(v.name)); if (m) { voice = m; return; } }
+    voice = vs.find(v => v.default) || vs[0];
+  }
+  pickVoice();
+  if (synth.onvoiceschanged !== undefined) synth.addEventListener("voiceschanged", pickVoice);
+
+  function mark(idx) {
+    document.querySelectorAll("section.narrating").forEach(s => s.classList.remove("narrating"));
+    const sec = document.getElementById(BRIEF[idx].id);
+    if (!sec) return;
+    sec.classList.add("narrating");
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    sec.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+
+  function paint() {
+    $("pNow").textContent = BRIEF[i].title;
+    $("pPos").textContent = "Section " + (i + 1) + " of " + BRIEF.length;
+    $("pBar").style.width = ((i + (qi / Math.max(queue.length, 1))) / BRIEF.length * 100) + "%";
+    $("pPlay").textContent = paused ? "▶ Resume" : "❚❚ Pause";
+    $("pPlay").setAttribute("aria-label", paused ? "Resume" : "Pause");
+  }
+
+  function speakNext() {
+    if (!active || paused) return;
+    if (qi >= queue.length) { if (i < BRIEF.length - 1) { go(i + 1); } else { stop(); } return; }
+    const u = new SpeechSynthesisUtterance(queue[qi].trim());
+    if (voice) u.voice = voice;
+    u.rate = 1.02; u.pitch = 1;
+    u.onend = () => { qi += 1; paint(); speakNext(); };
+    u.onerror = e => { if (e.error !== "interrupted" && e.error !== "canceled") { qi += 1; speakNext(); } };
+    synth.speak(u);
+  }
+
+  function go(idx) {
+    synth.cancel();
+    i = Math.max(0, Math.min(BRIEF.length - 1, idx));
+    queue = sentences(BRIEF[i].text); qi = 0; paused = false;
+    mark(i); paint(); speakNext();
+  }
+
+  function start() {
+    active = true;
+    player.classList.add("on");
+    document.body.classList.add("playing");
+    go(0);
+  }
+
+  function stop() {
+    active = false; paused = false;
+    synth.cancel();
+    player.classList.remove("on");
+    document.body.classList.remove("playing");
+    document.querySelectorAll("section.narrating").forEach(s => s.classList.remove("narrating"));
+  }
+
+  btn.onclick = start;
+  $("pStop").onclick = stop;
+  $("pNext").onclick = () => { if (i < BRIEF.length - 1) go(i + 1); else stop(); };
+  $("pPrev").onclick = () => go(i - 1);
+  $("pPlay").onclick = () => {
+    if (!active) return;
+    paused = !paused;
+    if (paused) { synth.cancel(); }
+    else { speakNext(); }   // qi still points at the interrupted sentence; re-speak it
+    paint();
+  };
+
+  addEventListener("beforeunload", () => synth.cancel());
+})();
+</script>
 </body>
 </html>
